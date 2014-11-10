@@ -208,7 +208,9 @@
     <Compile Include="Infrastructure\Installation\InstallationLocalizationService.cs" />
     <Compile Include="Infrastructure\DependencyRegistrar.cs" />
     <Compile Include="Infrastructure\RouteProvider.cs" />
+    <Compile Include="Models\AboutUs\NewsItemModel.cs" />
     <Compile Include="Models\Common\MenuNavigation.cs" />
+    <Compile Include="Models\Home\HomePageModel.cs" />
     <Compile Include="Models\Install\InstallModel.cs" />
     <Compile Include="Models\Support\LoginModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

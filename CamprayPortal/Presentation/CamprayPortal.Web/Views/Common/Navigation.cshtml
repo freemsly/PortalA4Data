@@ -1,0 +1,107 @@
+﻿@model CamprayPortal.Web.Models.Common.MenuNavigation
+@{
+    Layout = null;
+}
+
+  
+@functions {
+    private string TopMenu(string controlname)
+    {
+        return controlname == Model.Controller ? "active" : String.Empty;
+    }
+}
+
+@helper MenuNavigation(string action, string control, string title)
+{
+    if (null == Model)
+    {
+        return;
+    }
+    if (Model.Action == action && Model.Controller == control)
+    {
+        <li class="active"><a href="@Url.Action(action, control)">@title</a></li>
+    }
+    else
+    {
+        <li><a href="@Url.Action(action, control)">@title</a></li>
+    }
+}
+
+
+<!-- BEGIN NAVIGATION -->
+<div class="header-navigation pull-right font-transform-inherit">
+    <ul>
+        <li class="dropdown @TopMenu("AboutUs")">
+            <a class="dropdown-toggle disabled" data-toggle="dropdown" data-target="#" href="@Url.Action("HomePage", "AboutUs")">
+                About us
+            </a>
+            <ul class="dropdown-menu">
+                @MenuNavigation("MessageChairman", "AboutUs", "Message from Chairman")
+                @MenuNavigation("ManagementTeam", "AboutUs", "Management Team")
+                @MenuNavigation("BoardMembers", "AboutUs", "Board members")
+                @MenuNavigation("Investors", "AboutUs", "Investors")
+                @MenuNavigation("WhyA4Data", "AboutUs", "Why A4 Data")
+                @MenuNavigation("News", "AboutUs", "News")
+                @MenuNavigation("ContactUs", "AboutUs", "Contact us")
+                @MenuNavigation("Careers", "AboutUs", "Careers")
+            </ul>
+        </li>
+
+        <li class="dropdown @TopMenu("Product")">
+            <a class="dropdown-toggle disabled" data-toggle="dropdown" data-target="#" href="@Url.Action("HomePage", "Product")">
+                Product
+            </a>
+
+            <ul class="dropdown-menu">
+                @MenuNavigation("JetVM", "Product", "A4 Data Jet VM")
+                @MenuNavigation("JetAppliance", "Product", "A4 Data Jet Appliance")
+                @MenuNavigation("FeatureBriefs", "Product", "Feature briefs")
+            </ul>
+        </li>
+
+
+
+        <li class="dropdown @TopMenu("Solutions")">
+            <a class="dropdown-toggle disabled" data-toggle="dropdown" data-target="#" href="@Url.Action("HomePage", "Solutions")">
+                Solutions
+            </a>
+
+            <ul class="dropdown-menu">
+                @MenuNavigation("BriefsOverview", "Solutions", "Solution brief/overview")
+                @MenuNavigation("Benefit", "Solutions", "(product) Benefit")
+                @MenuNavigation("Benchmark", "Solutions", "Benchmark")
+                @MenuNavigation("Applications", "Solutions", "Applications")
+                @MenuNavigation("CustomerTestimonials", "Solutions", "Customer testimonials")
+                @MenuNavigation("CaseStudies", "Solutions", "Case studies")
+            </ul>
+        </li>
+        <li class="dropdown @TopMenu("Technology")">
+            <a class="dropdown-toggle disabled" data-toggle="dropdown" data-target="#" href="@Url.Action("HomePage", "Technology")">
+                Technology
+            </a>
+        </li>
+        
+        <li class="dropdown @TopMenu("Downloads")">
+            <a class="dropdown-toggle disabled" data-toggle="dropdown" data-target="#" href="@Url.Action("HomePage", "Downloads")">
+                Downloads
+            </a>
+        </li>
+
+        <li class="dropdown @TopMenu("Support")">
+            <a class="dropdown-toggle disabled" data-toggle="dropdown" data-target="#" href="@Url.Action("HomePage", "Support")">
+                Support
+            </a>
+
+            <ul class="dropdown-menu">
+                @MenuNavigation("Benefits", "Support", "Benefits")
+                @MenuNavigation("CustomerPortal", "Support", "CustomerPortal")
+                @MenuNavigation("Documentation", "Support", "Documentation")
+                @MenuNavigation("SoftwareVersion", "Support", "SoftwareVersion")
+            </ul>
+        </li>
+
+    </ul>
+</div>
+<!-- END NAVIGATION -->
+
+

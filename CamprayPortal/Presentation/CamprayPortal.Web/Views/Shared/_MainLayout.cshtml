@@ -1,0 +1,183 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (IsSectionDefined("PageStyle"))
+{
+    @section PageStyle{
+        @RenderSection("PageStyle")
+    }
+}
+
+
+@if (IsSectionDefined("PageScript"))
+{
+    @section PageScript{
+        @RenderSection("PageScript")
+    }
+}
+
+
+<!-- Head END -->
+<!-- Body BEGIN -->
+<body class="corporate">
+    <!-- BEGIN STYLE CUSTOMIZER -->
+    <div class="color-panel hidden-sm">
+        <div class="color-mode-icons icon-color"></div>
+        <div class="color-mode-icons icon-color-close"></div>
+        <div class="color-mode">
+            <p>THEME COLOR</p>
+            <ul class="inline">
+                <li class="color-red current color-default" data-style="red"></li>
+                <li class="color-blue" data-style="blue"></li>
+                <li class="color-green" data-style="green"></li>
+                <li class="color-orange" data-style="orange"></li>
+                <li class="color-gray" data-style="gray"></li>
+                <li class="color-turquoise" data-style="turquoise"></li>
+            </ul>
+        </div>
+    </div>
+    <!-- END BEGIN STYLE CUSTOMIZER -->
+
+    <!-- BEGIN HEADER -->
+    <div class="header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7">
+                    <a class="site-logo" href="/"><img src="/Content/assets/frontend/layout/img/logos/logo-corp-red.png" alt="Index"></a>
+                    <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
+                </div>
+                
+                
+                <div class="col-lg-5">
+                    <ul class="social-icons social-icons-color pull-right" style="padding: 10px 0 0 0;">
+                        <li><a class="facebook" data-original-title="Facebook" href="#"></a></li>
+                        <li><a class="twitter" data-original-title="Twitter" href="#"></a></li>
+                        <li><a class="googleplus" data-original-title="Goole Plus" href="#"></a></li>
+                        <li><a class="linkedin" data-original-title="Linkedin" href="#"></a></li>
+                    </ul>
+                </div>
+
+                @*<div class="col-lg-1">
+                    <ul class="list-unstyled list-inline" style="padding: 15px 0 0 0;">
+                        <li><a href="page-login.html">Log In</a></li>
+                    </ul>
+                </div>*@
+
+                </div>
+
+            <div class="row">
+                <div class="search-box pull-left" style="width: 300px;padding: 19px 12px 20px;"  >
+                    <form action="#">
+                        <div class="input-group">
+                            <input type="text" placeholder="Search" class="form-control">
+                            <span class="input-group-btn">
+                                <button class="btn btn-primary" type="submit">Search</button>
+                            </span>
+                        </div>
+                    </form>
+                </div>
+             
+                <!-- BEGIN NAVIGATION -->
+                @Html.Action("Navigation", "Common")
+                <!-- END NAVIGATION -->
+            </div>
+            </div>
+            
+        </div>
+    <!-- Header END -->
+ 
+    @RenderBody()
+    
+    
+    
+    <!-- BEGIN PRE-FOOTER -->
+    <div class="pre-footer">
+        <div class="container">
+            <div class="row margin-bottom-20">
+                <div class="col-md-2 col-sm-2">
+                    <h2>About Us</h2>
+                    <ul class="list-unstyled">
+                        <li><i class="fa fa-angle-right"></i> <a href="#">Message from Chairman</a></li>
+                        <li><i class="fa fa-angle-right"></i> <a href="#">Management Team</a></li>
+                        <li><i class="fa fa-angle-right"></i> <a href="#">Board members</a></li>
+                        <li><i class="fa fa-angle-right"></i> <a href="#">Investors</a></li>
+                        <li><i class="fa fa-angle-right"></i> <a href="#">Why A4 Data</a></li>
+                        <li><i class="fa fa-angle-right"></i> <a href="#">News</a></li>
+                        <li><i class="fa fa-angle-right"></i> <a href="#">Contact us</a></li>
+                        <li><i class="fa fa-angle-right"></i> <a href="#">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2 col-sm-2">
+                    <h2>Product</h2>
+                    <ul class="list-unstyled">
+                        <li><i class="fa fa-angle-right"></i> <a href="#">A4 Data Jet VM</a></li>
+                        <li><i class="fa fa-angle-right"></i> <a href="#">A4 Data Jet Appliance</a></li>
+                        <li><i class="fa fa-angle-right"></i> <a href="#">Feature briefs</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2 col-sm-2">
+                    <h2>Solutions</h2>
+                    <ul class="list-unstyled">
+                        <li><i class="fa fa-angle-right"></i> <a href="#">Solution brief/overview</a></li>
+                        <li><i class="fa fa-angle-right"></i> <a href="#">(product) Benefit</a></li>
+                        <li><i class="fa fa-angle-right"></i> <a href="#">Benchmark</a></li>
+                        <li><i class="fa fa-angle-right"></i> <a href="#">Applications</a></li>
+                        <li><i class="fa fa-angle-right"></i> <a href="#">Customer testimonials</a></li>
+                        <li><i class="fa fa-angle-right"></i> <a href="#">Case studies</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2 col-sm-2">
+                    <h2>Technology</h2>
+                </div>
+                <div class="col-md-2 col-sm-2">
+                    <h2>Downloads</h2>
+                </div>
+                <div class="col-md-2 col-sm-2">
+                    <h2>Support</h2>
+                    <ul class="list-unstyled">
+                        <li><i class="fa fa-angle-right"></i> <a href="#">Benefits</a></li>
+                        <li><i class="fa fa-angle-right"></i> <a href="#">Customer Portal</a></li>
+                        <li><i class="fa fa-angle-right"></i> <a href="#">Documentation</a></li>
+                        <li><i class="fa fa-angle-right"></i> <a href="#">Software Version</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END PRE-FOOTER -->
+
+    
+
+    <!-- BEGIN FOOTER -->
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <!-- BEGIN COPYRIGHT -->
+                <div class="col-md-6 col-sm-6 padding-top-10">
+                    2014 © Metronic Shop UI. ALL Rights Reserved. <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+                </div>
+                <!-- END COPYRIGHT -->
+                <!-- BEGIN PAYMENTS -->
+                <div class="col-md-6 col-sm-6">
+                    <ul class="social-footer list-unstyled list-inline pull-right">
+                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                        <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fa fa-skype"></i></a></li>
+                        <li><a href="#"><i class="fa fa-github"></i></a></li>
+                        <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+                        <li><a href="#"><i class="fa fa-dropbox"></i></a></li>
+                    </ul>
+                </div>
+                <!-- END PAYMENTS -->
+            </div>
+        </div>
+    </div>
+    <!-- END FOOTER -->
+
+   
+</body>
+<!-- END BODY -->

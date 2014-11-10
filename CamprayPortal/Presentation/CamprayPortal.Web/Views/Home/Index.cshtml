@@ -1,4 +1,6 @@
-﻿@{
+﻿@using CamprayPortal.Web.Models.AboutUs
+@model CamprayPortal.Web.Models.Home.HomePageModel
+@{
     Layout = "~/Views/Shared/_MainLayout.cshtml";
 }
 
@@ -344,26 +346,15 @@
                         </ul>
                         <div class="tab-content">
                             <div id="tab-1" class="tab-pane row-fluid fade in active">
-                                <div class="row">
-                                    <p class="margin-bottom-10">Raw denim you probably haven't heard of them jean shorts Austin. eu banh mi, qui irure terry richardson ex squid Aliquip placeat salvia cillum iphone.</p>
-                                    <p>2014-11-1</p>
-                                </div>
-                                <div class="row">
-                                    <p class="margin-bottom-10">Raw denim you probably haven't heard of them jean shorts Austin. eu banh mi, qui irure terry richardson ex squid Aliquip placeat salvia cillum iphone.</p>
-                                    <p>2014-11-1</p>
-                                </div>
-                                <div class="row">
-                                    <p class="margin-bottom-10">Raw denim you probably haven't heard of them jean shorts Austin. eu banh mi, qui irure terry richardson ex squid Aliquip placeat salvia cillum iphone.</p>
-                                    <p>2014-11-1</p>
-                                </div>
-                                <div class="row">
-                                    <p class="margin-bottom-10">Raw denim you probably haven't heard of them jean shorts Austin. eu banh mi, qui irure terry richardson ex squid Aliquip placeat salvia cillum iphone.</p>
-                                    <p>2014-11-1</p>
-                                </div>
-                                <div class="row">
-                                    <p class="margin-bottom-10">Raw denim you probably haven't heard of them jean shorts Austin. eu banh mi, qui irure terry richardson ex squid Aliquip placeat salvia cillum iphone.</p>
-                                    <p>2014-11-1</p>
-                                </div>
+                                @foreach (NewsItemModel newitem in Model.NewsItemModels)
+                                {
+                                    <div class="row">
+                                        <p class="margin-bottom-10">
+                                            @newitem.Title
+                                        </p>
+                                        <p>@newitem.CreatedOn.ToString("yyyy-MM-dd")</p>
+                                    </div>
+                                }
                                 <div class="row">
                                     <p class="pull-right"><a class="more" href="#">Read more</a></p>
                                 </div>
