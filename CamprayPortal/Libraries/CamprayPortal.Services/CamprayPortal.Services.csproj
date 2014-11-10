@@ -159,8 +159,6 @@
     <Compile Include="Customers\ICustomerAttributeService.cs" />
     <Compile Include="Customers\CustomerAttributeService.cs" />
     <Compile Include="Customers\CustomerAttributeExtensions.cs" />
-    <Compile Include="Helpers\IUserAgentHelper.cs" />
-    <Compile Include="Helpers\UserAgentHelper.cs" />
     <Compile Include="Logging\ClearLogTask.cs" />
     <Compile Include="Media\ResizeType.cs" />
     <Compile Include="Customers\ICustomerRegistrationService.cs" />
