@@ -1,0 +1,2 @@
+﻿CamprayPortal open source edition is licensed under CamprayPortal Public License Version 3.0 ("NPL"). 
+Please find more info here: http://www.CamprayPortal.com/licensev3.aspx
