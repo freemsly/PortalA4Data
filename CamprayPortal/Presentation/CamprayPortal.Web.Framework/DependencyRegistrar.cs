@@ -79,8 +79,7 @@ namespace CamprayPortal.Web.Framework
 
             //web helper
             builder.RegisterType<WebHelper>().As<IWebHelper>().InstancePerLifetimeScope();
-            //user agent helper
-            builder.RegisterType<UserAgentHelper>().As<IUserAgentHelper>().InstancePerLifetimeScope();
+       
 
             
             //controllers

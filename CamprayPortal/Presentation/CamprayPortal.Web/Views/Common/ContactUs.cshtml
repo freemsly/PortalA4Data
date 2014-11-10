@@ -1,67 +1,105 @@
-﻿@model ContactUsModel
-@using CamprayPortal.Web.Models.Common;
+﻿
 @{
-    Layout = "~/Views/Shared/_ColumnsTwo.cshtml";
-
-    //title
-    Html.AddTitleParts(T("PageTitle.ContactUs").Text);
+    Layout = null;
 }
-<div class="page contact-page">
-    <div class="page-title">
-        <h1>@T("PageTitle.ContactUs")</h1>
+
+
+ @*<!-- BEGIN SAMPLE FORM PORTLET-->
+<div class="portlet box">
+    <div class="portlet-title">
+        <div class="caption">
+            ContactUs
+        </div>
     </div>
-    @Html.Action("TopicBlock", "Topic", new { systemName = "ContactUs" })
-    <div class="page-body">
-        @Html.Widget("contactus_top")
-        @if (Model.SuccessfullySent)
-        {
-            <div class="result">
-                @Model.Result
-            </div>        
-        }
-        else
-        {
-            using (Html.BeginForm())
-            {
-            <div class="message-error">
-                @Html.ValidationSummary(true)
-            </div>
-            <div class="form-fields">
-                <div class="inputs-left">
-                    <div class="inputs">
-                        @Html.LabelFor(model => model.FullName)
-                        <div class="input-box">
-                            @Html.TextBoxFor(model => model.FullName, new { @class = "fullname", placeholder = T("ContactUs.FullName.Hint") })
-                        </div>
-                        @Html.ValidationMessageFor(model => model.FullName)
-                    </div>
-                    <div class="inputs">
-                        @Html.LabelFor(model => model.Email)
-                        <div class="input-box">
-                            @Html.TextBoxFor(model => model.Email, new { @class = "email", placeholder = T("ContactUs.Email.Hint") })
-                        </div>
-                        @Html.ValidationMessageFor(model => model.Email)
-                    </div>
-                    @if (Model.DisplayCaptcha)
-                    {
-                        <div class="captcha-box">
-                            @Html.Raw(Html.GenerateCaptcha())
-                        </div>
-                    }
+    <div class="portlet-body form">
+        <form role="form">
+            <div class="form-body">
+
+                <div class="form-group">
+                    <label>First name</label><span class="require">*</span>
+                    <input type="text" class="form-control" placeholder="First name">
                 </div>
-                <div class="inputs-right inputs">
-                    @Html.LabelFor(model => model.Enquiry)
-                    <div class="input-box">
-                        @Html.TextAreaFor(model => model.Enquiry, new { @class = "enquiry", placeholder = T("ContactUs.Enquiry.Hint") })
-                    </div>
-                    @Html.ValidationMessageFor(model => model.Enquiry)
+
+                <div class="form-group">
+                    <label>Last name</label><span class="require">*</span>
+                    <input type="text" class="form-control" placeholder="Last name">
+                </div>
+
+                <div class="form-group">
+                    <label>Company name</label><span class="require">*</span>
+                    <input type="text" class="form-control" placeholder="Company name">
+                </div>
+                
+                <div class="form-group">
+                    <label>E-mail address</label><span class="require">*</span>
+                    <input type="text" class="form-control" placeholder="E-mail address">
+                </div>
+                
+                <div class="form-group">
+                    <label>Phone number</label>
+                    <input type="text" class="form-control" placeholder="Phone number">
+                </div>
+                
+                <div class="form-group">
+                    <label>Comments</label>
+                    <textarea class="form-control" rows="5"></textarea>
+                </div>
+
+            </div>
+            <div class="form-actions fluid">
+                <div class="col-md-offset-4 col-md-8">
+                    <button type="submit" class="btn grabbing">Submit</button>
                 </div>
             </div>
-            <div class="buttons">
-                <input type="submit" name="send-email" class="button-1 contact-us-button" value="@T("ContactUs.Button")" />
-            </div>
-            }
-        }
-        @Html.Widget("contactus_bottom")
+        </form>
     </div>
 </div>
+<!-- END SAMPLE FORM PORTLET-->*@
+
+
+<div class="pricing hover-effect">
+    <div class="pricing-head">
+        <h3>
+            ContactUs
+        </h3>
+    </div>
+    <form role="form">
+        <div class="form-body">
+            <div class="pricing-content" style="padding: 15px;">
+                <div class="form-group">
+                    <label>First name</label><span class="require">*</span>
+                    <input type="text" class="form-control" placeholder="First name">
+                </div>
+
+                <div class="form-group">
+                    <label>Last name</label><span class="require">*</span>
+                    <input type="text" class="form-control" placeholder="Last name">
+                </div>
+
+                <div class="form-group">
+                    <label>Company name</label><span class="require">*</span>
+                    <input type="text" class="form-control" placeholder="Company name">
+                </div>
+
+                <div class="form-group">
+                    <label>E-mail address</label><span class="require">*</span>
+                    <input type="text" class="form-control" placeholder="E-mail address">
+                </div>
+
+                <div class="form-group">
+                    <label>Phone number</label>
+                    <input type="text" class="form-control" placeholder="Phone number">
+                </div>
+
+                <div class="form-group">
+                    <label>Comments</label>
+                    <textarea class="form-control" rows="5"></textarea>
+                </div>
+
+            </div>
+            <div class="pricing-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </form>
+        </div>

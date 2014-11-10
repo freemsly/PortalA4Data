@@ -43,7 +43,6 @@ namespace CamprayPortal.Web.Framework
        
         private readonly CurrencySettings _currencySettings;
         private readonly LocalizationSettings _localizationSettings;
-        private readonly IUserAgentHelper _userAgentHelper;
         private readonly IStoreMappingService _storeMappingService;
 
         private Customer _cachedCustomer;
@@ -67,7 +66,7 @@ namespace CamprayPortal.Web.Framework
             
             CurrencySettings currencySettings,
             LocalizationSettings localizationSettings,
-            IUserAgentHelper userAgentHelper,
+      
             IStoreMappingService storeMappingService)
         {
             this._httpContext = httpContext;
@@ -81,7 +80,7 @@ namespace CamprayPortal.Web.Framework
             
             this._currencySettings = currencySettings;
             this._localizationSettings = localizationSettings;
-            this._userAgentHelper = userAgentHelper;
+
             this._storeMappingService = storeMappingService;
         }
 
@@ -188,14 +187,6 @@ namespace CamprayPortal.Web.Framework
                     customer = _customerService.GetCustomerBySystemName(SystemCustomerNames.BackgroundTask);
                 }
 
-                //check whether request is made by a search engine
-                //in this case return built-in customer record for search engines 
-                //or comment the following two lines of code in order to disable this functionality
-                if (customer == null || customer.Deleted || !customer.Active)
-                {
-                    if (_userAgentHelper.IsSearchEngine())
-                        customer = _customerService.GetCustomerBySystemName(SystemCustomerNames.SearchEngine);
-                }
 
                 //registered user
                 if (customer == null || customer.Deleted || !customer.Active)

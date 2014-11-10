@@ -8,18 +8,13 @@ using CamprayPortal.Web.Framework.Seo;
 
 namespace CamprayPortal.Web.Controllers
 {
-    [CheckAffiliate]
-    [StoreClosed]
-    [PublicStoreAllowNavigation]
-    [LanguageSeoCode]
-    [NopHttpsRequirement(SslRequirement.NoMatter)]
-    [WwwRequirement]
+
     public abstract partial class BasePublicController : BaseController
     {
         protected virtual ActionResult InvokeHttp404()
         {
             // Call target Controller and pass the routeData.
-            IController errorController = EngineContext.Current.Resolve<CamprayPortal.Web.Controllers.CommonController>();
+            IController errorController = EngineContext.Current.Resolve<CommonController>();
 
             var routeData = new RouteData();
             routeData.Values.Add("controller", "Common");
