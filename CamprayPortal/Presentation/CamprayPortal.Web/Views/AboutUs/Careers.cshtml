@@ -1,0 +1,98 @@
+﻿@{
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+@section PageStyle{
+
+}
+
+@section PageScript{
+<script src="/Content/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+    <script src="/Content/assets/global/plugins/carousel-owl-carousel/owl-carousel/owl.carousel.min.js" type="text/javascript"></script><!-- slider for products -->
+    <!-- BEGIN PAGE LEVEL JAVASCRIPTS (REQUIRED ONLY FOR CURRENT PAGE) -->
+    <script src="/Content/assets/frontend/layout/scripts/layout.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            Layout.init();
+            Layout.initOWL();
+            
+        });
+    </script>
+    <!-- END PAGE LEVEL JAVASCRIPTS -->
+}
+
+<div class="main">
+    <div class="container">
+        <ul class="breadcrumb">
+            <li><a href="/">Home</a></li>
+            <li><a href="@Url.Action("HomePage","AboutUs")">AboutUs</a></li>
+            <li class="active">Careers</li>
+        </ul>
+        <!-- BEGIN SIDEBAR & CONTENT -->
+        <div class="row margin-bottom-40">
+            <!-- BEGIN CONTENT -->
+            <div class="col-md-12 col-sm-12">
+                <div class="content-page">
+                    <div class="row">
+                        <!-- BEGIN LEFT SIDEBAR -->
+                        <div class="col-md-8 col-sm-8 blog-posts">
+                            <h2>
+                                careers
+                            </h2>
+                            <div class="row scroller" style="height: 200px;" >
+                                <div class="col-md-8 col-sm-8 col-md-push-1 col-sm-push-1" >
+                                    <ul>
+                                        <li class="margin-top-10">
+                                            Engineering
+                                            <ul>
+                                                <li class="margin-top-10">Computer <span class="pull-right">Milpitas, CA</span></li>
+                                            </ul>
+                                        </li>
+
+                                        <li class="margin-top-10">
+                                            Marketing
+                                            <ul>
+                                                <li class="margin-top-10">Marketing Manger <span class="pull-right">Milpitas, CA</span></li>
+                                            </ul>
+                                        </li>
+
+
+                                        <li class="margin-top-10">
+                                            Sales
+                                            <ul>
+                                                <li class="margin-top-10">Account Manager <span class="pull-right">Milpitas, CA</span></li>
+                                                <li class="margin-top-10">Sales Manager <span class="pull-right">Milpitas, CA</span></li>
+                                            </ul>
+                                        </li>
+
+
+                                        <li class="margin-top-10">
+                                            Software Engineering
+                                            <ul class="margin-top-10">
+                                                <li class="margin-top-10">Technical Support<span class="pull-right">Milpitas, CA</span></li>
+                                                <li class="margin-top-10">Software Engineer-test<span class="pull-right">Milpitas, CA</span></li>
+                                                <li class="margin-top-10">Sr. Software Engineer<span class="pull-right">Milpitas, CA</span></li>
+                                            </ul>
+                                        </li>
+
+                                    </ul>
+                                </div>
+
+                            </div>
+                     
+
+                        </div>
+                        <!-- END LEFT SIDEBAR -->
+                        <!-- BEGIN RIGHT SIDEBAR -->
+                        <div class="col-md-4 col-sm-4 blog-sidebar">
+                            @Html.Action("ContactUs", "Common")
+                        </div>
+                        <!-- END RIGHT SIDEBAR -->
+                    </div>
+                </div>
+            </div>
+            <!-- END CONTENT -->
+        </div>
+        <!-- END SIDEBAR & CONTENT -->
+    </div>
+</div>

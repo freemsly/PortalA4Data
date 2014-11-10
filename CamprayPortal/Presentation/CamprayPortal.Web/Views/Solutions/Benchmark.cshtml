@@ -1,0 +1,84 @@
+﻿@{
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+@section PageStyle{
+
+}
+
+@section PageScript{
+    <script src="/Content/assets/global/plugins/carousel-owl-carousel/owl-carousel/owl.carousel.min.js" type="text/javascript"></script><!-- slider for products -->
+    <!-- BEGIN PAGE LEVEL JAVASCRIPTS (REQUIRED ONLY FOR CURRENT PAGE) -->
+    <script src="/Content/assets/frontend/layout/scripts/layout.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            Layout.init();
+            Layout.initOWL();
+        });
+    </script>
+    <!-- END PAGE LEVEL JAVASCRIPTS -->
+}
+
+<div class="main">
+    <div class="container">
+        <ul class="breadcrumb">
+            <li><a href="/">Home</a></li>
+            <li><a href="@Url.Action("HomePage", "Solutions")">Solutions</a></li>
+            <li class="active">Message from Chairman</li>
+        </ul>
+        <!-- BEGIN SIDEBAR & CONTENT -->
+        <div class="row margin-bottom-40">
+            <!-- BEGIN CONTENT -->
+            <div class="col-md-12 col-sm-12">
+                <div class="content-page">
+                    <div class="row">
+                        <!-- BEGIN LEFT SIDEBAR -->
+                        <div class="col-md-8 col-sm-8 blog-posts">
+                            
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a data-toggle="tab" href="#tab-1">Overview</a></li>
+                                <li class=""><a data-toggle="tab" href="#tab-2">Mobile</a></li>
+                                <li class=""><a data-toggle="tab" href="#tab-3">Speed Time</a></li>
+                            </ul>
+                            <div class="tab-content">
+                                <div id="tab-1" class="tab-pane row fade active in">
+                                    <div class="col-md-3">
+                                        <a data-rel="fancybox-button" title="Image Title" class="fancybox-button" href="/Contentassets/temp/pics/img1-large.jpg">
+                                            <img alt="" src="/Content/assets/frontend/pages/img/pics/img1-large.jpg" class="img-responsive">
+                                        </a>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <p class="margin-bottom-10">Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid Aliquip placeat salvia cillum iphone.</p>
+                                        <p><a class="read-more" href="#">Read more</a></p>
+                                    </div>
+                                </div>
+                                <div id="tab-2" class="tab-pane row fade">
+                                    <div class="col-md-9">
+                                        <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia..</p>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <a data-rel="fancybox-button" title="Image Title" class="fancybox-button" href="/Contentassets/temp/pics/img2-large.jpg">
+                                            <img alt="" src="/Content/assets/frontend/pages/img/pics/img2-large.jpg" class="img-responsive">
+                                        </a>
+                                    </div>
+                                </div>
+                                <div id="tab-3" class="tab-pane fade">
+                                    <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- END LEFT SIDEBAR -->
+                        <!-- BEGIN RIGHT SIDEBAR -->
+                        <div class="col-md-4 col-sm-4 blog-sidebar">
+                            @Html.Action("ContactUs", "Common")
+                        </div>
+                        <!-- END RIGHT SIDEBAR -->
+                    </div>
+                </div>
+            </div>
+            <!-- END CONTENT -->
+        </div>
+        <!-- END SIDEBAR & CONTENT -->
+    </div>
+</div>
