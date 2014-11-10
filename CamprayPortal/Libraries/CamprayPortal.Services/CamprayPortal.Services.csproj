@@ -70,8 +70,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\Newtonsoft.Json.6.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="PerlRegex, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="PerlRegex">
       <HintPath>..\..\packages\nopCommerceCustom\PerlRegex.dll</HintPath>
     </Reference>
     <Reference Include="RestSharp, Version=104.4.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -112,8 +111,7 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="UserAgentStringLibrary, Version=1.0.1211.25, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="UserAgentStringLibrary">
       <HintPath>..\..\packages\nopCommerceCustom\UserAgentStringLibrary.dll</HintPath>
     </Reference>
   </ItemGroup>
