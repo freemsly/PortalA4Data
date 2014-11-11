@@ -76,26 +76,31 @@
             scrollable: false,
             columns: [{
                 field: "Title",
-                title: "@T("Admin.ContentManagement.News.NewsItems.Fields.Title")"
+                title: "@T("Admin.ContentManagement.News.NewsItems.Fields.Title")",
+                width: 400,
             }, {
                 field: "LanguageName",
                 title: "@T("Admin.ContentManagement.News.NewsItems.Fields.Language")",
-                width: 200,
+                width: 50,
             }, {
                 field: "Comments",
                 title: "@T("Admin.ContentManagement.News.NewsItems.Fields.Comments")",
                 width: 100,
                 template: '<a href="Comments?filterByNewsItemId=#=Id#">@T("Admin.ContentManagement.News.NewsItems.Fields.Comments") - #=Comments# </a>'
             }, {
+                field: "NewsType",
+                title: "@T("Admin.ContentManagement.News.NewsItems.Fields.NewsType")",
+                width: 100,
+            }, {
                 field: "StartDate",
                 title: "@T("Admin.ContentManagement.News.NewsItems.Fields.StartDate")",
-                width: 200,
+                width: 50,
                 type: "date",
                 format: "{0:G}"
             }, {
                 field: "EndDate",
                 title: "@T("Admin.ContentManagement.News.NewsItems.Fields.EndDate")",
-                width: 200,
+                width:50,
                 type: "date",
                 format: "{0:G}"
             }, {

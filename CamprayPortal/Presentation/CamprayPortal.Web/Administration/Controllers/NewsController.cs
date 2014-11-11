@@ -147,6 +147,8 @@ namespace CamprayPortal.Admin.Controllers
                     m.CreatedOn = _dateTimeHelper.ConvertToUserTime(x.CreatedOnUtc, DateTimeKind.Utc);
                     m.LanguageName = x.Language.Name;
                     m.Comments = x.CommentCount;
+                    m.NewsType = ((NewsType) x.NewsTypeId).ToString();
+               
                     return m;
                 }),
                 Total = news.TotalCount

@@ -77,6 +77,9 @@ namespace CamprayPortal.Admin.Models.News
         [NopResourceDisplayName("Admin.ContentManagement.News.NewsItems.Fields.Comments")]
         public int Comments { get; set; }
 
+        [NopResourceDisplayName("Admin.ContentManagement.News.NewsItems.Fields.NewsType")]
+        public string NewsType { get; set; }
+
         [NopResourceDisplayName("Admin.ContentManagement.News.NewsItems.Fields.CreatedOn")]
         public DateTime CreatedOn { get; set; }
     }
