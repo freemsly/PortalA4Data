@@ -73,14 +73,15 @@ namespace CamprayPortal.Services.News
         }
 
         /// <summary>
-        /// Gets all news
+        /// 
         /// </summary>
-        /// <param name="languageId">Language identifier; 0 if you want to get all records</param>
-        /// <param name="storeId">Store identifier; 0 if you want to get all records</param>
-        /// <param name="pageIndex">Page index</param>
-        /// <param name="pageSize">Page size</param>
-        /// <param name="showHidden">A value indicating whether to show hidden records</param>
-        /// <returns>News items</returns>
+        /// <param name="languageId"></param>
+        /// <param name="storeId"></param>
+        /// <param name="pageIndex"></param>
+        /// <param name="pageSize"></param>
+        /// <param name="showHidden"></param>
+        /// <param name="newsType"></param>
+        /// <returns></returns>
         public virtual IPagedList<NewsItem> GetAllNews(int languageId, int storeId,
             int pageIndex, int pageSize, bool showHidden = false)
         {
@@ -112,6 +113,54 @@ namespace CamprayPortal.Services.News
                         into nGroup
                         orderby nGroup.Key
                         select nGroup.FirstOrDefault();
+                query = query.OrderByDescending(n => n.CreatedOnUtc);
+            }
+
+            var news = new PagedList<NewsItem>(query, pageIndex, pageSize);
+            return news;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="languageId"></param>
+        /// <param name="storeId"></param>
+        /// <param name="pageIndex"></param>
+        /// <param name="pageSize"></param>
+        /// <param name="showHidden"></param>
+        /// <param name="newsType"></param>
+        /// <returns></returns>
+        public virtual IPagedList<NewsItem> GetAllByNewsType(int languageId, int storeId,
+           int pageIndex, int pageSize, bool showHidden = false, NewsType newsType=NewsType.News)
+        {
+            var query = _newsItemRepository.Table;
+            if (languageId > 0)
+                query = query.Where(n => languageId == n.LanguageId && n.NewsTypeId == (int)newsType);
+            if (!showHidden)
+            {
+                var utcNow = DateTime.UtcNow;
+                query = query.Where(n => n.Published);
+                query = query.Where(n => !n.StartDateUtc.HasValue || n.StartDateUtc <= utcNow);
+                query = query.Where(n => !n.EndDateUtc.HasValue || n.EndDateUtc >= utcNow);
+            }
+            query = query.OrderByDescending(n => n.CreatedOnUtc);
+
+            //Store mapping
+            if (storeId > 0)
+            {
+                query = from n in query
+                        join sm in _storeMappingRepository.Table
+                        on new { c1 = n.Id, c2 = "NewsItem" } equals new { c1 = sm.EntityId, c2 = sm.EntityName } into n_sm
+                        from sm in n_sm.DefaultIfEmpty()
+                        where !n.LimitedToStores || storeId == sm.StoreId
+                        select n;
+
+                //only distinct items (group by ID)
+                query = from n in query
+                        group n by n.Id
+                            into nGroup
+                            orderby nGroup.Key
+                            select nGroup.FirstOrDefault();
                 query = query.OrderByDescending(n => n.CreatedOnUtc);
             }
 

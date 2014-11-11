@@ -35,6 +35,18 @@ namespace CamprayPortal.Services.News
             int pageIndex, int pageSize, bool showHidden = false);
 
         /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="languageId"></param>
+        /// <param name="storeId"></param>
+        /// <param name="pageIndex"></param>
+        /// <param name="pageSize"></param>
+        /// <param name="showHidden"></param>
+        /// <param name="newsType"></param>
+        /// <returns></returns>
+        IPagedList<NewsItem> GetAllByNewsType(int languageId, int storeId,
+            int pageIndex, int pageSize, bool showHidden = false, NewsType newsType = NewsType.News);
+        /// <summary>
         /// Inserts a news item
         /// </summary>
         /// <param name="news">News item</param>
