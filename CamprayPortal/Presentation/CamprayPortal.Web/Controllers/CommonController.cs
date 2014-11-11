@@ -27,6 +27,20 @@ namespace CamprayPortal.Web.Controllers
             return View();
         }
 
+
+        [HttpPost]
+        public JsonResult MessageUs(MessageUsModel model)
+        {
+            if (ModelState.IsValid)
+            {
+
+
+                return Json(1);
+            }
+            return Json(0);
+        }
+
+
         [ChildActionOnly]
         public ActionResult Navigation()
         {
@@ -43,6 +57,9 @@ namespace CamprayPortal.Web.Controllers
             }
             return View();
         }
+
+
+
 
         #endregion
 

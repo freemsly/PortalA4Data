@@ -210,10 +210,12 @@
     <Compile Include="Infrastructure\RouteProvider.cs" />
     <Compile Include="Models\AboutUs\NewsItemModel.cs" />
     <Compile Include="Models\Common\MenuNavigation.cs" />
+    <Compile Include="Models\Common\MessageUsModel.cs" />
     <Compile Include="Models\Home\HomePageModel.cs" />
     <Compile Include="Models\Install\InstallModel.cs" />
     <Compile Include="Models\Support\LoginModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validators\Common\MessageUsValidator.cs" />
     <Compile Include="Validators\Install\InstallValidator.cs" />
   </ItemGroup>
   <ItemGroup>

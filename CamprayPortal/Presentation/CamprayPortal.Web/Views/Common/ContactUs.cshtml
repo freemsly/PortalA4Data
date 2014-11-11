@@ -3,103 +3,78 @@
     Layout = null;
 }
 
-
- @*<!-- BEGIN SAMPLE FORM PORTLET-->
-<div class="portlet box">
-    <div class="portlet-title">
-        <div class="caption">
-            ContactUs
-        </div>
-    </div>
-    <div class="portlet-body form">
-        <form role="form">
-            <div class="form-body">
-
-                <div class="form-group">
-                    <label>First name</label><span class="require">*</span>
-                    <input type="text" class="form-control" placeholder="First name">
-                </div>
-
-                <div class="form-group">
-                    <label>Last name</label><span class="require">*</span>
-                    <input type="text" class="form-control" placeholder="Last name">
-                </div>
-
-                <div class="form-group">
-                    <label>Company name</label><span class="require">*</span>
-                    <input type="text" class="form-control" placeholder="Company name">
-                </div>
-                
-                <div class="form-group">
-                    <label>E-mail address</label><span class="require">*</span>
-                    <input type="text" class="form-control" placeholder="E-mail address">
-                </div>
-                
-                <div class="form-group">
-                    <label>Phone number</label>
-                    <input type="text" class="form-control" placeholder="Phone number">
-                </div>
-                
-                <div class="form-group">
-                    <label>Comments</label>
-                    <textarea class="form-control" rows="5"></textarea>
-                </div>
-
-            </div>
-            <div class="form-actions fluid">
-                <div class="col-md-offset-4 col-md-8">
-                    <button type="submit" class="btn grabbing">Submit</button>
-                </div>
-            </div>
-        </form>
-    </div>
-</div>
-<!-- END SAMPLE FORM PORTLET-->*@
-
-
 <div class="pricing hover-effect">
     <div class="pricing-head">
         <h3>
             ContactUs
         </h3>
     </div>
-    <form role="form">
+    <form id="messageus" role="form">
         <div class="form-body">
             <div class="pricing-content" style="padding: 15px;">
                 <div class="form-group">
                     <label>First name</label><span class="require">*</span>
-                    <input type="text" class="form-control" placeholder="First name">
+                    <input type="text" class="form-control" name="FirstName" placeholder="First name">
                 </div>
 
                 <div class="form-group">
                     <label>Last name</label><span class="require">*</span>
-                    <input type="text" class="form-control" placeholder="Last name">
+                    <input type="text" class="form-control" name="LastName" placeholder="Last name">
                 </div>
 
                 <div class="form-group">
                     <label>Company name</label><span class="require">*</span>
-                    <input type="text" class="form-control" placeholder="Company name">
+                    <input type="text" class="form-control" name="CompanyName" placeholder="Company name">
                 </div>
 
                 <div class="form-group">
                     <label>E-mail address</label><span class="require">*</span>
-                    <input type="text" class="form-control" placeholder="E-mail address">
+                    <input type="text" class="form-control" name="EmailAddress" placeholder="E-mail address">
                 </div>
 
                 <div class="form-group">
                     <label>Phone number</label>
-                    <input type="text" class="form-control" placeholder="Phone number">
+                    <input type="text" class="form-control" name="PhoneNumber" placeholder="Phone number">
                 </div>
 
                 <div class="form-group">
                     <label>Comments</label>
-                    <textarea class="form-control" rows="5"></textarea>
+                    <textarea class="form-control" name="Comments" rows="5"></textarea>
                 </div>
 
             </div>
             <div class="pricing-footer">
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="button" id="messageussubmit" class="btn btn-primary">Submit</button>
             </div>
         </div>
     </form>
         </div>
+
+<script type="text/javascript">
+    
+    function checkEmpty(formname) {
+        var valueinput = $("#messageus [name=" + formname + "]");
+        if (valueinput.val().length == 0) {
+            valueinput.parent().attr("class", "form-group has-error");
+            return false;
+        } else {
+            valueinput.parent().attr("class", "form-group");
+            return true;
+        }
+    }
+
+
+    $(function() {
+        $("#messageussubmit").click(function() {
+            var checknull = checkEmpty('FirstName') && checkEmpty('LastName') && checkEmpty('CompanyName') && checkEmpty('EmailAddress');
+            if (checknull) {
+                $.post("/Common/MessageUs", $("#messageus").serialize(), function(data) {
+                    if (data == 1) {
+                        alert('success');
+                    }
+                });
+            }
+        });
+    });
+</script>
+
