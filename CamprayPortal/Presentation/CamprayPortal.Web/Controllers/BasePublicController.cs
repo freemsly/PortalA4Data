@@ -62,18 +62,24 @@ namespace CamprayPortal.Web.Controllers
             if (key == null)
             {
                 var routeData = RouteTable.Routes.GetRouteData(this.HttpContext);
-                var controller = routeData.Values["controller"];
-                var action = routeData.Values["action"];
-                topickey = string.Format("{0}-{1}", controller, action);
+                if (routeData != null)
+                {
+                    var controller = routeData.Values["controller"];
+                    var action = routeData.Values["action"];
+                    topickey = string.Format("{0}-{1}", controller, action);
+                }
             }
             var topic = topicService.GetTopicBySystemName(topickey);
+            if (null != topic)
+            {
+                //SEO
+                ViewBag.Description = topic.MetaDescription;
+                ViewBag.Keywords = topic.MetaKeywords;
+                ViewBag.Generator = topic.MetaTitle;
 
-            //SEO
-            ViewBag.Description = topic.MetaDescription;
-            ViewBag.Keywords = topic.MetaKeywords;
-            ViewBag.Generator = topic.MetaTitle;
-
-            return PrepareTopicModel(topic);
+                return PrepareTopicModel(topic);
+            }
+            return new TopicModel();
         }
 
 
