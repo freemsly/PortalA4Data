@@ -217,46 +217,6 @@
     <Compile Include="Validators\Install\InstallValidator.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\Install\create_required_data.sql" />
-    <Content Include="App_Data\Install\create_sample_data.sql" />
-    <Content Include="App_Data\Localization\Installation\installation.ar.xml" />
-    <Content Include="App_Data\Localization\Installation\installation.bg.xml" />
-    <Content Include="App_Data\Localization\Installation\installation.bs-Latn-BA.xml" />
-    <Content Include="App_Data\Localization\Installation\installation.cz.xml" />
-    <Content Include="App_Data\Localization\Installation\installation.da.xml" />
-    <Content Include="App_Data\Localization\Installation\installation.de.xml" />
-    <Content Include="App_Data\Localization\Installation\installation.fr.xml" />
-    <Content Include="App_Data\Localization\Installation\installation.gr.xml" />
-    <Content Include="App_Data\Localization\Installation\installation.he.xml" />
-    <Content Include="App_Data\Localization\Installation\installation.hi.xml" />
-    <Content Include="App_Data\Localization\Installation\installation.hr-HR.xml" />
-    <Content Include="App_Data\Localization\Installation\installation.hu.xml" />
-    <Content Include="App_Data\Localization\Installation\installation.is.xml" />
-    <Content Include="App_Data\Localization\Installation\installation.it.xml" />
-    <Content Include="App_Data\Localization\Installation\installation.jp.xml" />
-    <Content Include="App_Data\Localization\Installation\installation.lt.xml" />
-    <Content Include="App_Data\Localization\Installation\installation.nl.xml" />
-    <Content Include="App_Data\Localization\Installation\installation.pl.xml" />
-    <Content Include="App_Data\Localization\Installation\installation.pt-br.xml" />
-    <Content Include="App_Data\Localization\Installation\installation.ro.xml" />
-    <Content Include="App_Data\Localization\Installation\installation.ru.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="App_Data\Localization\Installation\installation.en.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="App_Data\Localization\Installation\installation.sk.xml" />
-    <Content Include="App_Data\Localization\Installation\installation.sp.xml" />
-    <Content Include="App_Data\Localization\Installation\installation.sv.xml" />
-    <Content Include="App_Data\Localization\Installation\installation.tr.xml" />
-    <Content Include="App_Data\Localization\Installation\installation.ur.xml" />
-    <Content Include="App_Data\Localization\Installation\installation.vi.xml" />
-    <Content Include="App_Data\Localization\Installation\installation.zhs.xml" />
-    <Content Include="App_Data\SqlServer.StoredProcedures.sql" />
-    <Content Include="App_Data\Localization\defaultResources.nopres.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="App_Data\SqlServer.Indexes.sql" />
     <Content Include="Content\assets\admin\layout\css\custom.css" />
     <Content Include="Content\assets\admin\layout\css\layout.css" />
     <Content Include="Content\assets\admin\layout\css\themes\blue.css" />
@@ -3798,7 +3758,6 @@
     <Content Include="Content\tinymce\themes\modern\theme.min.js" />
     <Content Include="Content\tinymce\tinymce.min.js" />
     <Content Include="favicon.ico" />
-    <Content Include="App_Data\uas_20140512-01.ini" />
     <Content Include="ErrorPage.htm" />
     <Content Include="FileNotFound.htm" />
     <Content Include="Global.asax" />
@@ -4270,7 +4229,7 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="App_Data\Pdf\FreeSerif.ttf" />
+    <Content Include="Views\AboutUs\NewsDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\assets\global\plugins\jquery-file-upload\server\php\files\thumbnail\" />
@@ -4308,9 +4267,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Install\Index.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="App_Data\GeoLite2-Country.mmdb" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\AboutUs\BoardMembers.cshtml" />

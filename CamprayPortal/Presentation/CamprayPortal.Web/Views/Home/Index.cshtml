@@ -345,17 +345,17 @@
                             <li><a data-toggle="tab" href="#tab-2">Events</a></li>
                         </ul>
                         <div class="tab-content">
-                            <div id="tab-1" class="tab-pane row-fluid fade in active">
+                            <div id="tab-1" class="tab-pane row-fluid fade in active" >
                                 @foreach (NewsItemModel newitem in Model.NewsItemModels)
                                 {
-                                    <div class="row">
+                                    <div class="row" style="margin:0 2px">
                                         <p class="margin-bottom-10">
                                             @newitem.Title
                                         </p>
                                         <p>@newitem.CreatedOn.ToString("yyyy-MM-dd")</p>
                                     </div>
                                 }
-                                <div class="row">
+                                <div class="row" style="margin:0 1px">
                                     <p class="pull-right"><a class="more" href="#">Read more</a></p>
                                 </div>
                             </div>
