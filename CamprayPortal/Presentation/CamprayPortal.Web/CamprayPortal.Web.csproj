@@ -198,6 +198,7 @@
     <Compile Include="Controllers\SolutionsController.cs" />
     <Compile Include="Controllers\SupportController.cs" />
     <Compile Include="Controllers\TechnologyController.cs" />
+    <Compile Include="Controllers\TopicController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -214,6 +215,7 @@
     <Compile Include="Models\Home\HomePageModel.cs" />
     <Compile Include="Models\Install\InstallModel.cs" />
     <Compile Include="Models\Support\LoginModel.cs" />
+    <Compile Include="Models\Topics\TopicModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validators\Common\MessageUsValidator.cs" />
     <Compile Include="Validators\Install\InstallValidator.cs" />
@@ -4234,6 +4236,8 @@
     <Content Include="Views\AboutUs\NewsDetail.cshtml" />
     <Content Include="Views\AboutUs\Event.cshtml" />
     <Content Include="Views\AboutUs\EventDetail.cshtml" />
+    <Content Include="Views\Topic\TopicBlock.cshtml" />
+    <Content Include="Views\Topic\TopicDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\assets\global\plugins\jquery-file-upload\server\php\files\thumbnail\" />

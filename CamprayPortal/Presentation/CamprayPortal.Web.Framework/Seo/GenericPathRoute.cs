@@ -65,7 +65,7 @@ namespace CamprayPortal.Web.Framework.Seo
         }
 
         #endregion
-        
+
         #region Methods
 
         /// <summary>
@@ -120,14 +120,14 @@ namespace CamprayPortal.Web.Framework.Seo
                     else
                     {
                         //no active slug found
-                        
+
                         //var webHelper = EngineContext.Current.Resolve<IWebHelper>();
                         //var response = httpContext.Response;
                         //response.Status = "302 Found";
                         //response.RedirectLocation = webHelper.GetStoreLocation(false);
                         //response.End();
                         //return null;
-                        
+
                         data.Values["controller"] = "Common";
                         data.Values["action"] = "PageNotFound";
                         return data;
@@ -138,7 +138,7 @@ namespace CamprayPortal.Web.Framework.Seo
                 //otherwise, it can cause some issues when customers choose a new language but a slug stays the same
                 var workContext = EngineContext.Current.Resolve<IWorkContext>();
                 var slugForCurrentLanguage = SeoExtensions.GetSeName(urlRecord.EntityId, urlRecord.EntityName, workContext.WorkingLanguage.Id);
-                if (!String.IsNullOrEmpty(slugForCurrentLanguage) && 
+                if (!String.IsNullOrEmpty(slugForCurrentLanguage) &&
                     !slugForCurrentLanguage.Equals(slug, StringComparison.InvariantCultureIgnoreCase))
                 {
                     //we should make not null or "" validation above because some entities does not have SeName for standard (ID=0) language (e.g. news, blog posts)
@@ -154,54 +154,6 @@ namespace CamprayPortal.Web.Framework.Seo
                 //process URL
                 switch (urlRecord.EntityName.ToLowerInvariant())
                 {
-                    case "product":
-                        {
-                            data.Values["controller"] = "Product";
-                            data.Values["action"] = "ProductDetails";
-                            data.Values["productid"] = urlRecord.EntityId;
-                            data.Values["SeName"] = urlRecord.Slug;
-                        }
-                        break;
-                    case "category":
-                        {
-                            data.Values["controller"] = "Catalog";
-                            data.Values["action"] = "Category";
-                            data.Values["categoryid"] = urlRecord.EntityId;
-                            data.Values["SeName"] = urlRecord.Slug;
-                        }
-                        break;
-                    case "manufacturer":
-                        {
-                            data.Values["controller"] = "Catalog";
-                            data.Values["action"] = "Manufacturer";
-                            data.Values["manufacturerid"] = urlRecord.EntityId;
-                            data.Values["SeName"] = urlRecord.Slug;
-                        }
-                        break;
-                    case "vendor":
-                        {
-                            data.Values["controller"] = "Catalog";
-                            data.Values["action"] = "Vendor";
-                            data.Values["vendorid"] = urlRecord.EntityId;
-                            data.Values["SeName"] = urlRecord.Slug;
-                        }
-                        break;
-                    case "newsitem":
-                        {
-                            data.Values["controller"] = "News";
-                            data.Values["action"] = "NewsItem";
-                            data.Values["newsItemId"] = urlRecord.EntityId;
-                            data.Values["SeName"] = urlRecord.Slug;
-                        }
-                        break;
-                    case "blogpost":
-                        {
-                            data.Values["controller"] = "Blog";
-                            data.Values["action"] = "BlogPost";
-                            data.Values["blogPostId"] = urlRecord.EntityId;
-                            data.Values["SeName"] = urlRecord.Slug;
-                        }
-                        break;
                     case "topic":
                         {
                             data.Values["controller"] = "Topic";
