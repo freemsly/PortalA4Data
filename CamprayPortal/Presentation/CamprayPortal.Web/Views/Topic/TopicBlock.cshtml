@@ -1,4 +1,8 @@
-﻿@model CamprayPortal.Web.Models.Topics.TopicModel
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model CamprayPortal.Web.Models.Topics.TopicModel
 @if (Model.IsPasswordProtected)
 {
     <script type="text/javascript">
