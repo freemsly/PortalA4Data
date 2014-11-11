@@ -2,47 +2,47 @@
 
 namespace CamprayPortal.Web.Controllers
 {
-    public class SolutionsController : Controller
+    public class SolutionsController : BasePublicController
     {
         // GET: Solutions
         public ActionResult Applications()
         {
-            return View();
+            return TopicModelView();
         }
 
         public ActionResult Benchmark()
         {
-            return View();
+            return TopicModelView();
         }
 
         public ActionResult Benefit()
         {
-            return View();
+            return TopicModelView();
         }
 
         public ActionResult BriefsOverview()
         {
-            return View();
+            return TopicModelView();
         } 
 
         public ActionResult Homepage() 
         {
-            return View();
+            return TopicModelView();
         }
 
         public ActionResult CustomerTestimonials()
         { 
-            return View();
+            return TopicModelView();
         }
 
         public ActionResult CaseStudies()
         {
-            return View();
+            return TopicModelView();
         }
 
         public ActionResult DifferentAarchitecture()
         {
-            return View();
+            return TopicModelView();
         }
     }
 }

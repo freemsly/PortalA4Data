@@ -2,34 +2,34 @@
 
 namespace CamprayPortal.Web.Controllers
 {
-    public class ProductController : Controller
+    public class ProductController : BasePublicController
     {
         // GET: Product
         public ActionResult FeatureBriefs()
         {
-            return View();
+            return TopicModelView();
         }
 
         public ActionResult Homepage()
         {
-            return View();
+            return TopicModelView();
         }
 
 
         public ActionResult JetAppliance()
         {
-            return View();
+            return TopicModelView();
         }
 
 
         public ActionResult JetVM()
         {
-            return View(); 
+            return TopicModelView(); 
         }
 
         public ActionResult ApplicationNotes() 
         {
-            return View(); 
+            return TopicModelView(); 
         }
 
 

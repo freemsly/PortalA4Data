@@ -2,12 +2,12 @@
 
 namespace CamprayPortal.Web.Controllers
 {
-    public class DownloadsController : Controller
+    public class DownloadsController : BasePublicController
     {
         // GET: Downloads
         public ActionResult Homepage()
-        { 
-            return View();
+        {
+            return TopicModelView();
         }
     }
 }

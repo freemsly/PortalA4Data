@@ -60,31 +60,31 @@ namespace CamprayPortal.Web.Controllers
         }
 
         public ActionResult MessageChairman()
-        {  
-            return View();
+        {
+            return TopicModelView();
         }
 
 
 
         public ActionResult ManagementTeam()
         {
-            return View();
+            return TopicModelView();
         }
 
 
         public ActionResult BoardMembers()
         {
-            return View();
+            return TopicModelView();
         }
 
         public ActionResult Investors()
         {
-            return View(); 
+            return TopicModelView();
         }
 
         public ActionResult WhyA4Data()
         {
-            return View();
+            return TopicModelView();
         }
 
         public ActionResult News(int currentpage = 1)
@@ -147,12 +147,12 @@ namespace CamprayPortal.Web.Controllers
 
         public ActionResult ContactUs()
         {
-            return View();
+            return TopicModelView();
         }
 
         public ActionResult Careers()
         {
-            return View();
+            return TopicModelView();
         }
 
     }

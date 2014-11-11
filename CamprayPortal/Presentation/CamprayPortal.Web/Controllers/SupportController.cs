@@ -9,7 +9,7 @@ using CamprayPortal.Web.Models.Support;
 
 namespace CamprayPortal.Web.Controllers
 {
-    public class SupportController : Controller
+    public class SupportController : BasePublicController
     {
         #region Fields
 
@@ -39,12 +39,12 @@ namespace CamprayPortal.Web.Controllers
         // GET: Support
         public ActionResult Benefits()
         {
-            return View();
+            return TopicModelView();
         }
 
         public ActionResult CustomerPortal()
         {
-            return View();
+            return TopicModelView();
         }
 
 
@@ -95,17 +95,17 @@ namespace CamprayPortal.Web.Controllers
 
         public ActionResult Documentation()
         {
-            return View();
+            return TopicModelView();
         }
 
         public ActionResult Homepage()
         {
-            return View();
+            return TopicModelView();
         }
 
         public ActionResult SoftwareVersion()
         {
-            return View();
+            return TopicModelView();
         }
     }
 }
