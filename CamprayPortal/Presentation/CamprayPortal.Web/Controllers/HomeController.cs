@@ -61,7 +61,10 @@ namespace CamprayPortal.Web.Controllers
         public ActionResult Index()
         {
             var homePageModel = new HomePageModel();
-            var newsItems = _newsService.GetAllNews(_workContext.WorkingLanguage.Id, _storeContext.CurrentStore.Id, 0, 7);
+            var newsItems = _newsService.GetAllByNewsType(_workContext.WorkingLanguage.Id, _storeContext.CurrentStore.Id,
+                0, 7, false, NewsType.News);
+            var eventItems = _newsService.GetAllByNewsType(_workContext.WorkingLanguage.Id,
+                _storeContext.CurrentStore.Id, 0, 7, false, NewsType.Eevet); 
             homePageModel.NewsItemModels = newsItems
                 .Select(x =>
                 {
@@ -70,6 +73,14 @@ namespace CamprayPortal.Web.Controllers
                     return newsModel;
                 })
                 .ToList();
+            homePageModel.EventItemModels = eventItems
+               .Select(x =>
+               {
+                   var newsModel = new NewsItemModel();
+                   PrepareNewsItemModel(newsModel, x);
+                   return newsModel;
+               })
+               .ToList();
             return View(homePageModel);
         }
 

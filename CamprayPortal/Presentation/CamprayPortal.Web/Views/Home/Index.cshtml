@@ -346,21 +346,32 @@
                         </ul>
                         <div class="tab-content">
                             <div id="tab-1" class="tab-pane row-fluid fade in active" >
-                                @foreach (NewsItemModel newitem in Model.NewsItemModels)
+                                @foreach (var newitem in Model.NewsItemModels)
                                 {
                                     <div class="row" style="margin:0 2px">
                                         <p class="margin-bottom-10">
-                                            @newitem.Title
+                                            <a  style="color: #656565" href="@Url.Action("NewsDetail", "AboutUs", new { id = newitem.Id })">@newitem.Title</a>
                                         </p>
                                         <p>@newitem.CreatedOn.ToString("yyyy-MM-dd")</p>
                                     </div>
                                 }
                                 <div class="row" style="margin:0 1px">
-                                    <p class="pull-right"><a class="more" href="#">Read more</a></p>
+                                    <p class="pull-right"><a class="more" href="@Url.Action("News","AboutUs")">Read more</a></p>
                                 </div>
                             </div>
                             <div id="tab-2" class="tab-pane fade">
-                                <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. aliquip jean shorts ullamco ad vinyl aesthetic magna delectus mollit. Keytar helvetica VHS salvia..</p>
+                                @foreach (var newitem in Model.EventItemModels)
+                                {
+                                    <div class="row" style="margin:0 2px">
+                                        <p class="margin-bottom-10">
+                                            <a style="color: #656565" href="@Url.Action("EventDetail", "AboutUs", new { id = newitem.Id })">@newitem.Title</a>
+                                        </p>
+                                        <p>@newitem.CreatedOn.ToString("yyyy-MM-dd")</p>
+                                    </div>
+                                } 
+                                <div class="row" style="margin:0 1px">
+                                    <p class="pull-right"><a class="more" href="@Url.Action("Event","AboutUs")">Read more</a></p>
+                                </div>
                             </div>
                         </div>
                     </div>

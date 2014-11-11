@@ -1,0 +1,88 @@
+﻿@using CamprayPortal.Web.Models.AboutUs
+@using iTextSharp.text.pdf.qrcode
+@model Pagination<NewsItemModel>
+@{
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+@section PageStyle{
+
+}
+
+@section PageScript{
+    <script src="/Content/assets/global/plugins/carousel-owl-carousel/owl-carousel/owl.carousel.min.js" type="text/javascript"></script><!-- slider for products -->
+    <!-- BEGIN PAGE LEVEL JAVASCRIPTS (REQUIRED ONLY FOR CURRENT PAGE) -->
+    <script src="/Content/assets/frontend/layout/scripts/layout.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            Layout.init();
+            Layout.initOWL();
+        });
+    </script>
+    <!-- END PAGE LEVEL JAVASCRIPTS -->
+}
+
+<div class="main">
+    <div class="container">
+        <ul class="breadcrumb">
+            <li><a href="/">Home</a></li>
+            <li><a href="@Url.Action("HomePage","AboutUs")">AboutUs</a></li>
+            <li class="active">Event</li>
+        </ul>
+        <!-- BEGIN SIDEBAR & CONTENT -->
+        <div class="row margin-bottom-40">
+            <!-- BEGIN CONTENT -->
+            <div class="col-md-12 col-sm-12">
+                <div class="content-page">
+                    <div class="row">
+                        <!-- BEGIN LEFT SIDEBAR -->
+                        <div class="col-md-8 col-sm-8 blog-posts">
+
+                            @foreach (var item in Model.ModelItem)
+                            {
+                                <div class="row">
+                                    <h4><a href="@Url.Action("EventDetail", new { id = item.Id })">@item.Title</a></h4>
+                                    <p class="margin-top-10">
+                                        @item.Short
+                                    </p>
+
+                                    <ul class="blog-info pull-right">
+                                        <li><i class="fa fa-calendar"></i> @item.CreatedOn</li>
+                                        <li><a href="@Url.Action("EventDetail", new { id = item.Id })" class="more">Read more <i class="icon-angle-right"></i></a></li>
+                                    </ul>
+
+                                </div>
+                                <hr />
+                            }
+
+                            <ul class="pagination">
+                                <li><a href="@Url.Action("Event", new { currentpage = Model.PrevIndex })">Prev</a></li>
+                                @foreach (var item in Model.PageItemList)
+                                {
+                                    if (item == @Model.CurrentIndex)
+                                    {
+                                        <li class="active"><a href="@Url.Action("Event", new { currentpage = item })">@item</a></li>
+                                    }
+                                    else
+                                    {
+                                        <li><a href="@Url.Action("Event", new { currentpage = item })">@item</a></li>
+                                    }
+                                }
+                                <li><a href="@Url.Action("Event", new { currentpage = Model.NextIndex })">Next</a></li>
+                            </ul>
+
+                        </div>
+                        <!-- END LEFT SIDEBAR -->
+                        <!-- BEGIN RIGHT SIDEBAR -->
+                        <div class="col-md-4 col-sm-4 blog-sidebar">
+                            @Html.Action("ContactUs", "Common")
+                        </div>
+                        <!-- END RIGHT SIDEBAR -->
+                    </div>
+                </div>
+            </div>
+            <!-- END CONTENT -->
+        </div>
+        <!-- END SIDEBAR & CONTENT -->
+    </div>
+</div>

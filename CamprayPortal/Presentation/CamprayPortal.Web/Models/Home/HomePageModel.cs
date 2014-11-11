@@ -9,5 +9,7 @@ namespace CamprayPortal.Web.Models.Home
     public class HomePageModel
     {
         public IList<NewsItemModel> NewsItemModels { get; set; }
+
+        public IList<NewsItemModel> EventItemModels { get; set; } 
     }
 }

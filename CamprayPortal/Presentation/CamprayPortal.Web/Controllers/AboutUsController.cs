@@ -89,9 +89,9 @@ namespace CamprayPortal.Web.Controllers
 
         public ActionResult News(int currentpage = 1)
         {
-            var newsItems = _newsService.GetAllNews(_workContext.WorkingLanguage.Id, _storeContext.CurrentStore.Id,
+            var newsItems = _newsService.GetAllByNewsType(_workContext.WorkingLanguage.Id, _storeContext.CurrentStore.Id,
                 currentpage - 1,
-                4);
+                4, false, NewsType.News);
             var model = newsItems
                 .Select(x =>
                 {
@@ -107,7 +107,36 @@ namespace CamprayPortal.Web.Controllers
 
 
         public ActionResult NewsDetail(int id = 0)
-        { 
+        {
+            var newsItem = _newsService.GetNewsById(id);
+            var newsModel = new NewsItemModel();
+            PrepareNewsItemModel(newsModel, newsItem);
+            return View(newsModel);
+        }
+
+
+
+        public ActionResult Event(int currentpage = 1) 
+        {
+            var newsItems = _newsService.GetAllByNewsType(_workContext.WorkingLanguage.Id, _storeContext.CurrentStore.Id,
+                currentpage - 1,
+                4, false, NewsType.Eevet);
+            var model = newsItems
+                .Select(x =>
+                {
+                    var newsModel = new NewsItemModel();
+                    PrepareNewsItemModel(newsModel, x);
+                    return newsModel;
+                })
+                .ToList();
+
+            var pagination = new Pagination<NewsItemModel>(model, currentpage, newsItems.TotalPages);
+            return View(pagination);
+        }
+
+
+        public ActionResult EventDetail(int id = 0)
+        {
             var newsItem = _newsService.GetNewsById(id);
             var newsModel = new NewsItemModel();
             PrepareNewsItemModel(newsModel, newsItem);
