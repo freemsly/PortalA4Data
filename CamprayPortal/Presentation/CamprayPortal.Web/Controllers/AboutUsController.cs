@@ -56,7 +56,7 @@ namespace CamprayPortal.Web.Controllers
 
         public ActionResult HomePage()
         {
-            return View();
+            return TopicModelView();
         }
 
         public ActionResult MessageChairman()

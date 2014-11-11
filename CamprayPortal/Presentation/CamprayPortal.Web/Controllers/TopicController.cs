@@ -44,31 +44,6 @@ namespace CamprayPortal.Web.Controllers
 
         #endregion
 
-        #region Utilities
-
-        [NonAction]
-        protected virtual TopicModel PrepareTopicModel(Topic topic)
-        {
-            if (topic == null)
-                throw new ArgumentNullException("topic");
-
-            var model = new TopicModel()
-            {
-                Id = topic.Id,
-                SystemName = topic.SystemName,
-                IncludeInSitemap = topic.IncludeInSitemap,
-                IsPasswordProtected = topic.IsPasswordProtected,
-                Title = topic.IsPasswordProtected ? "" : topic.GetLocalized(x => x.Title),
-                Body = topic.IsPasswordProtected ? "" : topic.GetLocalized(x => x.Body),
-                MetaKeywords = topic.GetLocalized(x => x.MetaKeywords),
-                MetaDescription = topic.GetLocalized(x => x.MetaDescription),
-                MetaTitle = topic.GetLocalized(x => x.MetaTitle),
-                SeName = topic.GetSeName(),
-            };
-            return model;
-        }
-
-        #endregion
 
         #region Methods
 

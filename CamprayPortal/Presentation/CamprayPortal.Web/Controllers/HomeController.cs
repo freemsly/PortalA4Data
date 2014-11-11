@@ -20,7 +20,7 @@ namespace CamprayPortal.Web.Controllers
         private readonly IStoreContext _storeContext;
 
         public HomeController(IDateTimeHelper dateTimeHelper,
-            INewsService newsService, 
+            INewsService newsService,
             IStoreContext storeContext,
             IWorkContext workContext)
         {
@@ -64,7 +64,7 @@ namespace CamprayPortal.Web.Controllers
             var newsItems = _newsService.GetAllByNewsType(_workContext.WorkingLanguage.Id, _storeContext.CurrentStore.Id,
                 0, 7, false, NewsType.News);
             var eventItems = _newsService.GetAllByNewsType(_workContext.WorkingLanguage.Id,
-                _storeContext.CurrentStore.Id, 0, 7, false, NewsType.Eevet); 
+                _storeContext.CurrentStore.Id, 0, 7, false, NewsType.Eevet);
             homePageModel.NewsItemModels = newsItems
                 .Select(x =>
                 {
@@ -74,13 +74,14 @@ namespace CamprayPortal.Web.Controllers
                 })
                 .ToList();
             homePageModel.EventItemModels = eventItems
-               .Select(x =>
-               {
-                   var newsModel = new NewsItemModel();
-                   PrepareNewsItemModel(newsModel, x);
-                   return newsModel;
-               })
-               .ToList();
+                .Select(x =>
+                {
+                    var newsModel = new NewsItemModel();
+                    PrepareNewsItemModel(newsModel, x);
+                    return newsModel;
+                })
+                .ToList();
+            homePageModel.TopicModel = TopicModelContent("Homepage");
             return View(homePageModel);
         }
 
