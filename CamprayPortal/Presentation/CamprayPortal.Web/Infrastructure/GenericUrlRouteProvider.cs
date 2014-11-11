@@ -9,6 +9,13 @@ namespace CamprayPortal.Web.Infrastructure
     {
         public void RegisterRoutes(RouteCollection routes)
         {
+            //generic URLs
+            routes.MapGenericPathRoute("GenericUrl",
+                                       "{generic_se_name}",
+                                       new { controller = "Common", action = "GenericUrl" },
+                                       new[] { "CamprayPortal.Web.Controllers" });
+
+
 
             routes.MapLocalizedRoute("Topic",
                          "{SeName}",
@@ -16,12 +23,7 @@ namespace CamprayPortal.Web.Infrastructure
                          new[] { "CamprayPortal.Web.Controllers" });
 
 
-            //generic URLs
-            routes.MapGenericPathRoute("GenericUrl",
-                                       "{generic_se_name}",
-                                       new { controller = "Common", action = "GenericUrl" },
-                                       new[] { "CamprayPortal.Web.Controllers" });
-
+   
    
 
             //the last route. it's used when none of registered routes could be used for the current request
