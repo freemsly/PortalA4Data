@@ -62,6 +62,16 @@
                 @Html.DropDownListFor(model => model.LanguageId, new SelectList(ViewBag.AllLanguages, "Id", "Name"))
             </td>
         </tr>
+        
+        <tr>
+            <td class="adminTitle">
+                @Html.NopLabelFor(model => model.NewsTypeId):
+            </td>
+            <td class="adminData">
+                @Html.DropDownListFor(model => model.NewsTypeId, new SelectList(ViewBag.NewsTypes, "value", "text"))
+            </td>
+        </tr>
+
         <tr>
             <td class="adminTitle">
                 @Html.NopLabelFor(model => model.Title):

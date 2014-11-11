@@ -11,6 +11,7 @@ using CamprayPortal.Services.News;
 using CamprayPortal.Services.Security;
 using CamprayPortal.Services.Seo;
 using CamprayPortal.Services.Stores;
+
 using CamprayPortal.Web.Framework;
 using CamprayPortal.Web.Framework.Controllers;
 using CamprayPortal.Web.Framework.Kendoui;
@@ -157,6 +158,8 @@ namespace CamprayPortal.Admin.Controllers
             return Json(gridModel);
         }
 
+         
+
         public ActionResult Create()
         {
             if (!_permissionService.Authorize(StandardPermissionProvider.ManageNews))
@@ -169,6 +172,9 @@ namespace CamprayPortal.Admin.Controllers
             //default values
             model.Published = true;
             model.AllowComments = true;
+
+            ViewBag.NewsTypes = NewsType.News.ToSelectList(false).ToList();
+
             return View(model);
         }
 
@@ -215,6 +221,8 @@ namespace CamprayPortal.Admin.Controllers
                 return RedirectToAction("List");
 
             ViewBag.AllLanguages = _languageService.GetAllLanguages(true);
+            ViewBag.NewsTypes = NewsType.News.ToSelectList(false).ToList();
+
             var model = newsItem.ToModel();
             model.StartDate = newsItem.StartDateUtc;
             model.EndDate = newsItem.EndDateUtc;
