@@ -1,4 +1,7 @@
-﻿@{
+﻿@using CamprayPortal.Web.Models.AboutUs
+@using iTextSharp.text.pdf.qrcode
+@model Pagination<NewsItemModel>
+@{
     Layout = "~/Views/Shared/_MainLayout.cshtml";
 }
 
@@ -34,43 +37,39 @@
                     <div class="row">
                         <!-- BEGIN LEFT SIDEBAR -->
                         <div class="col-md-8 col-sm-8 blog-posts">
-
-                            <div class="row">
-                                <div class="col-md-9 col-sm-9">
-                                    <h2><a href="blog-item.html">Corrupti quos dolores etquas</a></h2>
-                                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui sint blanditiis prae sentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non eleifend enim a feugiat. Pellentesque viverra vehicula sem ut volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing condimentum eleifend enim a feugiat.</p>
-                                    <p class="pull-right"><a class="more" href="#">Read more</a></p>
-                                 </div>
-                                <div class="col-md-3 col-sm-3">
-                                    <img class="img-responsive" alt="" src="/Content/assets/frontend/pages/img/works/img4.jpg">
+                            
+                            @foreach (var item in Model.ModelItem)
+                            {
+                                <div class="row">
+                                    <h4><a href="@Url.Action("NewsDetail", new { id = item.Id })">@item.Title</a></h4>
+                                    <p class="margin-top-10">
+                                        @item.Short
+                                    </p>
+                                    
+                                    <ul class="blog-info pull-right">
+                                        <li><i class="fa fa-calendar"></i> @item.CreatedOn</li>
+                                        <li><a href="@Url.Action("NewsDetail", new { id = item.Id })" class="more">Read more <i class="icon-angle-right"></i></a></li>
+                                    </ul>
+                                   
                                 </div>
-                            </div>
-                            <hr class="blog-post-sep">
-
-                            <div class="row">
-                                <div class="col-md-9 col-sm-9">
-                                    <h2><a href="blog-item.html">Corrupti quos dolores etquas</a></h2>
-                                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui sint blanditiis prae sentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non eleifend enim a feugiat. Pellentesque viverra vehicula sem ut volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing condimentum eleifend enim a feugiat.</p>
-                                    <p class="pull-right"><a class="more" href="#">Read more</a></p>
-                                </div>
-                                <div class="col-md-3 col-sm-3">
-                                    <img class="img-responsive" alt="" src="/Content/assets/frontend/pages/img/works/img4.jpg">
-                                </div>
-                            </div>
-                            <hr class="blog-post-sep">
-
-                            <div class="row">
-                                <div class="col-md-9 col-sm-9">
-                                    <h2><a href="blog-item.html">Corrupti quos dolores etquas</a></h2>
-                                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui sint blanditiis prae sentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non eleifend enim a feugiat. Pellentesque viverra vehicula sem ut volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing condimentum eleifend enim a feugiat.</p>
-                                    <p class="pull-right"><a class="more" href="#">Read more</a></p>
-                                </div>
-                                <div class="col-md-3 col-sm-3">
-                                    <img class="img-responsive" alt="" src="/Content/assets/frontend/pages/img/works/img4.jpg">
-                                </div>
-                            </div>
-                            <hr class="blog-post-sep">
-
+                                <hr  />
+                            }
+                            
+                            <ul class="pagination">
+                                <li><a href="@Url.Action("News", new { currentpage=Model.PrevIndex })">Prev</a></li>
+                                @foreach (var item in Model.PageItemList)
+                                {
+                                    if (item == @Model.CurrentIndex)
+                                    {
+                                        <li class="active"><a href="@Url.Action("News", new { currentpage = item })">@item</a></li>
+                                    }
+                                    else
+                                    {
+                                        <li><a href="@Url.Action("News", new { currentpage = item })">@item</a></li>
+                                    }
+                                }
+                                <li><a href="@Url.Action("News", new { currentpage=Model.NextIndex })">Next</a></li>
+                            </ul>
 
                         </div>
                         <!-- END LEFT SIDEBAR -->
