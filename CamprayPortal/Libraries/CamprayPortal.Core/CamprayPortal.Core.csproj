@@ -89,6 +89,7 @@
     <Compile Include="Domain\Customers\CustomerAttribute.cs" />
     <Compile Include="Domain\Customers\CustomerAttributeValue.cs" />
     <Compile Include="Domain\Customers\CustomerLoginResults.cs" />
+    <Compile Include="Domain\News\NewsType.cs" />
     <Compile Include="Domain\Seo\WwwRequirement.cs" />
     <Compile Include="IStoreContext.cs" />
     <Compile Include="Domain\Cms\WidgetSettings.cs" />

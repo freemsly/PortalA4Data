@@ -18,6 +18,8 @@ namespace CamprayPortal.Data.Mapping.News
             this.HasRequired(bp => bp.Language)
                 .WithMany()
                 .HasForeignKey(bp => bp.LanguageId).WillCascadeOnDelete(true);
+
+            this.Ignore(u => u.NewsType);
         }
     }
 }

@@ -99,5 +99,13 @@ namespace CamprayPortal.Core.Domain.News
         /// Gets or sets the language
         /// </summary>
         public virtual Language Language { get; set; }
+
+        public int NewsTypeId { get; set; }
+
+        public NewsType NewsType
+        {
+            get { return (NewsType)NewsTypeId; }
+            set { this.NewsTypeId = (int)value; }
+        }
     }
 }
