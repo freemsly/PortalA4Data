@@ -10,6 +10,12 @@ namespace CamprayPortal.Web.Infrastructure
         public void RegisterRoutes(RouteCollection routes)
         {
 
+            routes.MapLocalizedRoute("Topic",
+                         "{SeName}",
+                         new { controller = "Topic", action = "TopicDetails" },
+                         new[] { "CamprayPortal.Web.Controllers" });
+
+
             //generic URLs
             routes.MapGenericPathRoute("GenericUrl",
                                        "{generic_se_name}",
