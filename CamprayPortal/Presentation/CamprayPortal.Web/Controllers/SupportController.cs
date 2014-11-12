@@ -44,7 +44,7 @@ namespace CamprayPortal.Web.Controllers
 
         public ActionResult CustomerPortal()
         {
-            return TopicModelView();
+            return View();
         }
 
 
