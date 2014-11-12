@@ -59,6 +59,12 @@ namespace CamprayPortal.Web.Controllers
         }
 
 
+        // GET: Common
+        [ChildActionOnly]
+        public ActionResult SitMap()
+        { 
+            return View();
+        } 
 
 
         #endregion

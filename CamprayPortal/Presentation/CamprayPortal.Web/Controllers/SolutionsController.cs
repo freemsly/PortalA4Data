@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using CamprayPortal.Web.Models.Solutions;
 
 namespace CamprayPortal.Web.Controllers
 {
@@ -10,9 +11,16 @@ namespace CamprayPortal.Web.Controllers
             return TopicModelView();
         }
 
+
         public ActionResult Benchmark()
         {
-            return TopicModelView();
+            var model = new BenchmarkViewModel
+            {
+                Overview = TopicModelContent("Solutions-BriefsOverview"),
+                Mobile = TopicModelContent("Solutions-BenchmarkMobile"),
+                SpeedTime = TopicModelContent("Solutions-BenchmarkSpeedTime")
+            };
+            return View(model);
         }
 
         public ActionResult Benefit()

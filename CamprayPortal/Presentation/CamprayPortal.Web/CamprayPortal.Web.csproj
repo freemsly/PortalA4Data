@@ -214,6 +214,7 @@
     <Compile Include="Models\Common\MessageUsModel.cs" />
     <Compile Include="Models\Home\HomePageModel.cs" />
     <Compile Include="Models\Install\InstallModel.cs" />
+    <Compile Include="Models\Solutions\BenchmarkViewModel.cs" />
     <Compile Include="Models\Support\LoginModel.cs" />
     <Compile Include="Models\Topics\TopicModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -4238,6 +4239,7 @@
     <Content Include="Views\AboutUs\EventDetail.cshtml" />
     <Content Include="Views\Topic\TopicBlock.cshtml" />
     <Content Include="Views\Topic\TopicDetails.cshtml" />
+    <Content Include="Views\Common\SitMap.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\assets\global\plugins\jquery-file-upload\server\php\files\thumbnail\" />
