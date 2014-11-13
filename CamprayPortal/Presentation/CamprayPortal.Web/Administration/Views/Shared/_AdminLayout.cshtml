@@ -11,8 +11,8 @@
     var kendoVersion = "2014.1.318";
     var supportRtl = EngineContext.Current.Resolve<IWorkContext>().WorkingLanguage.Rtl &&
         !EngineContext.Current.Resolve<LocalizationSettings>().IgnoreRtlPropertyForAdminArea;
-        
-        
+
+
     //CSS resources
     Html.AppendCssFileParts(string.Format("~/Content/kendo/{0}/kendo.rtl.min.css", kendoVersion));
     Html.AppendCssFileParts(string.Format("~/Content/kendo/{0}/kendo.default.min.css", kendoVersion));
@@ -29,11 +29,78 @@
 
     Html.AppendScriptParts(string.Format("~/Scripts/kendo/{0}/kendo.web.min.js", kendoVersion));
     Html.AppendScriptParts("~/Scripts/admin.common.js");
-    Html.AppendScriptParts("~/Scripts/jquery-migrate-1.2.1.min.js");
-    Html.AppendScriptParts("~/Scripts/jquery-ui-1.10.3.custom.min.js");
-    Html.AppendScriptParts("~/Scripts/jquery.validate.unobtrusive.min.js");
-    Html.AppendScriptParts("~/Scripts/jquery.validate.min.js");
-    Html.AppendScriptParts("~/Scripts/jquery-1.10.2.min.js");
+    
+
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <link href="/Content/assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/Content/assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/Content/assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet">
+    <link href="/Content/assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/Content/assets/global/plugins/uniform/css/uniform.default.css" rel="stylesheet">
+    <link href="/Content/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet">
+    <!-- END GLOBAL MANDATORY STYLES -->
+
+
+
+    <!-- BEGIN PAGE LEVEL PLUGIN STYLES -->
+    <link href="/Content/assets/global/plugins/gritter/css/jquery.gritter.css" rel="stylesheet">
+    <link href="/Content/assets/global/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css" rel="stylesheet">
+    <link href="/Content/assets/global/plugins/fullcalendar/fullcalendar/fullcalendar.css" rel="stylesheet">
+    <link href="/Content/assets/global/plugins/jqvmap/jqvmap/jqvmap.css" rel="stylesheet">
+    <!-- END PAGE LEVEL PLUGIN STYLES -->
+
+    <!-- BEGIN PAGE STYLES -->
+    <link href="/Content/assets/admin/pages/css/tasks.css" rel="stylesheet">
+    <!-- END PAGE STYLES -->
+
+    <!-- BEGIN THEME STYLES -->
+    <link href="/Content/assets/global/css/components.css" rel="stylesheet">
+    <link href="/Content/assets/global/css/plugins.css" rel="stylesheet">
+    <link href="/Content/assets/admin/layout/css/layout.css" rel="stylesheet">
+    <link href="/Content/assets/admin/layout/css/themes/default.css" rel="stylesheet">
+    <link href="/Content/assets/admin/layout/css/custom.css" rel="stylesheet">
+    <!-- END THEME STYLES -->
+
+    <script src="/Content/assets/global/plugins/jquery-1.11.0.min.js" type="text/javascript"></script>
+    <script src="/Content/assets/global/plugins/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+    <!-- IMPORTANT! Load jquery-ui-1.10.3.custom.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
+    <script src="/Content/assets/global/plugins/jquery-ui/jquery-ui-1.10.3.custom.min.js" type="text/javascript"></script>
+    <script src="/Content/assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/Content/assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
+    <script src="/Content/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+    <script src="/Content/assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+    <script src="/Content/assets/global/plugins/jquery.cokie.min.js" type="text/javascript"></script>
+    <script src="/Content/assets/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
+    <script src="/Content/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+    <!-- END CORE PLUGINS -->
+    <!-- BEGIN PAGE LEVEL PLUGINS -->
+    <script src="/Content/assets/global/plugins/jqvmap/jqvmap/jquery.vmap.js" type="text/javascript"></script>
+    <script src="/Content/assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.russia.js" type="text/javascript"></script>
+    <script src="/Content/assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.world.js" type="text/javascript"></script>
+    <script src="/Content/assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.europe.js" type="text/javascript"></script>
+    <script src="/Content/assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.germany.js" type="text/javascript"></script>
+    <script src="/Content/assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.usa.js" type="text/javascript"></script>
+    <script src="/Content/assets/global/plugins/jqvmap/jqvmap/data/jquery.vmap.sampledata.js" type="text/javascript"></script>
+    <script src="/Content/assets/global/plugins/flot/jquery.flot.min.js" type="text/javascript"></script>
+    <script src="/Content/assets/global/plugins/flot/jquery.flot.resize.min.js" type="text/javascript"></script>
+    <script src="/Content/assets/global/plugins/flot/jquery.flot.categories.min.js" type="text/javascript"></script>
+    <script src="/Content/assets/global/plugins/jquery.pulsate.min.js" type="text/javascript"></script>
+    <script src="/Content/assets/global/plugins/bootstrap-daterangepicker/moment.min.js" type="text/javascript"></script>
+    <script src="/Content/assets/global/plugins/bootstrap-daterangepicker/daterangepicker.js" type="text/javascript"></script>
+    <!-- IMPORTANT! fullcalendar depends on jquery-ui-1.10.3.custom.min.js for drag & drop support -->
+    <script src="/Content/assets/global/plugins/fullcalendar/fullcalendar/fullcalendar.min.js" type="text/javascript"></script>
+    <script src="/Content/assets/global/plugins/jquery-easypiechart/jquery.easypiechart.min.js" type="text/javascript"></script>
+    <script src="/Content/assets/global/plugins/jquery.sparkline.min.js" type="text/javascript"></script>
+    <script src="/Content/assets/global/plugins/gritter/js/jquery.gritter.js" type="text/javascript"></script>
+    <!-- END PAGE LEVEL PLUGINS -->
+    <!-- BEGIN PAGE LEVEL SCRIPTS -->
+    <script src="/Content/assets/global/scripts/metronic.js" type="text/javascript"></script>
+    <script src="/Content/assets/admin/layout/scripts/layout.js" type="text/javascript"></script>
+    <script src="/Content/assets/admin/layout/scripts/quick-sidebar.js" type="text/javascript"></script>
+    <script src="/Content/assets/admin/layout/scripts/demo.js" type="text/javascript"></script>
+    <script src="/Content/assets/admin/pages/scripts/index.js" type="text/javascript"></script>
+    <script src="/Content/assets/admin/pages/scripts/tasks.js" type="text/javascript"></script>
+    <!-- END PAGE LEVEL SCRIPTS -->
 
     //page title
     string adminPageTitle = "";
@@ -54,107 +121,345 @@
         Html.AppendHeadCustomParts(string.Format("<meta http-equiv=\"X-UA-Compatible\" content=\"{0}\"/>", commonSettings.XuaCompatibleValue));
     }
 }
-<!DOCTYPE html>
-<html @(supportRtl ? Html.Raw("dir=\"rtl\"") : null)>
-    <head>
-        <title>@adminPageTitle</title>
-        <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
-        @Html.NopHeadCustom()
-        @Html.NopCssFiles(this.Url, ResourceLocation.Head)
-        @Html.NopScripts(this.Url, ResourceLocation.Head)
-    </head>
-    <body @(supportRtl ? Html.Raw("class=\"k-rtl\"") : null)>
-        <div id="ajaxBusy">
-            <span>&nbsp;</span>
-        </div>
-        <div class="master-wrapper-page k-content">
-            <div class="master-wrapper-content">
-                @if (IsSectionDefined("header"))
-                {
-                    @RenderSection("header")
-                }
-                else
-                {
-                    <script type="text/javascript">
-                        $(document).ready(function () {
-                            $("#restart-application").click(function (e) {
-                                showThrobber('@Html.Raw(HttpUtility.JavaScriptStringEncode(T("Admin.Header.RestartApplication.Progress").Text))');
-                            });
-                        });
-                    </script>
-                    <div class="header">
-                        <div class="logo">
-                        </div>
-                        @Html.Widget("admin_header_before")
-                        <div class="languageselector">
-                            @Html.Action("LanguageSelector", "Common")
-                        </div>
-                        @Html.Widget("admin_header_middle")
-                        <div class="links">
-                            @Html.ActionLink(T("Admin.Header.PublicStore").Text, "Index", "Home", new { area = "" }, null)
-                            @if (canManageMaintenance)
-                            {
-                                <span class="separator">|</span>
-                                @Html.ActionLink(T("Admin.Header.ClearCache").Text, "ClearCache", "Common")
-                                <span class="separator">|</span>
-                                @Html.ActionLink(T("Admin.Header.RestartApplication").Text, "RestartApplication", "Common", null, new { id = "restart-application" })
-                            }
-                        </div>
-                        <div class="login-info">
-                            @if (currentCustomer != null && currentCustomer.IsRegistered())
-                            {
-                                @String.Format(T("Admin.Header.LoggedInAs").Text, usernamesEnabled ? currentCustomer.Username : currentCustomer.Email)
-                                <text>, </text> @Html.ActionLink(T("Admin.Header.Logout").Text, "Logout", "Customer", new { area = "" }, null)
-                            }
-                        </div>
-                        <div class="version">
-                            <span>CamprayPortal @currentVersion</span>
-                        </div>
-                        @Html.Widget("admin_header_after")
-                    </div>
-                }
-                @if (IsSectionDefined("headermenu"))
-                {
-                    @RenderSection("headermenu")
-                }
-                else
-                {
-                    <div class="header-menu">
-                        @Html.Partial("Menu")
-                    </div>
-                }
-                @if (IsSectionDefined("statusbar"))
-                {
-                    @RenderSection("statusbar")
-                }
-                else
-                {
-                    <div class="status-bar">
-                        @(EngineContext.Current.Resolve<CamprayPortal.Services.Helpers.IDateTimeHelper>().ConvertToUserTime(DateTime.Now).ToString("f"))
-                    </div>
-                }
-                <div class="content">
-                    @Html.Partial("Notifications")
-                    <div class="cph">
-                        @RenderBody()
-                    </div>
-                </div>
-                <div class="throbber">
-                    <div class="curtain">
-                    </div>
-                    <div class="curtain-content">
-                        <div>
-                            <h1 class="throbber-header">Wait...</h1>
-                            <p>
-                                <img src="@Url.Content("~/administration/content/images/throbber-synchronizing.gif")" alt="" />
-                            </p>
-                        </div>
-                    </div>
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+
+<html lang="en" class="no-js">
+<head>
+    <title>@adminPageTitle</title>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+    @Html.NopHeadCustom()
+    @Html.NopCssFiles(this.Url, ResourceLocation.Head)
+    @Html.NopScripts(this.Url, ResourceLocation.Head)
+</head>
+<body class="page-header-fixed page-quick-sidebar-over-content">
+    <div id="ajaxBusy">
+        <span>&nbsp;</span>
+    </div>
+
+    <!-- BEGIN HEADER -->
+    <div class="page-header navbar navbar-fixed-top">
+        <!-- BEGIN HEADER INNER -->
+        <div class="page-header-inner">
+            <!-- BEGIN LOGO -->
+            <div class="page-logo">
+                <a href="index.html">
+                    <img src="/Content/assets/admin/layout/img/logo.png" alt="logo" class="logo-default" />
+                </a>
+                <div class="menu-toggler sidebar-toggler hide">
+                    <!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
                 </div>
             </div>
+            <!-- END LOGO -->
+            <!-- BEGIN RESPONSIVE MENU TOGGLER -->
+            <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
+            </a>
+            <!-- END RESPONSIVE MENU TOGGLER -->
+            <!-- BEGIN TOP NAVIGATION MENU -->
+            <div class="top-menu">
+                <ul class="nav navbar-nav pull-right">
+                    <!-- BEGIN TODO DROPDOWN -->
+                    <li id="header_task_bar">
+                        @Html.Action("LanguageSelector", "Common")
+                    </li>
+                    <!-- END TODO DROPDOWN -->
+                    <!-- BEGIN USER LOGIN DROPDOWN -->
+                    <li class="dropdown dropdown-user">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                            <img alt="" class="img-circle hide1" src="/content/assets/admin/layout/img/avatar3_small.jpg" />
+                            <span class="username username-hide-on-mobile">
+                                @if (currentCustomer != null && currentCustomer.IsRegistered())
+                                {
+                                    @String.Format(T("Admin.Header.LoggedInAs").Text, usernamesEnabled ? currentCustomer.Username : currentCustomer.Email)
+                                }
+                            </span>
+                            <i class="fa fa-angle-down"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="extra_profile.html">
+                                    <i class="icon-user"></i>
+                                    @if (currentCustomer != null && currentCustomer.IsRegistered())
+                                    {
+                                        @Html.ActionLink(T("Admin.Header.Logout").Text, "Logout", "Customer", new { area = "" }, null)
+                                    }
+                                </a>
+                            </li>
+                            <li>
+                                <a href="page_calendar.html">
+                                    <i class="icon-calendar"></i>
+                                    @Html.ActionLink(T("Admin.Header.PublicStore").Text, "Index", "Home", new { area = "" }, null)
+                                </a>
+                            </li>
+                            <li>
+                                <a href="inbox.html">
+                                    <i class="icon-envelope-open"></i>
+                                    @Html.ActionLink(T("Admin.Header.ClearCache").Text, "ClearCache", "Common")
+
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="icon-rocket"></i>
+                                    @Html.ActionLink(T("Admin.Header.RestartApplication").Text, "RestartApplication", "Common", null, new { id = "restart-application" })
+
+                                </a>
+                            </li>
+                            <li class="divider">
+                            </li>
+                            <li>
+                                <a href="extra_lock.html">
+                                    <i class="icon-lock"></i> Lock Screen
+                                </a>
+                            </li>
+                            <li>
+                                <a href="login.html">
+                                    <i class="icon-key"></i> CamprayPortal @currentVersion
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- END USER LOGIN DROPDOWN -->
+ 
+                </ul>
+            </div>
+            <!-- END TOP NAVIGATION MENU -->
         </div>
-        @Html.NopCssFiles(this.Url, ResourceLocation.Foot)
-        @Html.NopScripts(this.Url, ResourceLocation.Foot)
-    </body>
+        <!-- END HEADER INNER -->
+    </div>
+    <!-- END HEADER -->
+    <div class="clearfix">
+    </div>
+
+    <!-- BEGIN CONTAINER -->
+    <div class="page-container">
+        <!-- BEGIN SIDEBAR -->
+        <div class="page-sidebar-wrapper">
+            <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
+            <!-- DOC: Change data-auto-speed="200" to adjust the sub menu slide up/down speed -->
+            <div class="page-sidebar navbar-collapse collapse">
+                <!-- BEGIN SIDEBAR MENU -->
+                @Html.Partial("Menu")
+                
+                <!-- END SIDEBAR MENU -->
+            </div>
+        </div>
+        <!-- END SIDEBAR -->
+        <!-- BEGIN CONTENT -->
+        <div class="page-content-wrapper">
+            <div class="page-content">
+                <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+                <div class="modal fade" id="portlet-config" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                <h4 class="modal-title">Modal title</h4>
+                            </div>
+                            <div class="modal-body">
+                                Widget settings form goes here
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn blue">Save changes</button>
+                                <button type="button" class="btn default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+                <!-- /.modal -->
+                <!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+                <!-- BEGIN STYLE CUSTOMIZER -->
+                <div class="theme-panel hidden-xs hidden-sm">
+                    <div class="toggler">
+                    </div>
+                    <div class="toggler-close">
+                    </div>
+                    <div class="theme-options">
+                        <div class="theme-option theme-colors clearfix">
+                            <span>
+                                THEME COLOR
+                            </span>
+                            <ul>
+                                <li class="color-default current tooltips" data-style="default" data-container="body" data-original-title="Default">
+                                </li>
+                                <li class="color-darkblue tooltips" data-style="darkblue" data-container="body" data-original-title="Dark Blue">
+                                </li>
+                                <li class="color-blue tooltips" data-style="blue" data-container="body" data-original-title="Blue">
+                                </li>
+                                <li class="color-grey tooltips" data-style="grey" data-container="body" data-original-title="Grey">
+                                </li>
+                                <li class="color-light tooltips" data-style="light" data-container="body" data-original-title="Light">
+                                </li>
+                                <li class="color-light2 tooltips" data-style="light2" data-container="body" data-html="true" data-original-title="Light 2">
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="theme-option">
+                            <span>
+                                Layout
+                            </span>
+                            <select class="layout-option form-control input-small">
+                                <option value="fluid" selected="selected">Fluid</option>
+                                <option value="boxed">Boxed</option>
+                            </select>
+                        </div>
+                        <div class="theme-option">
+                            <span>
+                                Header
+                            </span>
+                            <select class="page-header-option form-control input-small">
+                                <option value="fixed" selected="selected">Fixed</option>
+                                <option value="default">Default</option>
+                            </select>
+                        </div>
+                        <div class="theme-option">
+                            <span>
+                                Sidebar Mode
+                            </span>
+                            <select class="sidebar-option form-control input-small">
+                                <option value="fixed">Fixed</option>
+                                <option value="default" selected="selected">Default</option>
+                            </select>
+                        </div>
+                        <div class="theme-option">
+                            <span>
+                                Sidebar Menu
+                            </span>
+                            <select class="sidebar-menu-option form-control input-small">
+                                <option value="accordion" selected="selected">Accordion</option>
+                                <option value="hover">Hover</option>
+                            </select>
+                        </div>
+                        <div class="theme-option">
+                            <span>
+                                Sidebar Style
+                            </span>
+                            <select class="sidebar-style-option form-control input-small">
+                                <option value="default" selected="selected">Default</option>
+                                <option value="light">Light</option>
+                            </select>
+                        </div>
+                        <div class="theme-option">
+                            <span>
+                                Sidebar Position
+                            </span>
+                            <select class="sidebar-pos-option form-control input-small">
+                                <option value="left" selected="selected">Left</option>
+                                <option value="right">Right</option>
+                            </select>
+                        </div>
+                        <div class="theme-option">
+                            <span>
+                                Footer
+                            </span>
+                            <select class="page-footer-option form-control input-small">
+                                <option value="fixed">Fixed</option>
+                                <option value="default" selected="selected">Default</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <!-- END STYLE CUSTOMIZER -->
+                <!-- BEGIN PAGE HEADER-->
+                <h3 class="page-title">
+                    Dashboard <small>dashboard & statistics</small>
+                </h3>
+                <div class="page-bar">
+                    <ul class="page-breadcrumb">
+                        <li>
+                            <i class="fa fa-home"></i>
+                            <a href="index.html">Home</a>
+                            <i class="fa fa-angle-right"></i>
+                        </li>
+                        <li>
+                            <a href="#">Dashboard</a>
+                            <i class="fa fa-angle-right"></i>
+                        </li>
+                        <li>
+                            <a href="#">Dashboard</a>
+                        </li>
+                    </ul>
+                    <div class="page-toolbar">
+                        <div id="dashboard-report-range" class="pull-right tooltips btn btn-fit-height grey-salt" data-placement="top" data-original-title="Change dashboard date range">
+                            <i class="icon-calendar"></i>&nbsp; <span class="thin uppercase visible-lg-inline-block"></span>&nbsp; <i class="fa fa-angle-down"></i>
+                        </div>
+                    </div>
+                </div>
+                <!-- END PAGE HEADER-->
+                <!-- BEGIN DASHBOARD STATS -->
+                <div class="row">
+                    <div class="master-wrapper-page k-content">
+                        <div class="master-wrapper-content">
+                            <div class="content">
+                                <div class="cph">
+                                    @RenderBody()
+                                </div>
+                            </div>
+                            <div class="throbber">
+                                <div class="curtain">
+                                </div>
+                                <div class="curtain-content">
+                                    <div>
+                                        <h1 class="throbber-header">Wait...</h1>
+                                        <p>
+                                            <img src="@Url.Content("~/administration/content/images/throbber-synchronizing.gif")" alt="" />
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- END DASHBOARD STATS -->
+                <div class="clearfix">
+                </div>
+
+            </div>
+        </div>
+        <!-- END CONTENT -->
+       
+    </div>
+    <!-- END CONTAINER -->
+    <!-- BEGIN FOOTER -->
+    <div class="page-footer">
+        <div class="page-footer-inner">
+            2014 &copy; Metronic by keenthemes.
+        </div>
+        <div class="page-footer-tools">
+            <span class="go-top">
+                <i class="fa fa-angle-up"></i>
+            </span>
+        </div>
+    </div>
+    <!-- END FOOTER -->
+    <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+    <!-- BEGIN CORE PLUGINS -->
+    <!--[if lt IE 9]>
+        <script src="~/Content/assets/global/plugins/respond.min.js"></script>
+        <script src="~/Content/assets/global/plugins/excanvas.min.js"></script>
+    <![endif]-->
+    <!-- END PAGE LEVEL SCRIPTS -->
+    <script>
+        jQuery(document).ready(function () {
+            Metronic.init(); // init metronic core componets
+            Layout.init(); // init layout
+            QuickSidebar.init(); // init quick sidebar
+            Demo.init(); // init demo features
+            Index.init();
+            Index.initDashboardDaterange();
+            Index.initJQVMAP(); // init index page's custom scripts
+            Index.initCalendar(); // init index page's custom scripts
+            Index.initCharts(); // init index page's custom scripts
+            Index.initChat();
+            Index.initMiniCharts();
+            Index.initIntro();
+            Tasks.initDashboardWidget();
+        });
+    </script>
+</body>
 </html>
+
+
 

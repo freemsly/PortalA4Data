@@ -2,13 +2,8 @@
 @{
     //load sitemap
     var siteMap = new CamprayPortal.Web.Framework.Menu.XmlSiteMap();
-    siteMap.LoadFrom("~/Administration/sitemap.config");
-    
-    //menu plugin
-    var adminMenuPlugins = EngineContext.Current.Resolve<CamprayPortal.Core.Plugins.IPluginFinder>()
-        .GetPlugins<IAdminMenuPlugin>()
-        .Where(x => x.Authenticate())
-        .ToList();
+    siteMap.LoadFrom("~/Administration/sitemap.config"); 
+   
 }
 @helper RenderMenuItem(CamprayPortal.Web.Framework.Menu.SiteMapNode item)
 {
@@ -23,9 +18,10 @@
     }
     <li>
         
-        @if (!String.IsNullOrEmpty(url))
-        {
-            <a href="@url">
+       
+        <a href="@url">
+            <i class="icon-basket"></i>
+            <span class="title">
                 @if (!String.IsNullOrEmpty(item.ImageUrl))
                 {
                     <text>
@@ -33,21 +29,14 @@
                     </text>
                 }
                 @item.Title
-            </a>
-        }
-        else
-        {
-            if (!String.IsNullOrEmpty(item.ImageUrl))
-            {
-                <text>
-                    <img alt="" src="@Url.Content(item.ImageUrl)" />
-                </text>
-            }
-            @item.Title
-        }
+            </span>
+            <span class="arrow "></span>
+        </a>
+         
+        
         @if (item.ChildNodes.Any(x => x.Visible))
         {
-            <ul>
+            <ul class="sub-menu">
                 @foreach (var childItem in item.ChildNodes.Where(x => x.Visible))
                 {
                     @RenderMenuItem(childItem)
@@ -57,28 +46,55 @@
     </li>
 }
 
-<ul id="admin-menu">
+<ul class="page-sidebar-menu" data-auto-scroll="true" data-slide-speed="200">
+    <!-- DOC: To remove the sidebar toggler from the sidebar you just need to completely remove the below "sidebar-toggler-wrapper" LI element -->
+    <li class="sidebar-toggler-wrapper">
+        <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+        <div class="sidebar-toggler">
+        </div>
+        <!-- END SIDEBAR TOGGLER BUTTON -->
+    </li>
+
+    <li class="start active open">
+        <a href="javascript:;">
+            <i class="icon-home"></i>
+            <span class="title">Dashboard</span>
+            <span class="selected"></span>
+            <span class="arrow open"></span>
+        </a>
+        <ul class="sub-menu">
+            <li class="active">
+                <a href="index.html">
+                    <i class="icon-bar-chart"></i>
+                    Default Dashboard
+                </a>
+            </li>
+            <li>
+                <a href="index_2.html">
+                    <i class="icon-bulb"></i>
+                    New Dashboard #1
+                </a>
+            </li>
+            <li>
+                <a href="index_3.html">
+                    <i class="icon-graph"></i>
+                    New Dashboard #2
+                </a>
+            </li>
+        </ul>
+    </li>
+
     @foreach (var item in siteMap.RootNode.ChildNodes.Where(x => x.Visible))
     {
         @RenderMenuItem(item)
     }
-	@*plugin custom items*@
-    @if (adminMenuPlugins.Any())
-    {
-        var pluginRootMenuItem = new CamprayPortal.Web.Framework.Menu.SiteMapNode()
-        {
-            Title = T("Admin.Plugins").Text,
-            Visible = true
-        };
-        foreach (var adminMenuPlugin in adminMenuPlugins)
-        {
-            pluginRootMenuItem.ChildNodes.Add(adminMenuPlugin.BuildMenuItem());
-        }
-        @RenderMenuItem(pluginRootMenuItem)
-    }
+
+
+    <li class="last ">
+        <a href="charts.html">
+            <i class="icon-bar-chart"></i>
+            <span class="title">Visual Charts</span>
+        </a>
+    </li>
 </ul>
-<script>
-    $(document).ready(function() {
-        $("#admin-menu").kendoMenu();
-    });
-</script>
+ 
