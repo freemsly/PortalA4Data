@@ -33,30 +33,31 @@
     <ul>
         <li class="dropdown @TopMenu("AboutUs")">
             <a class="dropdown-toggle disabled" data-toggle="dropdown" data-target="#" href="@Url.Action("HomePage", "AboutUs")">
-                About us
+                @T("common.aboutus")
             </a>
             <ul class="dropdown-menu">
-                @MenuNavigation("MessageChairman", "AboutUs", "Message from Chairman")
-                @MenuNavigation("ManagementTeam", "AboutUs", "Management Team")
-                @MenuNavigation("BoardMembers", "AboutUs", "Board members")
-                @MenuNavigation("Investors", "AboutUs", "Investors")
-                @MenuNavigation("WhyA4Data", "AboutUs", "Why A4 Data")
-                @MenuNavigation("News", "AboutUs", "News")
-                @MenuNavigation("Event", "AboutUs", "Event") 
-                @MenuNavigation("ContactUs", "AboutUs", "Contact us")
-                @MenuNavigation("Careers", "AboutUs", "Careers")
+                @MenuNavigation("MessageChairman", "AboutUs", T("common.messagefromchairman").ToString())
+                @MenuNavigation("ManagementTeam", "AboutUs", T("common.managementteam").ToString())
+                @MenuNavigation("BoardMembers", "AboutUs", T("common.boardmembers").ToString())
+                @MenuNavigation("Investors", "AboutUs", T("common.investors").ToString())
+                @MenuNavigation("WhyA4Data", "AboutUs", T("common.whya4data").ToString())
+                @MenuNavigation("News", "AboutUs", T("common.news").ToString())
+                @MenuNavigation("Event", "AboutUs", T("common.event").ToString()) 
+                @MenuNavigation("ContactUs", "AboutUs", T("common.contactus").ToString())
+                @MenuNavigation("Careers", "AboutUs", T("common.careers").ToString())
             </ul>
         </li>
 
         <li class="dropdown @TopMenu("Product")">
             <a class="dropdown-toggle disabled" data-toggle="dropdown" data-target="#" href="@Url.Action("HomePage", "Product")">
-                Product
+                @T("common.product")
             </a>
 
             <ul class="dropdown-menu">
-                @MenuNavigation("JetVM", "Product", "A4 Data Jet VM")
-                @MenuNavigation("JetAppliance", "Product", "A4 Data Jet Appliance")
-                @MenuNavigation("FeatureBriefs", "Product", "Feature briefs")
+                @MenuNavigation("JetVM", "Product", T("common.a4datajetvm").ToString())
+                @MenuNavigation("JetAppliance", "Product", T("common.a4datajetappliance").ToString())
+                @MenuNavigation("FeatureBriefs", "Product", T("common.featurebriefs").ToString())
+                @MenuNavigation("ApplicationNotes", "Product", T("common.applicationnotes").ToString())
             </ul>
         </li>
 
@@ -64,41 +65,41 @@
 
         <li class="dropdown @TopMenu("Solutions")">
             <a class="dropdown-toggle disabled" data-toggle="dropdown" data-target="#" href="@Url.Action("HomePage", "Solutions")">
-                Solutions
+                @T("common.solutions")
             </a>
 
             <ul class="dropdown-menu">
-                @MenuNavigation("BriefsOverview", "Solutions", "Solution brief/overview")
-                @MenuNavigation("Benefit", "Solutions", "(product) Benefit")
-                @MenuNavigation("Benchmark", "Solutions", "Benchmark")
-                @MenuNavigation("Applications", "Solutions", "Applications")
-                @MenuNavigation("CustomerTestimonials", "Solutions", "Customer testimonials")
-                @MenuNavigation("CaseStudies", "Solutions", "Case studies")
-                @MenuNavigation("DifferentAarchitecture", "Solutions", "Different Aarchitecture") 
+                @MenuNavigation("BriefsOverview", "Solutions", T("common.solutionbriefoverview").ToString())
+                @MenuNavigation("Benefit", "Solutions", T("common.productbenefit").ToString())
+                @MenuNavigation("Benchmark", "Solutions", T("common.benchmark").ToString())
+                @MenuNavigation("Applications", "Solutions", T("common.applications").ToString())
+                @MenuNavigation("CustomerTestimonials", "Solutions", T("common.customertestimonials").ToString())
+                @MenuNavigation("CaseStudies", "Solutions", T("common.casestudies").ToString())
+                @MenuNavigation("DifferentAarchitecture", "Solutions", T("common.differentaarchitecture").ToString()) 
             </ul>
         </li>
         <li class="dropdown @TopMenu("Technology")">
             <a class="dropdown-toggle disabled" data-toggle="dropdown" data-target="#" href="@Url.Action("HomePage", "Technology")">
-                Technology
+                @T("common.technology")
             </a>
         </li>
         
         <li class="dropdown @TopMenu("Downloads")">
             <a class="dropdown-toggle disabled" data-toggle="dropdown" data-target="#" href="@Url.Action("HomePage", "Downloads")">
-                Downloads
+                @T("common.downloads")
             </a>
         </li>
 
         <li class="dropdown @TopMenu("Support")">
             <a class="dropdown-toggle disabled" data-toggle="dropdown" data-target="#" href="@Url.Action("HomePage", "Support")">
-                Support
+                @T("common.support")
             </a>
 
             <ul class="dropdown-menu">
-                @MenuNavigation("Benefits", "Support", "Benefits")
-                @MenuNavigation("CustomerPortal", "Support", "CustomerPortal")
-                @MenuNavigation("Documentation", "Support", "Documentation")
-                @MenuNavigation("SoftwareVersion", "Support", "SoftwareVersion")
+                @MenuNavigation("Benefits", "Support", T("common.benefits").ToString())
+                @MenuNavigation("CustomerPortal", "Support", T("common.customerportal").ToString())
+                @MenuNavigation("Documentation", "Support", T("common.documentation").ToString())
+                @MenuNavigation("SoftwareVersion", "Support", T("common.softwareversion").ToString())
             </ul>
         </li>
 
