@@ -317,7 +317,7 @@
                    @Html.Raw(Model.TopicModel.Body)
                 </div>
                 <div class="row">
-                    <p class="pull-right"><a class="more" href="#">Read more</a></p>
+                    <p class="pull-right"><a class="more" href="#">@T("common.readmore")</a></p>
                 </div>
                     <!--  BEGIN Advance -->
                 </div>
@@ -330,8 +330,8 @@
                 <div class="blog-talks margin-top-20">
                     <div class="tab-style-1">
                         <ul class="nav nav-tabs">
-                            <li class="active"><a data-toggle="tab" href="#tab-1">News</a></li>
-                            <li><a data-toggle="tab" href="#tab-2">Events</a></li>
+                            <li class="active"><a data-toggle="tab" href="#tab-1">@T("common.news")</a></li>
+                            <li><a data-toggle="tab" href="#tab-2">@T("common.event")</a></li>
                         </ul>
                         <div class="tab-content">
                             <div id="tab-1" class="tab-pane row-fluid fade in active" >
@@ -345,7 +345,7 @@
                                     </div>
                                 }
                                 <div class="row" style="margin:0 1px">
-                                    <p class="pull-right"><a class="more" href="@Url.Action("News","AboutUs")">Read more</a></p>
+                                    <p class="pull-right"><a class="more" href="@Url.Action("News","AboutUs")">@T("common.readmore")</a></p>
                                 </div>
                             </div>
                             <div id="tab-2" class="tab-pane fade">
@@ -359,7 +359,7 @@
                                     </div>
                                 } 
                                 <div class="row" style="margin:0 1px">
-                                    <p class="pull-right"><a class="more" href="@Url.Action("Event","AboutUs")">Read more</a></p>
+                                    <p class="pull-right"><a class="more" href="@Url.Action("Event","AboutUs")">@T("common.readmore")</a></p>
                                 </div>
                             </div>
                         </div>

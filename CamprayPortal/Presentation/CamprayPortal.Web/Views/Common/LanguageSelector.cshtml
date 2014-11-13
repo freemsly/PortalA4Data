@@ -1,0 +1,22 @@
+﻿@model CamprayPortal.Web.Models.Common.LanguageSelectorModel
+@using CamprayPortal.Core
+@using CamprayPortal.Core.Infrastructure
+
+@if (Model.AvailableLanguages.Count > 1)
+{
+    var webHelper = EngineContext.Current.Resolve<IWebHelper>();
+    var languages = Model.AvailableLanguages.Select(lang => new SelectListItem
+    {
+        Text = lang.Name,
+        Value = webHelper.ModifyQueryString(Url.RouteUrl("ChangeLanguage", new { langid = lang.Id }), "returnurl=" + HttpUtility.UrlEncode(HttpContext.Current.Request.RawUrl), null),
+        Selected = lang.Id.Equals(Model.CurrentLanguageId)
+    });
+
+    @Html.DropDownList("customerlanguage", languages, new { onchange = "setLocation(this.value); " })
+}
+
+<script >
+    function setLocation(url) {
+        window.location.href = url;
+    }
+</script>

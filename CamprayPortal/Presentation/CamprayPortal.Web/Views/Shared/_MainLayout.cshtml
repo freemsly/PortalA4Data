@@ -43,13 +43,13 @@
     <div class="header">
         <div class="container">
             <div class="row">
-                <div class="col-lg-7">
+                <div class="col-lg-6">
                     <a class="site-logo" href="/"><img src="/Content/assets/frontend/layout/img/logos/logo-corp-red.png" alt="Index"></a>
                     <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
                 </div>
                 
                 
-                <div class="col-lg-5">
+                <div class="col-lg-4">
                     <ul class="social-icons social-icons-color pull-right" style="padding: 10px 0 0 0;">
                         <li><a class="facebook" data-original-title="Facebook" href="#"></a></li>
                         <li><a class="twitter" data-original-title="Twitter" href="#"></a></li>
@@ -57,12 +57,21 @@
                         <li><a class="linkedin" data-original-title="Linkedin" href="#"></a></li>
                     </ul>
                 </div>
-
-                @*<div class="col-lg-1">
+                
+                <div class="col-lg-1">
                     <ul class="list-unstyled list-inline" style="padding: 15px 0 0 0;">
-                        <li><a href="page-login.html">Log In</a></li>
+                        <li>
+                            @Html.Action("LanguageSelector", "Common")
+                        </li>
                     </ul>
-                </div>*@
+                </div>
+
+
+                <div class="col-lg-1">
+                    <ul class="list-unstyled list-inline" style="padding: 15px 0 0 0;">
+                        <li><a href="@Url.Action("CustomerPortal", "Support")">Log In</a></li>
+                    </ul>
+                </div>
 
                 </div>
 

@@ -210,6 +210,8 @@
     <Compile Include="Infrastructure\DependencyRegistrar.cs" />
     <Compile Include="Infrastructure\RouteProvider.cs" />
     <Compile Include="Models\AboutUs\NewsItemModel.cs" />
+    <Compile Include="Models\Common\LanguageModel.cs" />
+    <Compile Include="Models\Common\LanguageSelectorModel.cs" />
     <Compile Include="Models\Common\MenuNavigation.cs" />
     <Compile Include="Models\Common\MessageUsModel.cs" />
     <Compile Include="Models\Home\HomePageModel.cs" />
@@ -3762,8 +3764,8 @@
     <Content Include="Content\tinymce\skins\lightgray\skin.min.css" />
     <Content Include="Content\tinymce\themes\modern\theme.min.js" />
     <Content Include="Content\tinymce\tinymce.min.js" />
-    <Content Include="favicon.ico" />
     <Content Include="ErrorPage.htm" />
+    <Content Include="favicon.ico" />
     <Content Include="FileNotFound.htm" />
     <Content Include="Global.asax" />
     <Content Include="license.txt" />
@@ -4240,6 +4242,7 @@
     <Content Include="Views\Topic\TopicBlock.cshtml" />
     <Content Include="Views\Topic\TopicDetails.cshtml" />
     <Content Include="Views\Common\SitMap.cshtml" />
+    <Content Include="Views\Common\LanguageSelector.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\assets\global\plugins\jquery-file-upload\server\php\files\thumbnail\" />
