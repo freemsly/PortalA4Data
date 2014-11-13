@@ -20,7 +20,7 @@
         
        
         <a href="@url">
-            <i class="icon-basket"></i>
+            
             <span class="title">
                 @if (!String.IsNullOrEmpty(item.ImageUrl))
                 {
@@ -64,23 +64,13 @@
         </a>
         <ul class="sub-menu">
             <li class="active">
-                <a href="index.html">
+                <a href="@(Url.Action("index", "home"))">
+ 
                     <i class="icon-bar-chart"></i>
                     Default Dashboard
                 </a>
             </li>
-            <li>
-                <a href="index_2.html">
-                    <i class="icon-bulb"></i>
-                    New Dashboard #1
-                </a>
-            </li>
-            <li>
-                <a href="index_3.html">
-                    <i class="icon-graph"></i>
-                    New Dashboard #2
-                </a>
-            </li>
+            
         </ul>
     </li>
 
