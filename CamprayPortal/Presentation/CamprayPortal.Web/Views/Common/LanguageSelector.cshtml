@@ -8,15 +8,15 @@
     var languages = Model.AvailableLanguages.Select(lang => new SelectListItem
     {
         Text = lang.Name,
-        Value = webHelper.ModifyQueryString(Url.RouteUrl("ChangeLanguage", new { langid = lang.Id }), "returnurl=" + HttpUtility.UrlEncode(HttpContext.Current.Request.RawUrl), null),
+        Value = webHelper.ModifyQueryString(Url.RouteUrl("ChangeLanguage", new {langid = lang.Id}), "returnurl=" + HttpUtility.UrlEncode(HttpContext.Current.Request.RawUrl), null),
         Selected = lang.Id.Equals(Model.CurrentLanguageId)
     });
-
-    @Html.DropDownList("customerlanguage", languages, new { onchange = "setLocation(this.value); " })
+   
+        @Html.DropDownList("customerlanguage", languages, new {onchange = "setLocation(this.value); ", @class = "form-control input-sm"})
+   
+    <script>
+        function setLocation(url) {
+            window.location.href = url;
+        }
+    </script>
 }
-
-<script >
-    function setLocation(url) {
-        window.location.href = url;
-    }
-</script>
