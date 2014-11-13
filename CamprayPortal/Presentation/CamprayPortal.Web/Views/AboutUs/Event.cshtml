@@ -25,9 +25,9 @@
 <div class="main">
     <div class="container">
         <ul class="breadcrumb">
-            <li><a href="/">Home</a></li>
-            <li><a href="@Url.Action("HomePage","AboutUs")">AboutUs</a></li>
-            <li class="active">Event</li>
+            <li><a href="/">@T("common.home")</a></li>
+            <li><a href="@Url.Action("HomePage","AboutUs")">@T("common.aboutus")</a></li>
+            <li class="active">@T("common.event")</li>
         </ul>
         <!-- BEGIN SIDEBAR & CONTENT -->
         <div class="row margin-bottom-40">
@@ -48,7 +48,7 @@
 
                                     <ul class="blog-info pull-right">
                                         <li><i class="fa fa-calendar"></i> @item.CreatedOn</li>
-                                        <li><a href="@Url.Action("EventDetail", new { id = item.Id })" class="more">Read more <i class="icon-angle-right"></i></a></li>
+                                        <li><a href="@Url.Action("EventDetail", new { id = item.Id })" class="more">@T("common.readmore")<i class="icon-angle-right"></i></a></li>
                                     </ul>
 
                                 </div>

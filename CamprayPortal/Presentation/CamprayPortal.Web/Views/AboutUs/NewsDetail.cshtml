@@ -25,10 +25,10 @@
 <div class="main">
     <div class="container">
         <ul class="breadcrumb">
-            <li><a href="/">Home</a></li>
-            <li><a href="@Url.Action("HomePage","AboutUs")">AboutUs</a></li>
-            <li><a href="@Url.Action("News", "AboutUs")">News</a></li>
-            <li class="active">NewsDetail</li>
+            <li><a href="/">@T("common.home")</a></li>
+            <li><a href="@Url.Action("HomePage","AboutUs")">@T("common.aboutus")</a></li>
+            <li><a href="@Url.Action("News", "AboutUs")">@T("common.news")</a></li>
+            <li class="active">@T("common.newsdetail")</li>
         </ul>
         <!-- BEGIN SIDEBAR & CONTENT -->
         <div class="row margin-bottom-40">

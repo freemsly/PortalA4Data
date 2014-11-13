@@ -17,6 +17,13 @@ namespace CamprayPortal.Web.Infrastructure
                             new { controller = "Home", action = "Index" },
                             new[] { "CamprayPortal.Web.Controllers" });
 
+            //change language (AJAX link)
+            routes.MapLocalizedRoute("ChangeLanguage",
+                            "changelanguage/{langid}",
+                            new { controller = "Common", action = "SetLanguage" },
+                            new { langid = @"\d+" },
+                            new[] { "CamprayPortal.Web.Controllers" });
+
             //install
             routes.MapRoute("Installation",
                             "install",
