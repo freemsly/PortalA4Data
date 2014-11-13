@@ -1,5 +1,4 @@
 ﻿@model CustomerModel
-@
 @Html.ValidationSummary(false)
 @Html.HiddenFor(model => model.Id)
 
@@ -13,31 +12,18 @@
         </li>
         @if (Model.Id > 0)
         {
-            <li @Html.RenderSelectedTabIndex(2, GetSelectedTabIndex())>
-                @T("Admin.Customers.Customers.Orders")
-            </li>
+            
             <li @Html.RenderSelectedTabIndex(3, GetSelectedTabIndex())>
                 @T("Admin.Customers.Customers.Addresses")
             </li>
-            <li @Html.RenderSelectedTabIndex(4, GetSelectedTabIndex())>
-                @T("Admin.Customers.Customers.CurrentShoppingCart")
-            </li>
-            <li @Html.RenderSelectedTabIndex(5, GetSelectedTabIndex())>
-                @T("Admin.Customers.Customers.CurrentWishlist")
-            </li>
+         
+            
             <li @Html.RenderSelectedTabIndex(6, GetSelectedTabIndex())>
                 @T("Admin.Customers.Customers.ActivityLog")
             </li>
-            <li @Html.RenderSelectedTabIndex(7, GetSelectedTabIndex())>
-                @T("Admin.Customers.Customers.Impersonate")
-            </li>
+           
         }
-        @if (Model.DisplayRewardPointsHistory)
-        {
-            <li>
-                @T("Admin.Customers.Customers.RewardPoints")
-            </li>
-        }
+        
     </ul>
     <div>
         @TabInfo()
@@ -47,31 +33,18 @@
     </div>
     @if (Model.Id > 0)
     {
-        <div>
-            @TabOrders()
-        </div>
+        
         <div>
             @TabAddresses()
         </div>
-        <div>
-            @TabCurrentShoppingCart()
-        </div>
-        <div>
-            @TabCurrentWishlist()
-        </div>
+        
+       
         <div>
             @TabActivityLog()
         </div>
-        <div>
-            @TabImpersonate()
-        </div>
+        
     }
-    @if (Model.DisplayRewardPointsHistory)
-    {
-       <div>
-            @TabRewardPoints()
-        </div>
-    }
+    
 </div>
 <script>
     $(document).ready(function() {
@@ -256,16 +229,7 @@
                 </td>
             </tr>
         }
-        <tr>
-            <td class="adminTitle">
-                @Html.NopLabelFor(model => model.VendorId):
-            </td>
-            <td class="adminData">
-                @Html.DropDownListFor(model => model.VendorId, Model.AvailableVendors)
-                @Html.ValidationMessageFor(model => model.VendorId)
-                <em>@T("Admin.Customers.Customers.VendorShouldBeInVendorsRole")</em>
-            </td>
-        </tr>
+        
         @if (Model.GenderEnabled)
         {
             <tr>
@@ -433,15 +397,7 @@
                 @Html.ValidationMessageFor(model => model.AdminComment)
             </td>
         </tr>
-        <tr>
-            <td class="adminTitle">
-                @Html.NopLabelFor(model => model.IsTaxExempt):
-            </td>
-            <td class="adminData">
-                @Html.EditorFor(model => model.IsTaxExempt)
-                @Html.ValidationMessageFor(model => model.IsTaxExempt)
-            </td>
-        </tr>
+        
         @if (Model.AllowCustomersToSetTimeZone)
         {
             <tr>
@@ -466,21 +422,7 @@
                 </td>
             </tr>
         }
-        @if (Model.DisplayVatNumber)
-        {
-            <tr>
-                <td class="adminTitle">
-                    @Html.NopLabelFor(model => model.VatNumber):
-                </td>
-                <td class="adminData">
-                    @Html.EditorFor(model => model.VatNumber)
-                    (@string.Format(T("Admin.Customers.Customers.Fields.VatNumberStatus").Text, Model.VatNumberStatusNote))
-                    <input type="submit" name="markVatNumberAsValid" class="k-button" value="@T("Admin.Customers.Customers.Fields.VatNumber.MarkAsValid")" />
-                    <input type="submit" name="markVatNumberAsInvalid" class="k-button" value="@T("Admin.Customers.Customers.Fields.VatNumber.MarkAsInvalid")" />
-                    @Html.ValidationMessageFor(model => model.VatNumber)
-                </td>
-            </tr>
-        }
+       
         <tr>
             <td class="adminTitle">
                 @Html.NopLabelFor(model => model.Active):
@@ -556,205 +498,7 @@
     @T("Admin.Customers.Customers.Fields.CustomerRoles.NoRoles")
         }
 }
-@helper TabOrders()
-    {
-    var defaultGridPageSize = EngineContext.Current.Resolve<CamprayPortal.Core.Domain.Common.AdminAreaSettings>().DefaultGridPageSize;
-    var gridPageSizes = EngineContext.Current.Resolve<CamprayPortal.Core.Domain.Common.AdminAreaSettings>().GridPageSizes;
-
-    <div id="order-grid"></div>
-        
-    <script>
-        $(document).ready(function () {
-            $("#order-grid").kendoGrid({
-                dataSource: {
-                    type: "json",
-                    transport: {
-                        read: {
-                            url: "@Html.Raw(Url.Action("OrderList", "Customer", new { customerId = Model.Id }))",
-                            type: "POST",
-                            dataType: "json"
-                        }
-                    },
-                    schema: {
-                        data: "Data",
-                        total: "Total",
-                        errors: "Errors"
-                    },
-                    error: function(e) {
-                        display_kendoui_grid_error(e);
-                        // Cancel the changes
-                        this.cancelChanges();
-                    },
-                    pageSize: @(defaultGridPageSize),
-                    serverPaging: true,
-                    serverFiltering: true,
-                    serverSorting: true
-                },
-                pageable: {
-                    refresh: true,
-                    pageSizes: [@(gridPageSizes)]
-                },
-                editable: {
-                    confirmation: false,
-                    mode: "inline"
-                },
-                scrollable: false,
-                columns: [{
-                    field: "Id",
-                    title: "@T("Admin.Customers.Customers.Orders.ID")",
-                    width: 50
-                }, {
-                    field: "OrderTotal",
-                    title: "@T("Admin.Customers.Customers.Orders.OrderTotal")",
-                    width: 200
-                }, {
-                    field: "OrderStatus",
-                    title: "@T("Admin.Customers.Customers.Orders.OrderStatus")",
-                    width: 200
-                }, {
-                    field: "PaymentStatus",
-                    title: "@T("Admin.Customers.Customers.Orders.PaymentStatus")",
-                    width: 200
-                }, {
-                    field: "ShippingStatus",
-                    title: "@T("Admin.Customers.Customers.Orders.ShippingStatus")",
-                    width: 200
-                }, {
-                    field: "StoreName",
-                    title: "@T("Admin.Customers.Customers.Orders.Store")",
-                    width: 200
-                }, {
-                    field: "CreatedOn",
-                    title: "@T("Admin.System.Log.Fields.CreatedOn")",
-                    width: 200,
-                    type: "date",
-                    format: "{0:G}"
-                }, {
-                    field: "Id",
-                    title: "@T("Admin.Common.View")",
-                    width: 100,
-                    template: '<a href="@Url.Content("~/Admin/Order/Edit/")#=Id#">@T("Admin.Common.View")</a>'
-                }]
-            });
-        });
-    </script>
-}
-@helper TabRewardPoints()
-    {
-    <div id="customer-rewardpoints-grid"></div>
-        
-    <script>
-        $(document).ready(function () {
-            $("#customer-rewardpoints-grid").kendoGrid({
-                dataSource: {
-                    type: "json",
-                    transport: {
-                        read: {
-                            url: "@Html.Raw(Url.Action("RewardPointsHistorySelect", "Customer", new { customerId = Model.Id }))",
-                            type: "POST",
-                            dataType: "json"
-                        }
-                    },
-                    schema: {
-                        data: "Data",
-                        total: "Total",
-                        errors: "Errors"
-                    },
-                    error: function(e) {
-                        display_kendoui_grid_error(e);
-                        // Cancel the changes
-                        this.cancelChanges();
-                    },
-                    serverPaging: true,
-                    serverFiltering: true,
-                    serverSorting: true
-                },
-                pageable: {
-                    refresh: true,
-                    numeric: false,
-                    previousNext: false,
-                    info: false
-                },
-                editable: {
-                    confirmation: false,
-                    mode: "inline"
-                },
-                scrollable: false,
-                columns: [{
-                    field: "Points",
-                    title: "@T("Admin.Customers.Customers.RewardPoints.Fields.Points")"
-                }, {
-                    field: "PointsBalance",
-                    title: "@T("Admin.Customers.Customers.RewardPoints.Fields.PointsBalance")"
-                },{
-                    field: "Message",
-                    title: "@T("Admin.Customers.Customers.RewardPoints.Fields.Message")"
-                },{
-                    field: "CreatedOn",
-                    title: "@T("Admin.Promotions.Campaigns.Fields.CreatedOn")",
-                    width: 200,
-                    type: "date",
-                    format: "{0:G}"
-                }]
-            });
-        });
-    </script>
-    <p>
-        <strong>
-            @T("Admin.Customers.Customers.RewardPoints.AddTitle")
-        </strong>
-    </p>
-    <table class="adminContent">
-        <tr>
-            <td class="adminTitle">
-                @Html.NopLabelFor(model => model.AddRewardPointsValue)
-            </td>
-            <td class="adminData">
-                @Html.EditorFor(model => model.AddRewardPointsValue)
-                @Html.ValidationMessageFor(model => model.AddRewardPointsValue)
-            </td>
-        </tr>
-        <tr>
-            <td class="adminTitle">
-                @Html.NopLabelFor(model => model.AddRewardPointsMessage)
-            </td>
-            <td class="adminData">
-                @Html.EditorFor(model => model.AddRewardPointsMessage)
-                @Html.ValidationMessageFor(model => model.AddRewardPointsMessage)
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2" align="left">
-                <input type="button" id="addRewardPoints" class="k-button" value="@T("Admin.Customers.Customers.RewardPoints.AddButton")" />
-            </td>
-        </tr>
-    </table>
-    
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('#addRewardPoints').click(function () {
-                var rewardPointsValue = $("#@Html.FieldIdFor(model => model.AddRewardPointsValue)").val();
-                var rewardPointsMessage = $("#@Html.FieldIdFor(model => model.AddRewardPointsMessage)").val();
-                $('#addRewardPoints').attr('disabled', true);
-                $.ajax({
-                    cache:false,
-                    type: "POST",
-                    url: "@(Url.Action("RewardPointsHistoryAdd", "Customer"))",
-                    data: { "addRewardPointsValue": rewardPointsValue, "addRewardPointsMessage": rewardPointsMessage, "customerId": @Model.Id},
-                    success: function (data) {
-                        var rewardPointsGrid = $("#customer-rewardpoints-grid").data('kendoGrid');
-                        rewardPointsGrid.dataSource.read();
-                         $('#addRewardPoints').attr('disabled', false);
-                    },
-                    error:function (xhr, ajaxOptions, thrownError){
-                        alert('Failed to add reward points.');
-                        $('#addRewardPoints').attr('disabled', false);
-                    }  
-                });
-            });
-        });
-    </script>
-}
+  
 @helper TabAddresses()
     {
     <div id="customer-addresses-grid"></div>
@@ -841,165 +585,7 @@
             <input type="button" class="k-button" onclick="location.href='@Url.Action("AddressCreate", new { customerId = Model.Id })'" value='@T("Admin.Customers.Customers.Addresses.AddButton")' />
         </strong>
     </p>
-}
-@helper TabCurrentShoppingCart()
-    {
-    <table class="adminContent">
-        <tr>
-            <td>
-                <div id="currentshoppingcart-grid"></div>
-
-                <script>
-                    $(document).ready(function () {
-                        $("#currentshoppingcart-grid").kendoGrid({
-                            dataSource: {
-                                type: "json",
-                                transport: {
-                                    read: {
-                                        url: "@Html.Raw(Url.Action("GetCartList", "Customer", new { customerId = Model.Id, cartTypeId = (int)ShoppingCartType.ShoppingCart }))",
-                                        type: "POST",
-                                        dataType: "json"
-                                    }
-                                },
-                                schema: {
-                                    data: "Data",
-                                    total: "Total",
-                                    errors: "Errors"
-                                },
-                                error: function(e) {
-                                    display_kendoui_grid_error(e);
-                                    // Cancel the changes
-                                    this.cancelChanges();
-                                },
-                                serverPaging: true,
-                                serverFiltering: true,
-                                serverSorting: true
-                            },
-                            pageable: {
-                                refresh: true,
-                                numeric: false,
-                                previousNext: false,
-                                info: false
-                            },
-                            editable: {
-                                confirmation: false,
-                                mode: "inline"
-                            },
-                            scrollable: false,
-                            columns: [{
-                                field: "ProductName",
-                                title: "@T("Admin.CurrentCarts.Product")",
-                                width:500,
-                                template: '<a href="@Url.Content("~/Admin/Product/Edit/")#=ProductId#">#=ProductName#</a>'
-                            }, {
-                                field: "Quantity",
-                                title: "@T("Admin.CurrentCarts.Quantity")",
-                                width:200
-                            },{
-                                field: "UnitPrice",
-                                title: "@T("Admin.CurrentCarts.UnitPrice")",
-                                width:200
-                            },{
-                                field: "Total",
-                                title: "@T("Admin.CurrentCarts.Total")",
-                                width:200
-                            },{
-                                field: "Store",
-                                title: "@T("Admin.CurrentCarts.Store")",
-                                width:200
-                            },{
-                                field: "UpdatedOn",
-                                title: "@T("Admin.CurrentCarts.UpdatedOn")",
-                                width: 200,
-                                type: "date",
-                                format: "{0:G}"
-                            }]
-                        });
-                    });
-                </script>
-            </td>
-        </tr>
-    </table>
-}
-@helper TabCurrentWishlist()
-    {
-    <table class="adminContent">
-        <tr>
-            <td>
-                <div id="currentwishlist-grid"></div>
-
-                <script>
-                    $(document).ready(function () {
-                        $("#currentwishlist-grid").kendoGrid({
-                            dataSource: {
-                                type: "json",
-                                transport: {
-                                    read: {
-                                        url: "@Html.Raw(Url.Action("GetCartList", "Customer", new { customerId = Model.Id, cartTypeId = (int)ShoppingCartType.Wishlist }))",
-                                        type: "POST",
-                                        dataType: "json"
-                                    }
-                                },
-                                schema: {
-                                    data: "Data",
-                                    total: "Total",
-                                    errors: "Errors"
-                                },
-                                error: function(e) {
-                                    display_kendoui_grid_error(e);
-                                    // Cancel the changes
-                                    this.cancelChanges();
-                                },
-                                serverPaging: true,
-                                serverFiltering: true,
-                                serverSorting: true
-                            },
-                            pageable: {
-                                refresh: true,
-                                numeric: false,
-                                previousNext: false,
-                                info: false
-                            },
-                            editable: {
-                                confirmation: false,
-                                mode: "inline"
-                            },
-                            scrollable: false,
-                            columns: [{
-                                field: "ProductName",
-                                title: "@T("Admin.CurrentCarts.Product")",
-                                width:500,
-                                template: '<a href="@Url.Content("~/Admin/Product/Edit/")#=ProductId#">#=ProductName#</a>'
-                            }, {
-                                field: "Quantity",
-                                title: "@T("Admin.CurrentCarts.Quantity")",
-                                width:200
-                            },{
-                                field: "UnitPrice",
-                                title: "@T("Admin.CurrentCarts.UnitPrice")",
-                                width:200
-                            },{
-                                field: "Total",
-                                title: "@T("Admin.CurrentCarts.Total")",
-                                width:200
-                            },{
-                                field: "Store",
-                                title: "@T("Admin.CurrentCarts.Store")",
-                                width:200
-                            },{
-                                field: "UpdatedOn",
-                                title: "@T("Admin.CurrentCarts.UpdatedOn")",
-                                width: 200,
-                                type: "date",
-                                format: "{0:G}"
-                            }]
-                        });
-                    });
-                </script>
-            </td>
-        </tr>
-    </table>
-}
+} 
 @helper TabActivityLog()
     {
         var defaultGridPageSize = EngineContext.Current.Resolve<CamprayPortal.Core.Domain.Common.AdminAreaSettings>().DefaultGridPageSize;
@@ -1066,19 +652,4 @@
             </td>
         </tr>
     </table>
-}
-@helper TabImpersonate()
-    {
-    <table class="adminContent">
-        <tr>
-            <td>
-                @T("Admin.Customers.Customers.Impersonate.Description1")
-                <br />
-                @T("Admin.Customers.Customers.Impersonate.Description2")
-                <br />
-                <br />
-                <input type="submit" name="impersonate" class="k-button" value="@T("Admin.Customers.Customers.Impersonate.Button")" />
-            </td>
-        </tr>
-    </table>
-}
+} 
