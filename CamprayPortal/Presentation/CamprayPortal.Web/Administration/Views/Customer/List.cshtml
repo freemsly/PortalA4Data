@@ -22,7 +22,7 @@
             <input type="button" id="exportexcel-selected" class="k-button" value="@T("Admin.Common.ExportToExcel.Selected")" />
         </div>
     </div>
-    <table width="100%">
+    <table width="100%" class="adminContent customer-info-tab">
         <tr>
             <td class="adminTitle">
                 @Html.NopLabelFor(model => model.SearchCustomerRoleIds):
@@ -31,12 +31,8 @@
                 @foreach (var customerRole in Model.AvailableCustomerRoles)
                 {
                     <input type="checkbox" name="SearchCustomerRoleIds" value="@customerRole.Id"
-                @if (Model.SearchCustomerRoleIds != null && Model.SearchCustomerRoleIds.Contains(customerRole.Id))
-                {
-                    <text>checked="checked"</text>
-                }
-                />@customerRole.Name
-                    <br />
+                           @if (Model.SearchCustomerRoleIds != null && Model.SearchCustomerRoleIds.Contains(customerRole.Id)) { <text> checked="checked" </text>  } />@customerRole.Name
+                        <br />
                 }
             </td>
         </tr>
@@ -101,7 +97,7 @@
                 </td>
             </tr>
         }
-        
+
         @if (Model.CompanyEnabled)
         {
             <tr>
@@ -112,7 +108,7 @@
                     @Html.EditorFor(model => model.SearchCompany)
                 </td>
             </tr>
-        }        
+        }
         @if (Model.PhoneEnabled)
         {
             <tr>
@@ -134,7 +130,7 @@
                     @Html.EditorFor(model => model.SearchZipPostalCode)
                 </td>
             </tr>
-        } 
+        }
         <tr>
             <td colspan="2">
                 <input type="button" id="search-customers" class="k-button" value="@T("Admin.Common.Search")" />

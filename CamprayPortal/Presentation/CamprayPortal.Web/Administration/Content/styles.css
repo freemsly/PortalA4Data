@@ -18,10 +18,10 @@ h2,h3{font-size:16px;}
 .section-title{border-bottom:solid 3px #dfdfdf;padding-bottom:1px;margin-bottom:10px;color:#009FFF;font-size:14px;font-weight:700;vertical-align:bottom;}
 .section-title img{vertical-align:middle;padding-bottom:2px;}
 .section-header .title a{text-decoration:none;font-size:11px;color:#555;text-transform:none;}
-.section-header{border-bottom:solid 3px #dfdfdf;padding-bottom:1px;margin-bottom:10px;height:25px;}
+.section-header{border-bottom:solid 3px #dfdfdf;padding-bottom:28px;margin-bottom:10px;height:auto;}
 .section-header .title{float:left;color:#009FFF;font-size:14px;font-weight:700;vertical-align:bottom;padding-top:5px;text-transform:capitalize;}
 .section-header .title img{vertical-align:middle;padding-bottom:2px;}
-.section-header .options{text-align:right;float:right;}
+.section-header .options{text-align:right;float:right;position:relative;top:-8px;}
 /* STORE SCOPE CONFIGURATION */
 .multi-store-scope{background-color:#dfdfdf; padding:5px;margin-top:10px;margin-bottom: 10px;}
 .multi-store-scope .selector{}
@@ -34,11 +34,11 @@ td.fieldname{font-size:12px;}
 .table-container .row{}
 .table-container .row .item-name{padding:3px 10px 0 0;display:block;white-space:nowrap;padding-right:10px;vertical-align:middle;}
 .table-container .row .item-value{padding:3px 0 0;vertical-align:middle;}
-table.adminContent{border-collapse:collapse;color:#333;font-size:12px;margin:0;width:100%;vertical-align:middle;text-align:left;}
+table.adminContent{border-collapse:collapse;color:#333;font-size:12px;margin:0;width:100%;vertical-align:middle;text-align:left;margin-top:8px}
 table.adminContent td.adminTitle{padding:4px;}
 table.adminContent td.adminData{padding:4px;}
 td.adminTitle{text-align:left;vertical-align:middle;white-space:nowrap;width:195px;}
-td.adminTitle img{vertical-align:bottom;padding-right:2px;}
+td.adminTitle img{vertical-align:middle;padding-right:5px;}
 td.adminData{text-align:left;vertical-align:middle;}
 td.adminData .text-box.single-line{border:1px solid #A7BAC5;width:250px;padding:2px;}
 .t-grid .text-box.single-line{border:1px solid #A7BAC5;padding:2px;}
@@ -153,3 +153,4 @@ body .k-button{font-weight:400;color:inherit!important;text-decoration:none;}
 .customer-info-tab ul.option-list{padding:0px;margin:0px;}
 .customer-info-tab ul.option-list li{list-style:none;}
 .field-validation-error{color:red;}
+
