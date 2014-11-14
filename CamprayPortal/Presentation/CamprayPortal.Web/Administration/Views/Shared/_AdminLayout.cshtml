@@ -143,10 +143,10 @@
         <div class="page-header-inner">
             <!-- BEGIN LOGO -->
             <div class="page-logo">
-                <a href="index.html">
+                <a href="/Admin">
                     <img src="/Content/assets/admin/layout/img/logo.png" alt="logo" class="logo-default" />
                 </a>
-                <div class="menu-toggler sidebar-toggler hide">
+                <div class="menu-toggler sidebar-toggler hide"> 
                     <!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
                 </div>
             </div>
@@ -230,8 +230,7 @@
             <!-- DOC: Change data-auto-speed="200" to adjust the sub menu slide up/down speed -->
             <div class="page-sidebar navbar-collapse collapse">
                 <!-- BEGIN SIDEBAR MENU -->
-                @Html.Partial("Menu")
-                
+                @Html.Action("Navigation", "Common")
                 <!-- END SIDEBAR MENU -->
             </div>
         </div>
@@ -322,13 +321,13 @@
             Demo.init(); // init demo features
             Index.init();
             Index.initDashboardDaterange();
-            Index.initJQVMAP(); // init index page's custom scripts
-            Index.initCalendar(); // init index page's custom scripts
-            Index.initCharts(); // init index page's custom scripts
-            Index.initChat();
-            Index.initMiniCharts();
-            Index.initIntro();
-            Tasks.initDashboardWidget();
+           // Index.initJQVMAP(); // init index page's custom scripts
+            //  Index.initCalendar(); // init index page's custom scripts
+           // Index.initCharts(); // init index page's custom scripts
+           //    Index.initChat();
+          //  Index.initMiniCharts();
+            //Index.initIntro();
+            //Tasks.initDashboardWidget();
         });
     </script>
 </body>

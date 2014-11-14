@@ -1,0 +1,104 @@
+﻿@model MenuNavigation
+@{ 
+    Layout = null;
+    //load sitemap
+    var siteMap = new CamprayPortal.Web.Framework.Menu.XmlSiteMap();
+    siteMap.LoadFrom("~/Administration/sitemap.config"); 
+}
+
+  
+@functions {
+
+    private string TopMenu(CamprayPortal.Web.Framework.Menu.SiteMapNode siteMapNode)
+    {
+        if (siteMapNode.ChildNodes.Any(x => x.Visible))
+        {
+            var childcontrol = siteMapNode.ChildNodes.Select(c => c.ControllerName).ToArray();
+            var activemenu = childcontrol.FirstOrDefault(c => c == Model.Controller);
+            return activemenu != null ? "active open" : String.Empty;
+        }
+        else
+        {
+            return Model.Action == siteMapNode.ActionName && Model.Controller == siteMapNode.ControllerName ? "active" : String.Empty;
+        }
+    }
+
+    private string ActiveLink(string controlname,string classname)
+    {
+        return controlname == Model.Controller ? classname : String.Empty;
+    } 
+}
+
+
+
+@helper RenderMenuItem(CamprayPortal.Web.Framework.Menu.SiteMapNode item)
+{
+    string url = null;
+    if (!string.IsNullOrEmpty(item.ControllerName) && !string.IsNullOrEmpty(item.ActionName))
+    {
+        url = Url.Action(item.ActionName, item.ControllerName, item.RouteValues, null, null);
+    }
+    else if (!string.IsNullOrEmpty(item.Url))
+    {
+        url = item.Url.StartsWith("~/", StringComparison.Ordinal) ? Url.Content(item.Url) : item.Url;
+    }
+    <li class="@TopMenu(item)">
+        <a href="@url">
+            <span class="title">
+                @if (!String.IsNullOrEmpty(item.ImageUrl))
+                {
+                    <text>
+                        <img alt="" src="@Url.Content(item.ImageUrl)" />
+                    </text>
+                }
+                @item.Title
+            </span>
+            <span class="arrow "></span>
+        </a>
+
+        @if (item.ChildNodes.Any(x => x.Visible))
+        {
+         
+            <ul class="sub-menu">
+                @foreach (var childItem in item.ChildNodes.Where(x => x.Visible))
+                {
+                    @RenderMenuItem(childItem)
+                }
+            </ul>
+        }
+    </li>
+}
+
+
+<ul class="page-sidebar-menu" data-auto-scroll="true" data-slide-speed="200">
+    <!-- DOC: To remove the sidebar toggler from the sidebar you just need to completely remove the below "sidebar-toggler-wrapper" LI element -->
+    <li class="sidebar-toggler-wrapper">
+        <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+        <div class="sidebar-toggler">
+        </div>
+        <!-- END SIDEBAR TOGGLER BUTTON -->
+    </li>
+
+    <li class="@ActiveLink("Home", "start active open")">
+        <a href="javascript:;">
+            <i class="icon-home"></i>
+            <span class="title">Dashboard</span>
+            <span class="selected"></span>
+            <span class="arrow open"></span>
+        </a>
+        <ul class="sub-menu">
+            <li class="@ActiveLink("Home", "active")">
+                <a href="@(Url.Action("Index", "Home"))">
+                    <i class="icon-bar-chart"></i>
+                    Default Dashboard
+                </a>
+            </li>
+        </ul>
+    </li>
+
+    @foreach (var item in siteMap.RootNode.ChildNodes.Where(x => x.Visible))
+    {
+        @RenderMenuItem(item)
+    }
+</ul>
+

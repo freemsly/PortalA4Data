@@ -42,9 +42,6 @@ namespace CamprayPortal.Admin
 {
     public static class MappingExtensions
     {
-        
-      
-
         #region Customer attributes
 
         //attributes
@@ -225,20 +222,7 @@ namespace CamprayPortal.Admin
             return Mapper.Map(model, destination);
         }
         #endregion
-
-      
-
-      
-
         
-
-       
-      
-      
-
-       
-      
-
         #region External authentication methods
 
         public static AuthenticationMethodModel ToModel(this IExternalAuthenticationMethod entity)
@@ -276,6 +260,23 @@ namespace CamprayPortal.Admin
 
         #endregion
 
+        #region Contact us
+        public static ContactUsModel ToModel(this ContactUs entity)
+        {
+            return Mapper.Map<ContactUs, ContactUsModel>(entity);
+        }
+
+        public static ContactUs ToEntity(this ContactUsModel model)
+        {
+            return Mapper.Map<ContactUsModel, ContactUs>(model);
+        }
+
+        public static ContactUs ToEntity(this ContactUsModel model, ContactUs destination)
+        {
+            return Mapper.Map(model, destination);
+        }
+        #endregion
+
         #region NewsLetter subscriptions
 
         public static NewsLetterSubscriptionModel ToModel(this NewsLetterSubscription entity)
@@ -294,12 +295,6 @@ namespace CamprayPortal.Admin
         }
 
         #endregion
-
-         
-
-     
-
-   
 
         #region News
 
@@ -320,9 +315,7 @@ namespace CamprayPortal.Admin
         }
 
         #endregion
-
-       
-
+        
         #region Customers/users/customer roles
         //customer roles
         public static CustomerRoleModel ToModel(this CustomerRole entity)
@@ -341,8 +334,7 @@ namespace CamprayPortal.Admin
         }
 
         #endregion
-
-   
+        
         #region Countries / states
 
         public static CountryModel ToModel(this Country entity)
@@ -432,9 +424,7 @@ namespace CamprayPortal.Admin
             return Mapper.Map(model, destination);
         }
         #endregion
-
-      
-
+        
         #region Stores
 
         public static StoreModel ToModel(this Store entity)
@@ -453,8 +443,6 @@ namespace CamprayPortal.Admin
         }
 
         #endregion
-
-     
-
+        
     }
 }

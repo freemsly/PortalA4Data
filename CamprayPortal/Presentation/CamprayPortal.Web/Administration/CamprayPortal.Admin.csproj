@@ -165,7 +165,9 @@
     <Compile Include="MappingExtensions.cs" />
     <Compile Include="Infrastructure\AutoMapperStartupTask.cs" />
     <Compile Include="Models\Cms\RenderWidgetModel.cs" />
+    <Compile Include="Models\Common\ContactUsModel.cs" />
     <Compile Include="Models\Common\LanguageSelectorModel.cs" />
+    <Compile Include="Models\Common\MenuNavigation.cs" />
     <Compile Include="Models\Common\SearchTermReportLineModel.cs" />
     <Compile Include="Models\Common\UrlRecordListModel.cs" />
     <Compile Include="Models\Common\UrlRecordModel.cs" />
@@ -3467,6 +3469,9 @@
   <ItemGroup>
     <Folder Include="Content\assets\global\plugins\jquery-file-upload\server\node\public\files\thumbnail\" />
     <Folder Include="Content\assets\global\plugins\jquery-file-upload\server\php\files\thumbnail\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Common\Navigation.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

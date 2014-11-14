@@ -42,6 +42,7 @@ namespace CamprayPortal.Admin.Controllers
 
         #region Methods
 
+
         public ActionResult Index()
         {
             var model = new DashboardModel();

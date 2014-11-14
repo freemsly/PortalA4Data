@@ -210,6 +210,7 @@
     <Compile Include="Infrastructure\DependencyRegistrar.cs" />
     <Compile Include="Infrastructure\RouteProvider.cs" />
     <Compile Include="Models\AboutUs\NewsItemModel.cs" />
+    <Compile Include="Models\Common\ContactUsModel.cs" />
     <Compile Include="Models\Common\LanguageModel.cs" />
     <Compile Include="Models\Common\LanguageSelectorModel.cs" />
     <Compile Include="Models\Common\MenuNavigation.cs" />
@@ -220,6 +221,7 @@
     <Compile Include="Models\Support\LoginModel.cs" />
     <Compile Include="Models\Topics\TopicModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validators\Common\ContactUsValidator.cs" />
     <Compile Include="Validators\Common\MessageUsValidator.cs" />
     <Compile Include="Validators\Install\InstallValidator.cs" />
   </ItemGroup>
@@ -482,24 +484,7 @@
     <Content Include="Content\assets\frontend\layout\img\icons\toggler.png" />
     <Content Include="Content\assets\frontend\layout\img\icons\top-search-icon.png" />
     <Content Include="Content\assets\frontend\layout\img\layerslider-arrows.png" />
-    <Content Include="Content\assets\frontend\layout\img\logos\0logo-blue-small.png" />
-    <Content Include="Content\assets\frontend\layout\img\logos\0logo-blue.png" />
-    <Content Include="Content\assets\frontend\layout\img\logos\0logo-green.png" />
-    <Content Include="Content\assets\frontend\layout\img\logos\0logo-orange.png" />
-    <Content Include="Content\assets\frontend\layout\img\logos\logo-corp-blue.png" />
-    <Content Include="Content\assets\frontend\layout\img\logos\logo-corp-gray.png" />
-    <Content Include="Content\assets\frontend\layout\img\logos\logo-corp-green.png" />
-    <Content Include="Content\assets\frontend\layout\img\logos\logo-corp-orange.png" />
     <Content Include="Content\assets\frontend\layout\img\logos\logo-corp-red.png" />
-    <Content Include="Content\assets\frontend\layout\img\logos\logo-corp-turquoise.png" />
-    <Content Include="Content\assets\frontend\layout\img\logos\logo-red.png" />
-    <Content Include="Content\assets\frontend\layout\img\logos\logo-shop-blue.png" />
-    <Content Include="Content\assets\frontend\layout\img\logos\logo-shop-gray.png" />
-    <Content Include="Content\assets\frontend\layout\img\logos\logo-shop-green.png" />
-    <Content Include="Content\assets\frontend\layout\img\logos\logo-shop-orange.png" />
-    <Content Include="Content\assets\frontend\layout\img\logos\logo-shop-red.png" />
-    <Content Include="Content\assets\frontend\layout\img\logos\logo-shop-turquoise.png" />
-    <Content Include="Content\assets\frontend\layout\img\logos\shop-logo-red.png" />
     <Content Include="Content\assets\frontend\layout\img\new.png" />
     <Content Include="Content\assets\frontend\layout\img\payments\american-express.jpg" />
     <Content Include="Content\assets\frontend\layout\img\payments\fa-angle-right-info.png" />
@@ -3783,6 +3768,7 @@
     <Content Include="Scripts\fineuploader\processing.gif" />
     <Content Include="Scripts\fineuploader\templates\default.html" />
     <Content Include="Scripts\fineuploader\templates\simple-thumbnails.html" />
+    <None Include="Properties\PublishProfiles\PortalA4DataPublic.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
