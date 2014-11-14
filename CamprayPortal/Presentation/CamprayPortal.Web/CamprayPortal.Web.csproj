@@ -210,6 +210,7 @@
     <Compile Include="Infrastructure\DependencyRegistrar.cs" />
     <Compile Include="Infrastructure\RouteProvider.cs" />
     <Compile Include="Models\AboutUs\NewsItemModel.cs" />
+    <Compile Include="Models\Common\ContactUsModel.cs" />
     <Compile Include="Models\Common\LanguageModel.cs" />
     <Compile Include="Models\Common\LanguageSelectorModel.cs" />
     <Compile Include="Models\Common\MenuNavigation.cs" />
@@ -220,6 +221,7 @@
     <Compile Include="Models\Support\LoginModel.cs" />
     <Compile Include="Models\Topics\TopicModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validators\Common\ContactUsValidator.cs" />
     <Compile Include="Validators\Common\MessageUsValidator.cs" />
     <Compile Include="Validators\Install\InstallValidator.cs" />
   </ItemGroup>
