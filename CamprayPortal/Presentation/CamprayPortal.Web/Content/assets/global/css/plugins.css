@@ -1986,6 +1986,5 @@ div.radio.disabled:hover {
 
 div.radio,
 div.checker {
-  margin-right: 0;
-  margin-left: 3px;
+  margin:0 0 6px 3px;
 }
