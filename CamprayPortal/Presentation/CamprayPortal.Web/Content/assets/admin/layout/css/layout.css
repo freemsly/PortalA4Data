@@ -1085,8 +1085,7 @@ Page sidebar
   filter: alpha(opacity=70);
   width: 30px;
   height: 27px;
-  margin-top: 15px;
-  margin-right: 19px;
+   margin:15px 19px 10px;
   float: right;
 }
 .page-sidebar .sidebar-toggler:hover,
