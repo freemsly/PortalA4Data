@@ -7,7 +7,7 @@ using System;
 
 namespace CamprayPortal.Services.Common
 {
-    public partial class ContactUsServicec : IContactUsService
+    public partial class ContactUsService : IContactUsService
     {
         #region Constants
         private const string ContactUsEs_By_ID_Key = "CamprayPortal.contactus.id-{0}";
@@ -34,7 +34,7 @@ namespace CamprayPortal.Services.Common
         /// <param name="cacheManager"></param>
         /// <param name="contactUsRepository"></param>
         /// <param name="eventPublisher"></param>
-        public ContactUsServicec(ICacheManager cacheManager, IRepository<ContactUs> contactUsRepository,
+        public ContactUsService(ICacheManager cacheManager, IRepository<ContactUs> contactUsRepository,
             IEventPublisher eventPublisher)
         {
             this._cacheManager = cacheManager; 

@@ -44,13 +44,8 @@
     }
     <li class="@TopMenu(item)">
         <a href="@url">
+            <img alt="" src="@item.ImageUrl" />
             <span class="title">
-                @if (!String.IsNullOrEmpty(item.ImageUrl))
-                {
-                    <text>
-                        <img alt="" src="@Url.Content(item.ImageUrl)" />
-                    </text>
-                }
                 @item.Title
             </span>
             <span class="arrow "></span>
@@ -58,7 +53,6 @@
 
         @if (item.ChildNodes.Any(x => x.Visible))
         {
-         
             <ul class="sub-menu">
                 @foreach (var childItem in item.ChildNodes.Where(x => x.Visible))
                 {
