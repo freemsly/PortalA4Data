@@ -8,6 +8,7 @@ using System.Security.Principal;
 using System.Web;
 using System.Web.Configuration;
 using System.Web.Mvc;
+using System.Web.Routing;
 using CamprayPortal.Admin.Models.Common;
 using CamprayPortal.Core;
 using CamprayPortal.Core.Caching;
@@ -574,6 +575,26 @@ namespace CamprayPortal.Admin.Controllers
             };
             return Json(gridModel);
         }
+
+
+
+        [ChildActionOnly]
+        public ActionResult Navigation()
+        {
+            RouteData routeData = RouteTable.Routes.GetRouteData(this.HttpContext);
+            if (routeData != null)
+            {
+                var controller = routeData.Values["controller"];
+                var action = routeData.Values["action"];
+                return View(new MenuNavigation
+                {
+                    Action = action.ToString(),
+                    Controller = controller.ToString()
+                });
+            }
+            return View();
+        }
+
 
         #endregion
     }
