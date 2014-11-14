@@ -23,10 +23,26 @@
         }
     }
 
-    private string ActiveLink(string controlname,string classname)
+
+    private string TopMenuChild(CamprayPortal.Web.Framework.Menu.SiteMapNode siteMapNode, string returnstr)
+    {
+        if (siteMapNode.ChildNodes.Any(x => x.Visible))
+        {
+            var childcontrol = siteMapNode.ChildNodes.Select(c => c.ControllerName).ToArray();
+            var activemenu = childcontrol.FirstOrDefault(c => c == Model.Controller);
+            return activemenu != null ? returnstr : String.Empty;
+        }
+        else
+        {
+            return String.Empty;
+        }
+    }
+
+    private string ActiveLink(string controlname, string classname)
     {
         return controlname == Model.Controller ? classname : String.Empty;
-    } 
+    }
+
 }
 
 
@@ -44,11 +60,10 @@
     }
     <li class="@TopMenu(item)">
         <a href="@url">
-            <img alt="" src="@item.ImageUrl" />
-            <span class="title">
-                @item.Title
-            </span>
-            <span class="arrow "></span>
+            <img  src="@item.ImageUrl" />
+            <span class="title"> @item.Title </span>
+            <span class="@TopMenuChild(item, "selected")"></span>
+            <span class="arrow @ActiveLink(item.ControllerName, "open")"></span>
         </a>
 
         @if (item.ChildNodes.Any(x => x.Visible))
@@ -77,8 +92,8 @@
         <a href="javascript:;">
             <i class="icon-home"></i>
             <span class="title">Dashboard</span>
-            <span class="selected"></span>
-            <span class="arrow open"></span>
+            <span class="@ActiveLink("Home", "selected")"></span>
+            <span class="arrow @ActiveLink("Home", "open")"></span>
         </a>
         <ul class="sub-menu">
             <li class="@ActiveLink("Home", "active")">
