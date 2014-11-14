@@ -4,7 +4,9 @@ using System.Web.Routing;
 using System.Web.Mvc;
 using CamprayPortal.Core;
 using CamprayPortal.Core.Caching;
+using CamprayPortal.Core.Domain.Common;
 using CamprayPortal.Core.Domain.Localization;
+using CamprayPortal.Services.Common;
 using CamprayPortal.Services.Localization;
 using CamprayPortal.Web.Framework.Localization;
 using CamprayPortal.Web.Infrastructure.Cache;
@@ -19,15 +21,17 @@ namespace CamprayPortal.Web.Controllers
         private readonly ILanguageService _languageService;
         private readonly ICacheManager _cacheManager;
         private readonly IWorkContext _workContext;
-
+        private readonly IContactUsService _contactUsService; 
+        
         public CommonController(ICacheManager cacheManager, ILanguageService languageService, IStoreContext storeContext,
-            LocalizationSettings localizationSettings, IWorkContext workContext)
+            LocalizationSettings localizationSettings, IWorkContext workContext, IContactUsService contactUsService)
         {
             _cacheManager = cacheManager;
             _languageService = languageService;
             _storeContext = storeContext;
             _localizationSettings = localizationSettings;
             _workContext = workContext;
+            _contactUsService = contactUsService;
         }
 
         #region Methods
@@ -55,8 +59,16 @@ namespace CamprayPortal.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-
-
+                var contactus = new ContactUs()
+                {
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    Company = model.CompanyName,
+                    Content = model.Comments,
+                    Email = model.EmailAddress,
+                    PhoneNumber = model.PhoneNumber
+                };
+                _contactUsService.InsertContactUs(contactus);
                 return Json(1);
             }
             return Json(0);
