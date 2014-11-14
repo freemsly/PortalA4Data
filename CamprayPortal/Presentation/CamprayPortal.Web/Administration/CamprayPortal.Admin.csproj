@@ -165,6 +165,7 @@
     <Compile Include="MappingExtensions.cs" />
     <Compile Include="Infrastructure\AutoMapperStartupTask.cs" />
     <Compile Include="Models\Cms\RenderWidgetModel.cs" />
+    <Compile Include="Models\Common\ContactUsModel.cs" />
     <Compile Include="Models\Common\LanguageSelectorModel.cs" />
     <Compile Include="Models\Common\MenuNavigation.cs" />
     <Compile Include="Models\Common\SearchTermReportLineModel.cs" />
