@@ -143,6 +143,11 @@ namespace CamprayPortal.Web.Controllers
             return View(newsModel);
         }
 
+        public ActionResult ContractUs()
+        {
+            return TopicModelView();
+        } 
+         
 
         public ActionResult Careers()
         {

@@ -58,19 +58,23 @@
                     </ul>
                 </div>
                 
-                <div class="col-lg-1">
-                    <ul class="list-unstyled list-inline" style="padding: 10px 0 0 0;width: 150px;">
+
+                <div class="col-lg-2">
+                    <ul class="list-unstyled list-inline pull-left" style="padding: 10px 0 0 0;">
                         <li>
                             @Html.Action("LanguageSelector", "Common")
                         </li>
                     </ul>
-                </div>
-
-
-                <div class="col-lg-1">
                     <ul class="list-unstyled list-inline pull-right" style="padding: 15px 0 0 0;">
-                        <li><a href="@Url.Action("CustomerPortal", "Support")">Log In</a></li>
-                    </ul>
+                        @if (IsSectionDefined("LeftLink"))
+                        {
+                            @RenderSection("LeftLink")
+                        }
+                        else
+                        {
+                            <li><a href="@Url.Action("CustomerPortal", "Support")">Log In</a></li>
+                        }
+                    </ul> 
                 </div>
 
                 </div>

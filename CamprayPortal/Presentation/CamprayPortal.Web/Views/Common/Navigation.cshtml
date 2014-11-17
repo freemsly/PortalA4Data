@@ -43,6 +43,7 @@
                 @MenuNavigation("WhyA4Data", "AboutUs", T("common.whya4data").ToString())
                 @MenuNavigation("News", "AboutUs", T("common.news").ToString())
                 @MenuNavigation("Event", "AboutUs", T("common.event").ToString()) 
+                @MenuNavigation("ContractUs", "AboutUs", T("common.contactus").ToString())
                 @MenuNavigation("Careers", "AboutUs", T("common.careers").ToString())
             </ul>
         </li>
@@ -100,13 +101,6 @@
                 @MenuNavigation("Documentation", "Support", T("common.documentation").ToString())
                 @MenuNavigation("SoftwareVersion", "Support", T("common.softwareversion").ToString())
             </ul>
-        </li>
-        
-        
-        <li class="dropdown @TopMenu("ContractUs")">
-            <a class="dropdown-toggle disabled" data-toggle="dropdown" data-target="#" href="@Url.Action("HomePage", "ContractUs")">
-                @T("common.contactus")
-            </a>
         </li>
 
     </ul>
