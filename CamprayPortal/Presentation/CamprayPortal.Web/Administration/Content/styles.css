@@ -153,4 +153,6 @@ body .k-button{font-weight:400;color:inherit!important;text-decoration:none;}
 .customer-info-tab ul.option-list{padding:0px;margin:0px;}
 .customer-info-tab ul.option-list li{list-style:none;}
 .field-validation-error{color:red;}
-
+/* dropdown-menu style */
+.dropdown-menu li a { display:inline-block;width:auto} 
+.dropdown-menu li:hover{background:#eeeeee}
