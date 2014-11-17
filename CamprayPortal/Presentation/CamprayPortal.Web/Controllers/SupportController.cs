@@ -64,7 +64,7 @@ namespace CamprayPortal.Web.Controllers
                         //sign in new customer
                         _authenticationService.SignIn(customer, model.RememberMe);
 
-                            return RedirectToRoute("HomePage");
+                            return Redirect("/admin");
                     }
                     case CustomerLoginResults.CustomerNotExist:
                         ModelState.AddModelError("",
