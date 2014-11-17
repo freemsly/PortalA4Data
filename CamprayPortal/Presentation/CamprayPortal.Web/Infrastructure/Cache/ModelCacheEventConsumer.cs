@@ -215,7 +215,7 @@ namespace CamprayPortal.Web.Infrastructure.Cache
         /// {3} : current store ID
         /// </remarks>
         public const string PRODUCT_MANUFACTURERS_MODEL_KEY = "CamprayPortal.pres.product.manufacturers-{0}-{1}-{2}-{3}";
-        public const string PRODUCT_MANUFACTURERS_PATTERN_KEY = "CamprayPortal.pres.product.manufacturers";
+        public const string PRODUCT_MANUFACTURERS_PATTERN_KEY = "CamprayPortal.pres.product.manufacturers-{0}";
 
         /// <summary>
         /// Key for ProductSpecificationModel caching
