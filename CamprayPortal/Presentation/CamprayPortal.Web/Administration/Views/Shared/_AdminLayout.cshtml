@@ -181,7 +181,8 @@
                                     <i class="icon-user"></i>
                                     @if (currentCustomer != null && currentCustomer.IsRegistered())
                                     {
-                                        @Html.ActionLink(T("Admin.Header.Logout").Text, "Logout", "Customer", new { area = "" }, null)
+                                        @Html.ActionLink(T("Admin.Header.Logout").Text, "Logout", "Support", new { area = "" }, null)
+
                                     }
                                 </a>
                             </li>

@@ -3,6 +3,7 @@ using System.Web.Mvc;
 using CamprayPortal.Core.Domain.Customers;
 using CamprayPortal.Core.Domain.Localization;
 using CamprayPortal.Services.Authentication;
+using CamprayPortal.Services.Authentication.External;
 using CamprayPortal.Services.Customers;
 using CamprayPortal.Services.Localization;
 using CamprayPortal.Web.Models.Support;
@@ -91,6 +92,14 @@ namespace CamprayPortal.Web.Controllers
         }
 
 
+
+        public ActionResult Logout()
+        {
+            //external authentication
+            ExternalAuthorizerHelper.RemoveParameters();
+            _authenticationService.SignOut();
+            return RedirectToRoute("HomePage");
+        }
 
 
         public ActionResult Documentation()
