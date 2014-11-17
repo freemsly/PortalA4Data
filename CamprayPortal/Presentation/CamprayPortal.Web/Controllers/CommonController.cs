@@ -41,7 +41,6 @@ namespace CamprayPortal.Web.Controllers
         {
             this.Response.StatusCode = 404;
             this.Response.TrySkipIisCustomErrors = true;
-
             return View();
         }
 
@@ -132,6 +131,8 @@ namespace CamprayPortal.Web.Controllers
 
             return PartialView(model);
         }
+
+
         public ActionResult SetLanguage(int langid, string returnUrl = "")
         {
             var language = _languageService.GetLanguageById(langid);
@@ -165,4 +166,7 @@ namespace CamprayPortal.Web.Controllers
         #endregion
 
     }
+
+
+
 }

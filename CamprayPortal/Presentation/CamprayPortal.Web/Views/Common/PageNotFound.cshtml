@@ -1,5 +1,4 @@
-﻿@model CamprayPortal.Web.Models.Topics.TopicModel
-@{
+﻿@{
     Layout = "~/Views/Shared/_MainLayout.cshtml";
 }
 
@@ -22,27 +21,20 @@
 
 <div class="main">
     <div class="container">
-        <ul class="breadcrumb">
-            <li><a href="/">@T("common.home")</a></li>
-            <li><a href="@Url.Action("HomePage","AboutUs")">@T("common.aboutus")</a></li>
-            <li class="active">@T("common.contactus")</li> 
-        </ul>
         <!-- BEGIN SIDEBAR & CONTENT -->
         <div class="row margin-bottom-40">
             <!-- BEGIN CONTENT -->
             <div class="col-md-12 col-sm-12">
-                <div class="content-page">
-                    <div class="row">
-                        <!-- BEGIN LEFT SIDEBAR -->
-                        <div class="col-md-8 col-sm-8 blog-posts">
-                            @Html.Raw(Model.Body)
-                        </div>
-                        <!-- END LEFT SIDEBAR -->
-                        <!-- BEGIN RIGHT SIDEBAR -->
-                        <div class="col-md-4 col-sm-4 blog-sidebar">
-                            @Html.Action("ContactUs", "Common")
-                        </div>
-                        <!-- END RIGHT SIDEBAR -->
+                <div class="content-page page-404">
+                    <div class="number">
+                        404
+                    </div>
+                    <div class="details">
+                        <h3>Oops!  You're lost.</h3>
+                        <p>
+                            We can not find the page you're looking for.<br>
+                            <a href="/" class="link">Return home</a> or try the search bar below.
+                        </p>
                     </div>
                 </div>
             </div>

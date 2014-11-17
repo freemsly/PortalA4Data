@@ -144,12 +144,6 @@ namespace CamprayPortal.Web.Controllers
         }
 
 
-
-        public ActionResult ContactUs()
-        {
-            return TopicModelView();
-        }
-
         public ActionResult Careers()
         {
             return TopicModelView();
