@@ -285,11 +285,22 @@ namespace CamprayPortal.Web.Controllers
             }
             else
             {
-                query =
-                    query.Where(
-                        d =>
-                            (d.Title != null && d.Title.Contains(searchkey)) ||
-                            (d.Content != null && d.Content.Contains(searchkey)));
+                var searchFullText = System.Configuration.ConfigurationManager.AppSettings["SearchFullText"];
+                if (bool.Parse(searchFullText))
+                {
+                    query =
+                        query.Where(
+                            d =>
+                                (d.Title != null && d.Title.Contains(searchkey)) ||
+                                (d.Content != null && d.Content.Contains(searchkey)));
+                }
+                else
+                {
+                    query =
+                        query.Where(
+                            d => d.Content != null && d.Content.Contains(searchkey));
+                }
+
                 ViewBag.Searchkey = searchkey;
             }
 
