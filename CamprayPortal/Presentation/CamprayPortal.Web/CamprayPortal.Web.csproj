@@ -194,7 +194,6 @@
     <Compile Include="Controllers\KeepAliveController.cs" />
     <Compile Include="Controllers\InstallController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\PartnerController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\SolutionsController.cs" />
     <Compile Include="Controllers\SupportController.cs" />
@@ -216,17 +215,14 @@
     <Compile Include="Models\Common\LanguageSelectorModel.cs" />
     <Compile Include="Models\Common\MenuNavigation.cs" />
     <Compile Include="Models\Common\MessageUsModel.cs" />
-    <Compile Include="Models\Common\SearchResultItem.cs" />
     <Compile Include="Models\Home\HomePageModel.cs" />
     <Compile Include="Models\Install\InstallModel.cs" />
     <Compile Include="Models\Solutions\BenchmarkViewModel.cs" />
     <Compile Include="Models\Support\LoginModel.cs" />
-    <Compile Include="Models\Support\RegisterModel.cs" />
     <Compile Include="Models\Topics\TopicModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validators\Common\ContactUsValidator.cs" />
     <Compile Include="Validators\Common\MessageUsValidator.cs" />
-    <Compile Include="Validators\Common\RegisterValidator.cs" />
     <Compile Include="Validators\Install\InstallValidator.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -488,7 +484,9 @@
     <Content Include="Content\assets\frontend\layout\img\icons\toggler.png" />
     <Content Include="Content\assets\frontend\layout\img\icons\top-search-icon.png" />
     <Content Include="Content\assets\frontend\layout\img\layerslider-arrows.png" />
+    <Content Include="Content\assets\frontend\layout\img\logos\4adata.png" />
     <Content Include="Content\assets\frontend\layout\img\logos\logo-corp-red.png" />
+    <Content Include="Content\assets\frontend\layout\img\logos\logo_admin.png" />
     <Content Include="Content\assets\frontend\layout\img\new.png" />
     <Content Include="Content\assets\frontend\layout\img\payments\american-express.jpg" />
     <Content Include="Content\assets\frontend\layout\img\payments\fa-angle-right-info.png" />
@@ -4235,9 +4233,6 @@
     <Content Include="Views\Common\LanguageSelector.cshtml" />
     <Content Include="Views\Common\PageNotFound.cshtml" />
     <Content Include="Views\AboutUs\ContractUs.cshtml" />
-    <Content Include="Views\Common\SearchResult.cshtml" />
-    <Content Include="Views\Partner\Homepage.cshtml" />
-    <Content Include="Views\Support\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\assets\global\plugins\jquery-file-upload\server\php\files\thumbnail\" />
