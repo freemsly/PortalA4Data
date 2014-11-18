@@ -221,10 +221,12 @@
     <Compile Include="Models\Install\InstallModel.cs" />
     <Compile Include="Models\Solutions\BenchmarkViewModel.cs" />
     <Compile Include="Models\Support\LoginModel.cs" />
+    <Compile Include="Models\Support\RegisterModel.cs" />
     <Compile Include="Models\Topics\TopicModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validators\Common\ContactUsValidator.cs" />
     <Compile Include="Validators\Common\MessageUsValidator.cs" />
+    <Compile Include="Validators\Common\RegisterValidator.cs" />
     <Compile Include="Validators\Install\InstallValidator.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -4235,6 +4237,7 @@
     <Content Include="Views\AboutUs\ContractUs.cshtml" />
     <Content Include="Views\Common\SearchResult.cshtml" />
     <Content Include="Views\Partner\Homepage.cshtml" />
+    <Content Include="Views\Support\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\assets\global\plugins\jquery-file-upload\server\php\files\thumbnail\" />
