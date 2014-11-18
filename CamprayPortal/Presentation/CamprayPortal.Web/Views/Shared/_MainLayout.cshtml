@@ -21,20 +21,13 @@
 <!-- Head END -->
 <!-- Body BEGIN -->
 <body class="corporate">
+    
     <!-- BEGIN STYLE CUSTOMIZER -->
     <div class="color-panel hidden-sm">
         <div class="color-mode-icons icon-color"></div>
         <div class="color-mode-icons icon-color-close"></div>
         <div class="color-mode">
-            <p>THEME COLOR</p>
-            <ul class="inline">
-                <li class="color-red current color-default" data-style="red"></li>
-                <li class="color-blue" data-style="blue"></li>
-                <li class="color-green" data-style="green"></li>
-                <li class="color-orange" data-style="orange"></li>
-                <li class="color-gray" data-style="gray"></li>
-                <li class="color-turquoise" data-style="turquoise"></li>
-            </ul>
+            @Html.Action("ContactUs", "Common")
         </div>
     </div>
     <!-- END BEGIN STYLE CUSTOMIZER -->
@@ -77,7 +70,7 @@
                     </ul> 
                 </div>
 
-                </div>
+            </div>
 
             <div class="row">
                 <div class="search-box pull-left" style="width: 300px;padding: 19px 12px 20px;"  >
@@ -95,9 +88,9 @@
                 @Html.Action("Navigation", "Common")
                 <!-- END NAVIGATION -->
             </div>
-            </div>
-            
         </div>
+            
+    </div>
     <!-- Header END -->
  
     @RenderBody()
@@ -108,7 +101,7 @@
     <div class="pre-footer">
         <div class="container">
             <div class="row margin-bottom-20">
-             @Html.Action("SitMap", "Common")
+                @Html.Action("SitMap", "Common")
             </div>
         </div>
     </div>
