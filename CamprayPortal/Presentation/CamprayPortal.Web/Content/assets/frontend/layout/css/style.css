@@ -3027,26 +3027,20 @@ Styler Panel
 }
 .color-mode label {
   color: #cfcfcf;
-  border-top: 1px solid #585858;
-  padding: 10px 10px 0;
-  margin: 0 5px;
   display: block;
+    padding: 5px 10px;
 }
 .color-mode label span {  
   text-transform: uppercase;
 }
 .color-mode label > span {
   display: inline-block;
-  width: 85px;
 }
 .color-mode label > select {
   margin-top: 5px;
   text-transform: lowercase;
 }
-.color-mode label  span.color-mode-label {
-  top: 2px;
-  position: relative;
-}
+
 
 .fancybox-overlay {
   z-index: 99999;

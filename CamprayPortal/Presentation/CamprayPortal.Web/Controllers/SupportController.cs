@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Web.Mvc;
+using CamprayPortal.Core;
 using CamprayPortal.Core.Domain.Customers;
 using CamprayPortal.Core.Domain.Localization;
 using CamprayPortal.Services.Authentication;
@@ -18,7 +19,8 @@ namespace CamprayPortal.Web.Controllers
         private readonly ILocalizationService _localizationService;
         private readonly ICustomerService _customerService;
         private readonly ICustomerRegistrationService _customerRegistrationService;
-
+        private readonly IWorkContext _workContext;
+        private readonly CustomerSettings _customerSettings;
         #endregion
 
         #region Ctor
@@ -26,12 +28,13 @@ namespace CamprayPortal.Web.Controllers
         public SupportController(IAuthenticationService authenticationService,
             ILocalizationService localizationService,
             ICustomerService customerService,
-            ICustomerRegistrationService customerRegistrationService
-          )
+            ICustomerRegistrationService customerRegistrationService, IWorkContext workContext, CustomerSettings customerSettings)
         {
             this._authenticationService = authenticationService;
             this._customerService = customerService;
             this._customerRegistrationService = customerRegistrationService;
+            _workContext = workContext;
+            _customerSettings = customerSettings;
             this._localizationService = localizationService;
         }
 
@@ -100,6 +103,53 @@ namespace CamprayPortal.Web.Controllers
             _authenticationService.SignOut();
             return RedirectToRoute("HomePage");
         }
+
+
+
+        public ActionResult Register()
+        {
+            var model = new RegisterModel();
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Register(RegisterModel model, string returnUrl) 
+        {
+            if (_workContext.CurrentCustomer.IsRegistered())
+            {
+                //Already registered customer. 
+                _authenticationService.SignOut();
+
+                //Save a new record
+                _workContext.CurrentCustomer = _customerService.InsertGuestCustomer();
+            }
+            var customer = _workContext.CurrentCustomer;
+
+            if (ModelState.IsValid)
+            {
+
+                bool isApproved = _customerSettings.UserRegistrationType == UserRegistrationType.Standard;
+                var registrationRequest = new CustomerRegistrationRequest(customer, model.Email,
+                    model.Email, model.Password, _customerSettings.DefaultPasswordFormat, isApproved);
+                var registrationResult = _customerRegistrationService.RegisterCustomer(registrationRequest);
+                if (registrationResult.Success)
+                {
+
+                    //login customer now
+                    if (isApproved)
+                        _authenticationService.SignIn(customer, true);
+                    return Redirect("/");
+                }
+                else
+                {
+                    foreach (var error in registrationResult.Errors)
+                        ModelState.AddModelError("", error);
+                }
+            }
+            return View(model);
+        }
+
 
 
         public ActionResult Documentation()
