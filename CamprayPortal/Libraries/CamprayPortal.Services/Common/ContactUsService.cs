@@ -1,4 +1,5 @@
-﻿using CamprayPortal.Core;
+﻿using System.Linq;
+using CamprayPortal.Core;
 using CamprayPortal.Core.Caching;
 using CamprayPortal.Core.Data;
 using CamprayPortal.Core.Domain.Common;
@@ -127,7 +128,7 @@ namespace CamprayPortal.Services.Common
         public virtual IPagedList<ContactUs> GetAllContactUs(int storeId,
             int pageIndex, int pageSize, bool showHidden = false)
         {
-            var query = _contactUsRepository.Table;
+            var query = _contactUsRepository.Table.OrderBy(d=>d.CreatedOnUtc);
 
             var contacts = new PagedList<ContactUs>(query, pageIndex, pageSize);
             return contacts;

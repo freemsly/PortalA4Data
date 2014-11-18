@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using CamprayPortal.Admin.Models.News;
+using CamprayPortal.Core.Caching;
 using CamprayPortal.Core.Domain.Customers;
 using CamprayPortal.Core.Domain.News;
 using CamprayPortal.Services.Helpers;
@@ -200,6 +201,8 @@ namespace CamprayPortal.Admin.Controllers
                 SaveStoreMappings(newsItem, model);
 
                 SuccessNotification(_localizationService.GetResource("Admin.ContentManagement.News.NewsItems.Added"));
+                var cacheManager = new MemoryCacheManager();
+                cacheManager.Clear();
                 return continueEditing ? RedirectToAction("Edit", new { id = newsItem.Id }) : RedirectToAction("List");
             }
 
@@ -257,7 +260,8 @@ namespace CamprayPortal.Admin.Controllers
                 SaveStoreMappings(newsItem, model);
 
                 SuccessNotification(_localizationService.GetResource("Admin.ContentManagement.News.NewsItems.Updated"));
-
+                var cacheManager = new MemoryCacheManager();
+                cacheManager.Clear();
                 if (continueEditing)
                 {
                     //selected tab
@@ -290,7 +294,8 @@ namespace CamprayPortal.Admin.Controllers
                 return RedirectToAction("List");
 
             _newsService.DeleteNews(newsItem);
-
+            var cacheManager = new MemoryCacheManager();
+            cacheManager.Clear();
             SuccessNotification(_localizationService.GetResource("Admin.ContentManagement.News.NewsItems.Deleted"));
             return RedirectToAction("List");
         }

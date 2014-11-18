@@ -34,33 +34,22 @@
             <div class="col-md-12 col-sm-12">
                 <div class="content-page">
                     <div class="row">
-                        <!-- BEGIN LEFT SIDEBAR -->
-                        <div class="col-md-8 col-sm-8 blog-posts">
-                            
-                            <ul class="nav nav-tabs">
-                                <li class="active"><a data-toggle="tab" href="#tab-1">Overview</a></li>
-                                <li class=""><a data-toggle="tab" href="#tab-2">Mobile</a></li>
-                                <li class=""><a data-toggle="tab" href="#tab-3">Speed Time</a></li>
-                            </ul>
-                            <div class="tab-content">
-                                <div id="tab-1" class="tab-pane row fade active in">
-                                   @Html.Raw(Model.Overview.Body)
-                                </div>
-                                <div id="tab-2" class="tab-pane row fade">
-                                    @Html.Raw(Model.Mobile.Body)
-                                </div>
-                                <div id="tab-3" class="tab-pane fade">
-                                    @Html.Raw(Model.SpeedTime.Body)
-                                </div>
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a data-toggle="tab" href="#tab-1">Overview</a></li>
+                            <li class=""><a data-toggle="tab" href="#tab-2">Mobile</a></li>
+                            <li class=""><a data-toggle="tab" href="#tab-3">Speed Time</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div id="tab-1" class="tab-pane row fade active in">
+                                @Html.Raw(Model.Overview.Body)
                             </div>
-
+                            <div id="tab-2" class="tab-pane row fade">
+                                @Html.Raw(Model.Mobile.Body)
+                            </div>
+                            <div id="tab-3" class="tab-pane fade">
+                                @Html.Raw(Model.SpeedTime.Body)
+                            </div>
                         </div>
-                        <!-- END LEFT SIDEBAR -->
-                        <!-- BEGIN RIGHT SIDEBAR -->
-                        <div class="col-md-4 col-sm-4 blog-sidebar">
-                            @Html.Action("ContactUs", "Common")
-                        </div>
-                        <!-- END RIGHT SIDEBAR -->
                     </div>
                 </div>
             </div>

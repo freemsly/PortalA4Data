@@ -1,6 +1,5 @@
 ﻿@model CamprayPortal.Web.Models.Topics.TopicModel
 @{
-    ViewBag.Title = "MessageChairman";
     Layout = "~/Views/Shared/_MainLayout.cshtml";
 }
 
@@ -21,13 +20,11 @@
     <!-- END PAGE LEVEL JAVASCRIPTS -->
 }
 
-
 <div class="main">
     <div class="container">
         <ul class="breadcrumb">
             <li><a href="/">@T("common.home")</a></li>
-            <li><a href="@Url.Action("HomePage","AboutUs")">@T("common.aboutus")</a></li>
-            <li class="active">@T("common.messagefromchairman")</li>
+            <li class="active">@T("common.partner")</li>
         </ul>
         <!-- BEGIN SIDEBAR & CONTENT -->
         <div class="row margin-bottom-40">
@@ -35,13 +32,21 @@
             <div class="col-md-12 col-sm-12">
                 <div class="content-page">
                     <div class="row">
-                        <div class="col-md-12">
+                        <!-- BEGIN LEFT SIDEBAR -->
+                        <div class="col-md-8 col-sm-8 blog-posts">
                             @Html.Raw(Model.Body)
                         </div>
+                        <!-- END LEFT SIDEBAR -->
+                        <!-- BEGIN RIGHT SIDEBAR -->
+                        <div class="col-md-4 col-sm-4 blog-sidebar">
+                            @Html.Action("ContactUs", "Common")
+                        </div>
+                        <!-- END RIGHT SIDEBAR -->
                     </div>
                 </div>
             </div>
+            <!-- END CONTENT -->
         </div>
+        <!-- END SIDEBAR & CONTENT -->
     </div>
-    <!-- END CONTENT -->
 </div>

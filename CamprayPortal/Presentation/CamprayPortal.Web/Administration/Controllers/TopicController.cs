@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Web.Mvc;
 using CamprayPortal.Admin.Models.Topics;
+using CamprayPortal.Core.Caching;
 using CamprayPortal.Core.Domain.Topics;
 using CamprayPortal.Services.Localization;
 using CamprayPortal.Services.Security;
@@ -223,7 +224,8 @@ namespace CamprayPortal.Admin.Controllers
                 SaveStoreMappings(topic, model);
                 //locales
                 UpdateLocales(topic, model);
-
+                var cacheManager = new MemoryCacheManager();
+                cacheManager.Clear();
                 SuccessNotification(_localizationService.GetResource("Admin.ContentManagement.Topics.Added"));
                 return continueEditing ? RedirectToAction("Edit", new { id = topic.Id }) : RedirectToAction("List");
             }
@@ -292,7 +294,8 @@ namespace CamprayPortal.Admin.Controllers
                 UpdateLocales(topic, model);
                 
                 SuccessNotification(_localizationService.GetResource("Admin.ContentManagement.Topics.Updated"));
-                
+                var cacheManager = new MemoryCacheManager();
+                cacheManager.Clear();
                 if (continueEditing)
                 {
                     //selected tab
@@ -328,7 +331,8 @@ namespace CamprayPortal.Admin.Controllers
                 return RedirectToAction("List");
 
             _topicService.DeleteTopic(topic);
-
+            var cacheManager = new MemoryCacheManager();
+            cacheManager.Clear();
             SuccessNotification(_localizationService.GetResource("Admin.ContentManagement.Topics.Deleted"));
             return RedirectToAction("List");
         }

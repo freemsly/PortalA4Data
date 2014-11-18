@@ -32,13 +32,8 @@
         <div class="col-md-12 col-sm-12">
             <div class="content-page">
                 <div class="row">
-                    <div class="col-md-8 col-sm-8 blog-posts">
-                        <h3>@Model.Title</h3>
-                        @Html.Raw(Model.Body)
-                    </div>
-                    <div class="col-md-4 col-sm-4 blog-sidebar">
-                        @Html.Action("ContactUs", "Common")
-                    </div>
+                    <h3>@Model.Title</h3>
+                    @Html.Raw(Model.Body)
                 </div>
             </div>
             <!-- END CONTENT -->

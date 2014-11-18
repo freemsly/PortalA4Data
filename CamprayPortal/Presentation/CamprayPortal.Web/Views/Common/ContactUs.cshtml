@@ -2,62 +2,69 @@
     Layout = null;
 }
 
-<div class="pricing hover-effect">
-    <div class="pricing-head">
-        <h3>
-            @T("common.contactus")
-        </h3>
-    </div>
-    <form id="messageus" role="form">
-        <div class="form-body">
-            <div class="pricing-content" style="padding: 15px;">
-                <div class="form-group">
-                    <label>@T("common.contactus.firstname")</label><span class="require">*</span>
-                    <input type="text" class="form-control" name="FirstName" placeholder="@T("common.contactus.firstname")">
-                </div>
 
-                <div class="form-group">
-                    <label>@T("common.contactus.lastname")</label><span class="require">*</span>
-                    <input type="text" class="form-control" name="LastName" placeholder="@T("common.contactus.lastname")">
-                </div>
+    <form id="messageus" role="form" class="form-horizontal" style="padding: 5px;">
 
-                <div class="form-group">
-                    <label>@T("common.contactus.companyname")</label><span class="require">*</span>
-                    <input type="text" class="form-control" name="CompanyName" placeholder="@T("common.contactus.companyname")">
-                </div>
-
-                <div class="form-group">
-                    <label>@T("common.contactus.emailaddress")</label><span class="require">*</span>
-                    <input type="text" class="form-control" name="EmailAddress" placeholder="@T("common.contactus.emailaddress")">
-                </div>
-
-                <div class="form-group">
-                    <label>@T("common.contactus.phonenumber")</label>
-                    <input type="text" class="form-control" name="PhoneNumber" placeholder="@T("common.contactus.phonenumber")">
-                </div>
-
-                <div class="form-group">
-                    <label>@T("common.contactus.Comments")</label>
-                    <textarea class="form-control" name="Comments" rows="5"></textarea>
-                </div>
-
-            </div>
-            <div class="pricing-footer">
-                <button type="button" id="messageussubmit" class="btn btn-primary">Submit</button>
+        <div class="form-group">
+            <label class="col-lg-4">@T("common.contactus.firstname") <span class="require">*</span></label>
+            <div class="col-lg-8" style="padding-left: 0">
+                <input type="text" class="form-control input-sm" name="FirstName" placeholder="@T("common.contactus.firstname")">
             </div>
         </div>
-    </form>
+        
+        <div class="form-group">
+            <label class="col-lg-4">@T("common.contactus.lastname") <span class="require">*</span></label>
+            <div class="col-lg-8" style="padding-left: 0">
+                <input type="text" class="form-control input-sm" name="LastName" placeholder="@T("common.contactus.lastname")">>
+            </div>
         </div>
+        
+        <div class="form-group">
+            <label class="col-lg-4">@T("common.contactus.companyname") <span class="require">*</span></label>
+            <div class="col-lg-8" style="padding-left: 0">
+                <input type="text" class="form-control input-sm" name="CompanyName" placeholder="@T("common.contactus.companyname")">
+            </div>
+        </div>
+        
+        
+        <div class="form-group">
+            <label class="col-lg-4">@T("common.contactus.emailaddress") <span class="require">*</span></label>
+            <div class="col-lg-8" style="padding-left: 0">
+                <input type="text" class="form-control input-sm" name="EmailAddress" placeholder="@T("common.contactus.emailaddress")">
+            </div>
+        </div>
+        
+        
+        <div class="form-group">
+            <label class="col-lg-4">@T("common.contactus.phonenumber")</label>
+            <div class="col-lg-8" style="padding-left: 0">
+                <input type="text" class="form-control input-sm" name="PhoneNumber" placeholder="@T("common.contactus.phonenumber")">
+            </div>
+        </div>
+        
+        
+        <div class="form-group">
+            <label class="col-lg-4">@T("common.contactus.Comments")</label>
+            <div class="col-lg-8" style="padding-left: 0">
+                <textarea class="form-control input-sm" name="Comments" rows="5"></textarea>
+            </div>
+        </div>
+        
+        <div class="pricing-footer">
+            <button type="button" id="messageussubmit" class="btn btn-primary">Submit</button>
+        </div>
+</form>
+        
 
 <script type="text/javascript">
     
     function checkEmpty(formname) {
         var valueinput = $("#messageus [name=" + formname + "]");
         if (valueinput.val().length == 0) {
-            valueinput.parent().attr("class", "form-group has-error");
+            valueinput.parent().parent().attr("class", "form-group has-error");
             return false;
         } else {
-            valueinput.parent().attr("class", "form-group");
+            valueinput.parent().parent().attr("class", "form-group");
             return true;
         }
     }

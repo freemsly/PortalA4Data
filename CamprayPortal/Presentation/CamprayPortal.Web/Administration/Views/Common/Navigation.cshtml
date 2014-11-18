@@ -19,7 +19,7 @@
         }
         else
         {
-            return Model.Action == siteMapNode.ActionName && Model.Controller == siteMapNode.ControllerName ? "active" : String.Empty;
+            return Model.Controller == siteMapNode.ControllerName ? "active" : String.Empty;
         }
     }
 

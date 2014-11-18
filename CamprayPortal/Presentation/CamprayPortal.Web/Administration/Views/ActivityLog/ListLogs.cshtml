@@ -1,4 +1,4 @@
-﻿@model ActivityLogSearchModel
+﻿
 @{
     var defaultGridPageSize = EngineContext.Current.Resolve<CamprayPortal.Core.Domain.Common.AdminAreaSettings>().DefaultGridPageSize;
     var gridPageSizes = EngineContext.Current.Resolve<CamprayPortal.Core.Domain.Common.AdminAreaSettings>().GridPageSizes;
@@ -8,54 +8,13 @@
 }
 @using (Html.BeginForm())
 {
-    <div class="section-header">
-        <div class="title">
-            <img src="@Url.Content("~/Administration/Content/images/ico-configuration.png")" alt="" />
-            @T("Admin.Configuration.ActivityLog.ActivityLog")
-        </div>
-        <div class="options">
-            <a href="@Url.Action("ClearAll")" class="k-button">@T("Admin.Common.Clear")</a>
-        </div>
-    </div>
-    <p>
-    </p>
-    <table width="100%" class="adminContent customer-info-tab">
-        <tr>
-            <td class="adminTitle">
-                @Html.NopLabelFor(model => model.CreatedOnFrom):
-            </td>
-            <td class="adminData">
-                @Html.EditorFor(model => model.CreatedOnFrom)
-            </td>
-        </tr>
-        <tr>
-            <td class="adminTitle">
-                @Html.NopLabelFor(model => model.CreatedOnTo):
-            </td>
-            <td class="adminData">
-                @Html.EditorFor(model => model.CreatedOnTo)
-            </td>
-        </tr>
-        <tr>
-            <td class="adminTitle">
-                @Html.NopLabelFor(model => model.ActivityLogTypeId):
-            </td>
-            <td class="adminData">
-                @Html.DropDownList("ActivityLogTypeId", Model.ActivityLogType)
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2">
-                <input type="button" id="btnSearch" class="k-button" value="@T("Admin.Common.Search")" />
-            </td>
-        </tr>
-    </table>
+
     <table class="adminContent">
         <tr>
             <td>
                 <div id="activityLog-grid"></div>
                 <script>
-                    $(document).ready(function () {
+                    $(document).ready(function() {
                         $("#activityLog-grid").kendoGrid({
                             dataSource: {
                                 type: "json",
@@ -63,8 +22,7 @@
                                     read: {
                                         url: "@Html.Raw(Url.Action("ListLogs", "ActivityLog"))",
                                         type: "POST",
-                                        dataType: "json",
-                                        data: additionalData
+                                        dataType: "json"
                                     },
                                     destroy: {
                                         url: "@Html.Raw(Url.Action("AcivityLogDelete", "ActivityLog"))",
@@ -82,7 +40,7 @@
                                             //do not implicitly specify all fields
                                             //we do it only for fields which implicitly require it
                                             //otherwise, they'll be formatted wrong way
-                                            CreatedOn: {type: "date" }
+                                            CreatedOnUtc: {type: "date" }
                                         }
                                     }
                                 },
@@ -101,33 +59,43 @@
                                 pageSizes: [@(gridPageSizes)]
                             },
                             editable: {
-                                confirmation: false,
+                                confirmation: true,
                                 mode: "inline"
                             },
                             scrollable: false,
-                            columns: [{
-                                field: "ActivityLogTypeName",
-                                title: "@T("Admin.Configuration.ActivityLog.ActivityLog.Fields.ActivityLogType")",
-                                width: 200
-                            }, {
-                                field: "CustomerId",
-                                title: "@T("Admin.Configuration.ActivityLog.ActivityLog.Fields.Customer")",
-                                width: 100,
-                                template: '<a href="@Url.Content("~/Admin/Customer/Edit/")#=CustomerId#">#:CustomerEmail#</a>'
-                            }, {
-                                field: "Comment",
-                                title: "@T("Admin.Configuration.ActivityLog.ActivityLog.Fields.Comment")"
-                            }, {
-                                field: "CreatedOn",
-                                title: "@T("Admin.System.Log.Fields.CreatedOn")",
-                                width: 200,
-                                type: "date",
-                                format: "{0:G}"
-                            }, {
-                                command: { name: "destroy", text: "@T("Admin.Common.Delete")" }, 
+                            columns: [
+                                {
+                                    field: "FirstName",
+                                    title: "@T("FirstName")",
+                                }, {
+                                    field: "LastName",
+                                    title: "@T("LastName")",
+                                }, {
+                                    field: "Email",
+                                    title: "@T("Email")"
+                                },
+                                {
+                                    field: "Company",
+                                    title: "@T("Company")"
+                                }, {
+                                    field: "PhoneNumber",
+                                    title: "@T("PhoneNumber")"
+                                }, {
+                                    field: "Content",
+                                    title: "@T("Content")"
+                                }, 
+                                {
+                                    field: "CreatedOnUtc",
+                                    title: "@T("CreatedOnUtc")",
+                                    width: 200,
+                                    type: "date",
+                                    format: "{0:G}"
+                                }, {
+                                    command: { name: "destroy", text: "@T("Admin.Common.Delete")" }, 
                                 title: "@T("Admin.Common.Delete")",
-                                width: 100
-                            }]
+                        width: 100
+                    }
+                            ]
                         });
                     });
                 </script>
@@ -145,9 +113,6 @@
 
                     function additionalData() {
                         return {
-                            CreatedOnFrom: $('#@Html.FieldIdFor(model => model.CreatedOnFrom)').val(),
-                            CreatedOnTo: $('#@Html.FieldIdFor(model => model.CreatedOnTo)').val(),
-                            ActivityLogTypeId: $('#ActivityLogTypeId').val()
                         };
                     }
                 </script>

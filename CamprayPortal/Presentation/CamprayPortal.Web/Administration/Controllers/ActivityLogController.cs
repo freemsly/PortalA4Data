@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using CamprayPortal.Admin.Models.Logging;
+using CamprayPortal.Core;
+using CamprayPortal.Services.Common;
 using CamprayPortal.Services.Helpers;
 using CamprayPortal.Services.Localization;
 using CamprayPortal.Services.Logging;
@@ -20,19 +22,22 @@ namespace CamprayPortal.Admin.Controllers
         private readonly IDateTimeHelper _dateTimeHelper;
         private readonly ILocalizationService _localizationService;
         private readonly IPermissionService _permissionService;
-
+        private readonly IContactUsService _contactUsService;
+        private readonly IStoreContext _storeContext;
         #endregion Fields
 
         #region Constructors
 
         public ActivityLogController(ICustomerActivityService customerActivityService,
             IDateTimeHelper dateTimeHelper, ILocalizationService localizationService,
-            IPermissionService permissionService)
+            IPermissionService permissionService, IContactUsService contactUsService, IStoreContext storeContext)
 		{
             this._customerActivityService = customerActivityService;
             this._dateTimeHelper = dateTimeHelper;
             this._localizationService = localizationService;
             this._permissionService = permissionService;
+            _contactUsService = contactUsService;
+            _storeContext = storeContext;
 		}
 
 		#endregion 
@@ -78,66 +83,35 @@ namespace CamprayPortal.Admin.Controllers
         {
             if (!_permissionService.Authorize(StandardPermissionProvider.ManageActivityLog))
                 return AccessDeniedView();
-
-            var activityLogSearchModel = new ActivityLogSearchModel();
-            activityLogSearchModel.ActivityLogType.Add(new SelectListItem()
-            {
-                Value = "0",
-                Text = "All"
-            });
-
-
-            foreach (var at in _customerActivityService.GetAllActivityTypes()
-                .Select(x =>
-                {
-                    return new SelectListItem()
-                    {
-                        Value = x.Id.ToString(),
-                        Text = x.Name
-                    };
-                }))
-                activityLogSearchModel.ActivityLogType.Add(at);
-            return View(activityLogSearchModel);
+            return View();
         }
 
         [HttpPost]
-        public ActionResult ListLogs(DataSourceRequest command, ActivityLogSearchModel model)
+        public ActionResult ListLogs(DataSourceRequest command)
         {
             if (!_permissionService.Authorize(StandardPermissionProvider.ManageActivityLog))
                 return AccessDeniedView();
-
-            DateTime? startDateValue = (model.CreatedOnFrom == null) ? null
-                : (DateTime?)_dateTimeHelper.ConvertToUtcTime(model.CreatedOnFrom.Value, _dateTimeHelper.CurrentTimeZone);
-
-            DateTime? endDateValue = (model.CreatedOnTo == null) ? null
-                            : (DateTime?)_dateTimeHelper.ConvertToUtcTime(model.CreatedOnTo.Value, _dateTimeHelper.CurrentTimeZone).AddDays(1);
-
-            var activityLog = _customerActivityService.GetAllActivities(startDateValue, endDateValue,null, model.ActivityLogTypeId, command.Page - 1, command.PageSize);
+            var activityLog = _contactUsService.GetAllContactUs(0, command.Page - 1, command.PageSize);
             var gridModel = new DataSourceResult()
             {
-                Data = activityLog.Select(x =>
-                {
-                    var m = x.ToModel();
-                    m.CreatedOn = _dateTimeHelper.ConvertToUserTime(x.CreatedOnUtc, DateTimeKind.Utc);
-                    return m;
-                    
-                }),
+                Data = activityLog,
                 Total = activityLog.TotalCount
             };
             return Json(gridModel);
         }
+
 
         public ActionResult AcivityLogDelete(int id)
         {
             if (!_permissionService.Authorize(StandardPermissionProvider.ManageActivityLog))
                 return AccessDeniedView();
 
-            var activityLog = _customerActivityService.GetActivityById(id);
+            var activityLog = _contactUsService.GetContactUsById(id);
             if (activityLog == null)
             {
                 throw new ArgumentException("No activity log found with the specified id");
             }
-            _customerActivityService.DeleteActivity(activityLog);
+            _contactUsService.DeleteContactUs(activityLog);
 
             return new NullJsonResult();
         }
