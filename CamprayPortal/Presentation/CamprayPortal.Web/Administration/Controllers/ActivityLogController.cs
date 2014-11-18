@@ -100,17 +100,18 @@ namespace CamprayPortal.Admin.Controllers
             return Json(gridModel);
         }
 
+
         public ActionResult AcivityLogDelete(int id)
         {
             if (!_permissionService.Authorize(StandardPermissionProvider.ManageActivityLog))
                 return AccessDeniedView();
 
-            var activityLog = _customerActivityService.GetActivityById(id);
+            var activityLog = _contactUsService.GetContactUsById(id);
             if (activityLog == null)
             {
                 throw new ArgumentException("No activity log found with the specified id");
             }
-            _customerActivityService.DeleteActivity(activityLog);
+            _contactUsService.DeleteContactUs(activityLog);
 
             return new NullJsonResult();
         }

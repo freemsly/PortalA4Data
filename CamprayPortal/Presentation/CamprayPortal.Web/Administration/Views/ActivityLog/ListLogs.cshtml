@@ -33,7 +33,16 @@
                                 schema: {
                                     data: "Data",
                                     total: "Total",
-                                    errors: "Errors"
+                                    errors: "Errors",
+                                    model: {
+                                        id: "Id",
+                                        fields: {
+                                            //do not implicitly specify all fields
+                                            //we do it only for fields which implicitly require it
+                                            //otherwise, they'll be formatted wrong way
+                                            CreatedOnUtc: {type: "date" }
+                                        }
+                                    }
                                 },
                                 error: function(e) {
                                     display_kendoui_grid_error(e);
@@ -50,7 +59,7 @@
                                 pageSizes: [@(gridPageSizes)]
                             },
                             editable: {
-                                confirmation: false,
+                                confirmation: true,
                                 mode: "inline"
                             },
                             scrollable: false,
@@ -81,7 +90,11 @@
                                     width: 200,
                                     type: "date",
                                     format: "{0:G}"
-                                }
+                                }, {
+                                    command: { name: "destroy", text: "@T("Admin.Common.Delete")" }, 
+                                title: "@T("Admin.Common.Delete")",
+                        width: 100
+                    }
                             ]
                         });
                     });
