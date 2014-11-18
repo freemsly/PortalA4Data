@@ -89,8 +89,12 @@
                 @T("common.downloads")
             </a>
         </li>
-
-        <li class="dropdown @TopMenu("Support")">
+        <li class="dropdown @TopMenu("Partner")">
+            <a class="dropdown-toggle disabled" data-toggle="dropdown" data-target="#" href="@Url.Action("HomePage", "Partner")">
+                @T("common.Partner")
+            </a>
+        </li>
+        @*<li class="dropdown @TopMenu("Support")">
             <a class="dropdown-toggle disabled" data-toggle="dropdown" data-target="#" href="@Url.Action("HomePage", "Support")">
                 @T("common.support")
             </a>
@@ -101,7 +105,7 @@
                 @MenuNavigation("Documentation", "Support", T("common.documentation").ToString())
                 @MenuNavigation("SoftwareVersion", "Support", T("common.softwareversion").ToString())
             </ul>
-        </li>
+        </li>*@
 
     </ul>
 </div>
