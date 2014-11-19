@@ -490,7 +490,6 @@
     <Content Include="Content\assets\frontend\layout\img\layerslider-arrows.png" />
     <Content Include="Content\assets\frontend\layout\img\logos\4adata.png" />
     <Content Include="Content\assets\frontend\layout\img\logos\logo-corp-red.png" />
-    <Content Include="Content\assets\frontend\layout\img\logos\logo_admin.png" />
     <Content Include="Content\assets\frontend\layout\img\new.png" />
     <Content Include="Content\assets\frontend\layout\img\payments\american-express.jpg" />
     <Content Include="Content\assets\frontend\layout\img\payments\fa-angle-right-info.png" />

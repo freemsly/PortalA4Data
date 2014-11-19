@@ -2870,7 +2870,6 @@
     <Content Include="Content\assets\global\plugins\zoom\jquery.zoom.min.js" />
     <Content Include="Content\assets\global\scripts\datatable.js" />
     <Content Include="Content\assets\global\scripts\metronic.js" />
-    <Content Include="Content\assets\logo_admin.png" />
     <Content Include="Content\styles.rtl.css" />
     <Content Include="Content\images\1pix.gif" />
     <Content Include="Content\images\admin-gvw-bg.gif" />

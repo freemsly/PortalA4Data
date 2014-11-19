@@ -62,7 +62,9 @@
                             {
                                 if (WorkContext.CurrentCustomer.IsRegistered())
                                 {
-                                    <li>@WorkContext.CurrentCustomer.Username<a href="@Url.Action("Logout", "Support", new { ReturnUrl = HttpContext.Current.Request.RawUrl })" style="margin-left: 10px">Log Out</a></li>
+                                    var username = WorkContext.CurrentCustomer.Username;
+                                    username = username.Substring(0, username.IndexOf("@", System.StringComparison.Ordinal) + 1) + "...";
+                                    <li>@username<a href="@Url.Action("Logout", "Support", new { ReturnUrl = HttpContext.Current.Request.RawUrl })" style="margin-left: 10px">Log Out</a></li>
                                 }
                                 else
                                 {
