@@ -53,7 +53,7 @@ namespace CamprayPortal.Web.Controllers
 
 
         [HttpPost]
-        public ActionResult CustomerPortal(LoginModel model)
+        public ActionResult CustomerPortal(LoginModel model, string returnUrl)
         {
             if (ModelState.IsValid)
             {
@@ -67,7 +67,11 @@ namespace CamprayPortal.Web.Controllers
                         //sign in new customer
                         _authenticationService.SignIn(customer, model.RememberMe);
 
+                        if (customer.IsAdmin())
                             return Redirect("/admin");
+                        if (!String.IsNullOrEmpty(returnUrl))
+                            return Redirect(returnUrl);
+                        return RedirectToRoute("HomePage");
                     }
                     case CustomerLoginResults.CustomerNotExist:
                         ModelState.AddModelError("",
@@ -96,11 +100,13 @@ namespace CamprayPortal.Web.Controllers
 
 
 
-        public ActionResult Logout()
+        public ActionResult Logout(string returnUrl)
         {
             //external authentication
             ExternalAuthorizerHelper.RemoveParameters();
             _authenticationService.SignOut();
+            if (!String.IsNullOrEmpty(returnUrl))
+                return Redirect(returnUrl);
             return RedirectToRoute("HomePage");
         }
 

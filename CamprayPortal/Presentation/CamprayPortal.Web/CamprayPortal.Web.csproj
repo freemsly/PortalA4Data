@@ -4238,6 +4238,7 @@
     <Content Include="Views\Common\PageNotFound.cshtml" />
     <Content Include="Views\AboutUs\ContractUs.cshtml" />
     <Content Include="Views\Partner\Homepage.cshtml" />
+    <Content Include="Views\Support\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\assets\global\plugins\jquery-file-upload\server\php\files\thumbnail\" />

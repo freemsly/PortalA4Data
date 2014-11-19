@@ -1,4 +1,5 @@
-﻿@{
+﻿@using CamprayPortal.Core.Domain.Customers
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -33,48 +34,15 @@
     <!-- END BEGIN STYLE CUSTOMIZER -->
 
     <!-- BEGIN HEADER -->
-    <div class="header">
+    <div class="header" style="margin-top: 5px;">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-1">
                     <a class="site-logo" href="/"><img src="/Content/assets/frontend/layout/img/logos/4adata.png" alt="Index"></a>
                     <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
                 </div>
-                
-                
-                <div class="col-lg-4">
-                    <ul class="social-icons social-icons-color pull-right" style="padding: 10px 0 0 0;">
-                        <li><a class="facebook" data-original-title="Facebook" href="#"></a></li>
-                        <li><a class="twitter" data-original-title="Twitter" href="#"></a></li>
-                        <li><a class="googleplus" data-original-title="Goole Plus" href="#"></a></li>
-                        <li><a class="linkedin" data-original-title="Linkedin" href="#"></a></li>
-                    </ul>
-                </div>
-                
-
-                <div class="col-lg-2">
-                    <ul class="list-unstyled list-inline pull-left" style="padding: 10px 0 0 0;">
-                        <li>
-                            @Html.Action("LanguageSelector", "Common")
-                        </li>
-                    </ul>
-                    <ul class="list-unstyled list-inline pull-right" style="padding: 15px 0 0 0;">
-                        @if (IsSectionDefined("LeftLink"))
-                        {
-                            @RenderSection("LeftLink")
-                        }
-                        else
-                        {
-                            <li><a href="@Url.Action("CustomerPortal", "Support")">Log In</a></li>
-                        }
-                    </ul> 
-                </div>
-
-            </div>
-
-            <div class="row">
-                <div class="search-box pull-left" style="width: 300px;padding: 19px 12px 20px;"  >
-                    <form action="@Url.Action("SearchResult", "Common")" method="GET">
+                <div class="col-lg-3">
+                    <form action="@Url.Action("SearchResult", "Common")" method="GET" style="margin-top: 65px;">
                         <div class="input-group">
                             <input type="text" placeholder="@T("searchresults.key")" class="form-control" name="searchkey">
                             <span class="input-group-btn">
@@ -83,13 +51,48 @@
                         </div>
                     </form>
                 </div>
-             
-                <!-- BEGIN NAVIGATION -->
-                @Html.Action("Navigation", "Common")
-                <!-- END NAVIGATION -->
+                <div class="col-lg-8">
+                    <div class="row">
+                        <ul class="list-unstyled list-inline pull-right" style="padding: 15px 0 0 15px;">
+                            @if (IsSectionDefined("LeftLink"))
+                            {
+                                @RenderSection("LeftLink")
+                            }
+                            else
+                            {
+                                if (WorkContext.CurrentCustomer.IsRegistered())
+                                {
+                                    <li>@WorkContext.CurrentCustomer.Username<a href="@Url.Action("Logout", "Support", new { ReturnUrl = HttpContext.Current.Request.RawUrl })" style="margin-left: 10px">Log Out</a></li>
+                                }
+                                else
+                                {
+                                    <li><a href="@Url.Action("CustomerPortal", "Support", new { ReturnUrl = HttpContext.Current.Request.RawUrl })">Log In</a></li>
+                                }
+                            }
+                        </ul>
+
+                        <ul class="list-unstyled list-inline pull-right" style="padding: 10px 0 0 15px;">
+                            <li>
+                                @Html.Action("LanguageSelector", "Common")
+                            </li>
+                        </ul>
+
+
+                        <ul class="social-icons social-icons-color pull-right" style="padding: 10px 0 0 0;">
+                            <li><a class="facebook" data-original-title="Facebook" href="#"></a></li>
+                            <li><a class="twitter" data-original-title="Twitter" href="#"></a></li>
+                            <li><a class="googleplus" data-original-title="Goole Plus" href="#"></a></li>
+                            <li><a class="linkedin" data-original-title="Linkedin" href="#"></a></li>
+                        </ul>
+                    </div>
+                    <div class="row">
+                        <!-- BEGIN NAVIGATION -->
+                        @Html.Action("Navigation", "Common")
+                        <!-- END NAVIGATION -->
+                    </div>
+                </div>
             </div>
-        </div>
-            
+            </div>
     </div>
     <!-- Header END -->
  
