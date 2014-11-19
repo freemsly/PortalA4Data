@@ -37,7 +37,7 @@
     <div class="header" style="margin-top: 5px;">
         <div class="container">
             <div class="row">
-                <div class="col-lg-1">
+                <div class="col-lg-2" style="border:1px solid #808080">
                     <a class="site-logo" href="/"><img src="/Content/assets/frontend/layout/img/logos/4adata.png" alt="Index"></a>
                     <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
                 </div>
@@ -51,9 +51,9 @@
                         </div>
                     </form>
                 </div>
-                <div class="col-lg-8">
+                <div class="col-lg-7">
                     <div class="row">
-                        <ul class="list-unstyled list-inline pull-right" style="padding: 15px 0 0 15px;">
+                        <ul class="list-unstyled list-inline pull-right" style="padding: 15px 0 0 15px;margin-right:25px">
                             @if (IsSectionDefined("LeftLink"))
                             {
                                 @RenderSection("LeftLink")
@@ -122,7 +122,7 @@
                 </div>
                 <!-- END COPYRIGHT -->
                 <!-- BEGIN PAYMENTS -->
-                <div class="col-md-6 col-sm-6">
+                <div class="col-md-6 col-sm-6" style="display:none">
                     <ul class="social-footer list-unstyled list-inline pull-right">
                         <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                         <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
