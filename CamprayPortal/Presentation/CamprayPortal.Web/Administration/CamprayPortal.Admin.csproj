@@ -282,6 +282,7 @@
     <Content Include="Content\assets\admin\layout\img\logo-big.png" />
     <Content Include="Content\assets\admin\layout\img\logo-invert.png" />
     <Content Include="Content\assets\admin\layout\img\logo.png" />
+    <Content Include="Content\assets\admin\layout\img\logo_admin.png" />
     <Content Include="Content\assets\admin\layout\img\menu-toggler.png" />
     <Content Include="Content\assets\admin\layout\img\photo1.jpg" />
     <Content Include="Content\assets\admin\layout\img\photo2.jpg" />
@@ -519,6 +520,7 @@
     <Content Include="Content\assets\frontend\layout\img\logos\logo-shop-orange.png" />
     <Content Include="Content\assets\frontend\layout\img\logos\logo-shop-red.png" />
     <Content Include="Content\assets\frontend\layout\img\logos\logo-shop-turquoise.png" />
+    <Content Include="Content\assets\frontend\layout\img\logos\logo_admin.png" />
     <Content Include="Content\assets\frontend\layout\img\logos\shop-logo-red.png" />
     <Content Include="Content\assets\frontend\layout\img\new.png" />
     <Content Include="Content\assets\frontend\layout\img\payments\american-express.jpg" />
@@ -2868,6 +2870,7 @@
     <Content Include="Content\assets\global\plugins\zoom\jquery.zoom.min.js" />
     <Content Include="Content\assets\global\scripts\datatable.js" />
     <Content Include="Content\assets\global\scripts\metronic.js" />
+    <Content Include="Content\assets\logo_admin.png" />
     <Content Include="Content\styles.rtl.css" />
     <Content Include="Content\images\1pix.gif" />
     <Content Include="Content\images\admin-gvw-bg.gif" />
