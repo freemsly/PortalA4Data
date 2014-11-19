@@ -194,6 +194,7 @@
     <Compile Include="Controllers\KeepAliveController.cs" />
     <Compile Include="Controllers\InstallController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PartnerController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\SolutionsController.cs" />
     <Compile Include="Controllers\SupportController.cs" />
@@ -4236,6 +4237,7 @@
     <Content Include="Views\Common\LanguageSelector.cshtml" />
     <Content Include="Views\Common\PageNotFound.cshtml" />
     <Content Include="Views\AboutUs\ContractUs.cshtml" />
+    <Content Include="Views\Partner\Homepage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\assets\global\plugins\jquery-file-upload\server\php\files\thumbnail\" />
