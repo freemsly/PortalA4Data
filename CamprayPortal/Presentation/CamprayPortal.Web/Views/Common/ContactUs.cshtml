@@ -76,7 +76,7 @@
             if (checknull) {
                 $.post("/Common/MessageUs", $("#messageus").serialize(), function(data) {
                     if (data == 1) {
-                        alert('success');
+                        alert('Your request has been submitted successfully!');
                     }
                 });
             }
