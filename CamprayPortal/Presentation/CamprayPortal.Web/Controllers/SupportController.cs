@@ -113,9 +113,7 @@ namespace CamprayPortal.Web.Controllers
                 return Redirect(returnUrl);
             return RedirectToRoute("HomePage");
         }
-
-
-
+ 
         public ActionResult Register()
         {
             var model = new RegisterModel();
@@ -163,9 +161,11 @@ namespace CamprayPortal.Web.Controllers
                     }
 
                     //login customer now
-                    if (isApproved)
-                        _authenticationService.SignIn(customer, true);
-                    return Redirect("/");
+                    //if (isApproved)
+                    //    _authenticationService.SignIn(customer, true);
+                   // return Redirect("/");
+                    //return RedirectToRoute("RegisterResult");
+                    return RedirectToRoute("RegisterResult", new { resultId = (int)UserRegistrationType.Standard });
                 }
                 else
                 {
@@ -177,6 +177,38 @@ namespace CamprayPortal.Web.Controllers
         }
 
 
+        //public ActionResult RegisterResult()
+        //{
+        //    var model = new RegisterResultModel();
+        //    return View(model);
+        //}
+
+        public ActionResult RegisterResult(int resultId)
+        {
+            var resultText = "";
+            switch ((UserRegistrationType)resultId)
+            {
+                case UserRegistrationType.Disabled:
+                    resultText = _localizationService.GetResource("Account.Register.Result.Disabled");
+                    break;
+                case UserRegistrationType.Standard:
+                    resultText = _localizationService.GetResource("Account.Register.Result.Standard");
+                    break;
+                case UserRegistrationType.AdminApproval:
+                    resultText = _localizationService.GetResource("Account.Register.Result.AdminApproval");
+                    break;
+                case UserRegistrationType.EmailValidation:
+                    resultText = _localizationService.GetResource("Account.Register.Result.EmailValidation");
+                    break;
+                default:
+                    break;
+            }
+            var model = new RegisterResultModel()
+            {
+                Result = resultText
+            };
+            return View(model);
+        }
 
         public ActionResult Documentation()
         {

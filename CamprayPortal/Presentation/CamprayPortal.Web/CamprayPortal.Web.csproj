@@ -222,6 +222,7 @@
     <Compile Include="Models\Solutions\BenchmarkViewModel.cs" />
     <Compile Include="Models\Support\LoginModel.cs" />
     <Compile Include="Models\Support\RegisterModel.cs" />
+    <Compile Include="Models\Support\RegisterResultModel.cs" />
     <Compile Include="Models\Topics\TopicModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validators\Common\ContactUsValidator.cs" />
@@ -4239,6 +4240,7 @@
     <Content Include="Views\Partner\Homepage.cshtml" />
     <Content Include="Views\Support\Register.cshtml" />
     <Content Include="Views\Common\SearchResult.cshtml" />
+    <Content Include="Views\Support\RegisterResult.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\assets\global\plugins\jquery-file-upload\server\node\public\files\thumbnail\" />
