@@ -73,8 +73,13 @@ namespace CamprayPortal.Web.Controllers
 
                         if (customer.IsAdmin())
                             return Redirect("/admin");
-                        if (!String.IsNullOrEmpty(returnUrl))
+                        
+                        if (!String.IsNullOrEmpty(returnUrl) && returnUrl.IndexOf("resultId")!=-1)
+                            return Redirect("HomePage");
+
+                         if (!String.IsNullOrEmpty(returnUrl))
                             return Redirect(returnUrl);
+
                         return RedirectToRoute("HomePage");
                     }
                     case CustomerLoginResults.CustomerNotExist:
