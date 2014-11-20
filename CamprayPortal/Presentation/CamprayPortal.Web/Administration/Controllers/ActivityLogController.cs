@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using CamprayPortal.Admin.Models.Common;
 using CamprayPortal.Admin.Models.Logging;
 using CamprayPortal.Core;
+using CamprayPortal.Core.Domain.Common;
 using CamprayPortal.Services.Common;
 using CamprayPortal.Services.Helpers;
 using CamprayPortal.Services.Localization;
@@ -125,6 +127,22 @@ namespace CamprayPortal.Admin.Controllers
             return RedirectToAction("ListLogs");
         }
 
+        //edit
+        public ActionResult Edit(int id)
+        {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageAffiliates))
+                return AccessDeniedView();
+
+            var contactUs = _contactUsService.GetContactUsById(id);
+            if (contactUs == null)
+                //No affiliate found with the specified id
+                return RedirectToAction("List");
+
+            var model = contactUs.ToModel();
+    
+            return View(model);
+        }
+         
         #endregion
 
     }

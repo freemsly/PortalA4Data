@@ -53,6 +53,7 @@
                                 serverPaging: true,
                                 serverFiltering: true,
                                 serverSorting: true
+
                             },
                             pageable: {
                                 refresh: true,
@@ -95,7 +96,12 @@
                                 title: "@T("Admin.Common.Delete")",
                         width: 100
                     }
-                            ]
+                            , {
+                                field: "Id",
+                                title: "@T("Admin.Common.Edit")",
+                                width: 100,
+                                template: '<a href="Edit/#=Id#">@T("Admin.Common.Edit")</a>'
+                            }]
                         });
                     });
                 </script>

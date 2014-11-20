@@ -1,0 +1,16 @@
+﻿@model ContactUsModel
+@{
+    //page title
+    ViewBag.Title = T("Admin.EditContactUs.Details").Text;
+}
+@using (Html.BeginForm())
+{
+    <div class="section-header">
+        <div class="title">
+            <img src="@Url.Content("~/Administration/Content/images/ico-promotions.png")" alt="" />
+          @Html.ActionLink("(" + T("Admin.EditContactUs.BackToList") + ")", "List")
+        </div>
+        
+    </div>
+    @Html.Partial("_CreateOrUpdate", Model)
+}

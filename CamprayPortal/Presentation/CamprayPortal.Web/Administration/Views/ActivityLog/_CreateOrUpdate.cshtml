@@ -1,0 +1,93 @@
+﻿@model ContactUsModel
+@Html.ValidationSummary(false)
+@Html.HiddenFor(model => model.Id)
+
+<div id="affiliate-edit">
+    <ul>
+        <li @Html.RenderSelectedTabIndex(0, GetSelectedTabIndex())>
+            @T("Admin.EditContactUs.Info")
+        </li> 
+    </ul>
+    <div>
+        @TabInfo()
+    </div>
+     
+</div>
+<script>
+    $(document).ready(function() {
+        $("#affiliate-edit").kendoTabStrip({
+            animation:  {
+                open: {
+                    effects: "fadeIn"
+                }
+            },
+            select: tabstrip_on_tab_select
+        });
+    });
+</script>
+
+ 
+@*save selected tab index*@
+<input type="hidden" id="selected-tab-index" name="selected-tab-index" value="@(GetSelectedTabIndex())">
+
+@helper TabInfo()
+{
+    <table class="adminContent">
+        @if (Model.Id > 0)
+        {
+            <tr>
+                <td class="adminTitle">
+                    @Html.NopLabelFor(model => model.FirstName):
+                </td>
+                <td class="adminData">
+                    @Html.EditorFor(model => model.FirstName)
+                </td>
+            </tr>
+
+            <tr>
+                <td class="adminTitle">
+                    @Html.NopLabelFor(model => model.LastName):
+                </td>
+                <td class="adminData">
+                    @Html.EditorFor(model => model.LastName)
+                </td>
+            </tr>
+            <tr>
+                <td class="adminTitle">
+                    @Html.NopLabelFor(model => model.Company):
+                </td>
+                <td class="adminData">
+                    @Model.Company
+                </td>
+            </tr>
+            <tr>
+                <td class="adminTitle">
+                    @Html.NopLabelFor(model => model.Email):
+                </td>
+                <td class="adminData">
+                    @Html.EditorFor(model => model.Email)
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="adminTitle">
+                    @Html.NopLabelFor(model => model.PhoneNumber):
+                </td>
+                <td class="adminData">
+                    @Html.EditorFor(model => model.PhoneNumber)
+                </td>
+            </tr>
+
+            <tr>
+                <td class="adminTitle">
+                    @Html.NopLabelFor(model => model.Content):
+                </td>
+                <td class="adminData">
+                    @Html.TextAreaFor(model => model.Content, new { style = "Width: 250px; Height: 150px;" }) 
+                </td>
+            </tr>
+        }
+    </table> 
+}
+ 

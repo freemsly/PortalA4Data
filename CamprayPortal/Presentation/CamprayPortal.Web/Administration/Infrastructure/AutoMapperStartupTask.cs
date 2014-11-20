@@ -159,6 +159,9 @@ namespace CamprayPortal.Admin.Infrastructure
                 .ForMember(dest => dest.CustomProperties, mo => mo.Ignore());
             Mapper.CreateMap<TopicModel, Topic>();
 
+            //ContactUs
+            Mapper.CreateMap<ContactUs, ContactUsModel>();
+            Mapper.CreateMap<ContactUsModel, ContactUs>();
 
             //logs
             Mapper.CreateMap<Log, LogModel>()
