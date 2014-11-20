@@ -491,7 +491,7 @@
     <Content Include="Content\assets\frontend\layout\img\layerslider-arrows.png" />
     <Content Include="Content\assets\frontend\layout\img\logos\4adata.png" />
     <Content Include="Content\assets\frontend\layout\img\logos\logo-corp-red.png" />
-    <Content Include="Content\assets\frontend\layout\img\logos\logo_admin.png" />
+    <Content Include="Content\assets\frontend\layout\img\logos\logo.png" />
     <Content Include="Content\assets\frontend\layout\img\new.png" />
     <Content Include="Content\assets\frontend\layout\img\payments\american-express.jpg" />
     <Content Include="Content\assets\frontend\layout\img\payments\fa-angle-right-info.png" />
@@ -2235,7 +2235,6 @@
     <Content Include="Content\assets\global\plugins\jquery-file-upload\server\gae-python\static\robots.txt" />
     <Content Include="Content\assets\global\plugins\jquery-file-upload\server\node\.gitignore" />
     <Content Include="Content\assets\global\plugins\jquery-file-upload\server\node\public\files\.gitignore" />
-    <Content Include="Content\assets\global\plugins\jquery-file-upload\server\node\public\files\thumbnail\.gitignore" />
     <Content Include="Content\assets\global\plugins\jquery-file-upload\server\node\server.js" />
     <Content Include="Content\assets\global\plugins\jquery-file-upload\server\node\tmp\.gitignore" />
     <Content Include="Content\assets\global\plugins\jquery-idle-timeout\jquery.idletimeout.js" />
@@ -3775,7 +3774,6 @@
     <Content Include="Scripts\fineuploader\processing.gif" />
     <Content Include="Scripts\fineuploader\templates\default.html" />
     <Content Include="Scripts\fineuploader\templates\simple-thumbnails.html" />
-    <None Include="Properties\PublishProfiles\PortalA4DataPublic.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -4240,9 +4238,12 @@
     <Content Include="Views\AboutUs\ContractUs.cshtml" />
     <Content Include="Views\Partner\Homepage.cshtml" />
     <Content Include="Views\Support\Register.cshtml" />
+    <Content Include="Views\Common\SearchResult.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Content\assets\global\plugins\jquery-file-upload\server\node\public\files\thumbnail\" />
     <Folder Include="Content\assets\global\plugins\jquery-file-upload\server\php\files\thumbnail\" />
+    <Folder Include="Properties\PublishProfiles\" />
     <Folder Include="Themes\DefaultClean\Content\" />
   </ItemGroup>
   <ItemGroup>
