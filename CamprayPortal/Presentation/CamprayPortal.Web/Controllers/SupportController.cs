@@ -8,6 +8,7 @@ using CamprayPortal.Services.Authentication.External;
 using CamprayPortal.Services.Customers;
 using CamprayPortal.Services.Localization;
 using CamprayPortal.Web.Models.Support;
+using CamprayPortal.Services.Common;
 
 namespace CamprayPortal.Web.Controllers
 {
@@ -21,6 +22,7 @@ namespace CamprayPortal.Web.Controllers
         private readonly ICustomerRegistrationService _customerRegistrationService;
         private readonly IWorkContext _workContext;
         private readonly CustomerSettings _customerSettings;
+        private readonly IGenericAttributeService _genericAttributeService;
         #endregion
 
         #region Ctor
@@ -28,7 +30,8 @@ namespace CamprayPortal.Web.Controllers
         public SupportController(IAuthenticationService authenticationService,
             ILocalizationService localizationService,
             ICustomerService customerService,
-            ICustomerRegistrationService customerRegistrationService, IWorkContext workContext, CustomerSettings customerSettings)
+            ICustomerRegistrationService customerRegistrationService, IWorkContext workContext, CustomerSettings customerSettings,
+             IGenericAttributeService genericAttributeService)
         {
             this._authenticationService = authenticationService;
             this._customerService = customerService;
@@ -36,6 +39,7 @@ namespace CamprayPortal.Web.Controllers
             _workContext = workContext;
             _customerSettings = customerSettings;
             this._localizationService = localizationService;
+            this._genericAttributeService = genericAttributeService;
         }
 
         #endregion
@@ -141,6 +145,22 @@ namespace CamprayPortal.Web.Controllers
                 var registrationResult = _customerRegistrationService.RegisterCustomer(registrationRequest);
                 if (registrationResult.Success)
                 {
+                    if (!string.IsNullOrEmpty(model.FirstName))
+                    {
+                        _genericAttributeService.SaveAttribute(customer, SystemCustomerAttributeNames.FirstName, model.FirstName);
+                    }
+                    if (!string.IsNullOrEmpty(model.FirstName))
+                    {
+                        _genericAttributeService.SaveAttribute(customer, SystemCustomerAttributeNames.LastName, model.LastName);
+                    }
+                    if (!string.IsNullOrEmpty(model.FirstName))
+                    {
+                        _genericAttributeService.SaveAttribute(customer, SystemCustomerAttributeNames.Company, model.Company);
+                    }
+                    if (!string.IsNullOrEmpty(model.FirstName))
+                    {
+                        _genericAttributeService.SaveAttribute(customer, SystemCustomerAttributeNames.StreetAddress, model.StreetAddress);
+                    }
 
                     //login customer now
                     if (isApproved)

@@ -13,10 +13,7 @@
         @if (Model.Id > 0)
         {
             
-            <li @Html.RenderSelectedTabIndex(3, GetSelectedTabIndex())>
-                @T("Admin.Customers.Customers.Addresses")
-            </li>
-         
+            
             
             <li @Html.RenderSelectedTabIndex(6, GetSelectedTabIndex())>
                 @T("Admin.Customers.Customers.ActivityLog")
@@ -34,9 +31,7 @@
     @if (Model.Id > 0)
     {
         
-        <div>
-            @TabAddresses()
-        </div>
+        < 
         
        
         <div>
@@ -290,8 +285,7 @@
                 </td>
             </tr>
         }
-        @if (Model.StreetAddressEnabled)
-        {
+        
             <tr>
                 <td class="adminTitle">
                     @Html.NopLabelFor(model => model.StreetAddress):
@@ -301,7 +295,7 @@
                     @Html.ValidationMessageFor(model => model.StreetAddress)
                 </td>
             </tr>
-        }
+         
         @if (Model.StreetAddress2Enabled)
         {
             <tr>
