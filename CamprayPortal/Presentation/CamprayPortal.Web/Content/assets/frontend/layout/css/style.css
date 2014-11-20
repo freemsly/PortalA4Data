@@ -2972,7 +2972,7 @@ Styler Panel
   right: 40px;
   width: 300px;
   display: none;
-  padding: 20px 10px 10px;
+  padding: 10px 10px 10px;
   position: absolute;
   background: #3d3d3d;
 }
@@ -3043,3 +3043,5 @@ Styler Panel
 .fancybox-overlay {
   z-index: 99999;
 }
+
+.form-message-nes{text-align:center;padding-top:8px;}
