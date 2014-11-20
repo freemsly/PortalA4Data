@@ -88,22 +88,7 @@
         <!-- END SIDEBAR TOGGLER BUTTON -->
     </li>
 
-    <li class="@ActiveLink("Home", "start active open")">
-        <a href="javascript:;">
-            <i class="icon-home"></i>
-            <span class="title">Dashboard</span>
-            <span class="@ActiveLink("Home", "selected")"></span>
-            <span class="arrow @ActiveLink("Home", "open")"></span>
-        </a>
-        <ul class="sub-menu">
-            <li class="@ActiveLink("Home", "active")">
-                <a href="@(Url.Action("Index", "Home"))">
-                    <i class="icon-bar-chart"></i>
-                    Default Dashboard
-                </a>
-            </li>
-        </ul>
-    </li>
+    
 
     @foreach (var item in siteMap.RootNode.ChildNodes.Where(x => x.Visible))
     {

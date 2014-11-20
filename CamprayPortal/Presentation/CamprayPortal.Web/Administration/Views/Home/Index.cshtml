@@ -5,31 +5,21 @@
     ViewBag.Title = T("Admin.Dashboard").Text;
 
     var permissionService = EngineContext.Current.Resolve<IPermissionService>();
-   
+    
 }
-<div class="section-title">
-    <img src="@Url.Content("~/Administration/Content/images/ico-dashboard.png")" alt="" />
-    @T("Admin.Dashboard")
-</div>
+ 
 <table class="dashboard">
-    @Html.Widget("admin_dashboard_top")
+     
     <tr>
-        <td class="maincol">
-            <div class="section-header">
-                <div class="title">
-                    <img src="@Url.Content("~/Administration/Content/images/ico-stat1.gif")" alt="" />
-                    @T("Admin.Dashboard.StoreStatistics")
-                </div>
-            </div>
-           
-             
-        </td>
-        @if (!Model.IsLoggedInAsVendor)
-        {
-            <td class="rightcol">
-                @Html.Action("CamprayPortalNews", "Home")
-            </td>
-        }
+        
+        
+      
     </tr>
-    @Html.Widget("admin_dashboard_bottom")
+    
 </table>
+<script type="text/javascript">
+
+    $(document).ready(function() {
+        window.location.href = "http://localhost:15537/Admin/News/List";
+    });
+        </script>
