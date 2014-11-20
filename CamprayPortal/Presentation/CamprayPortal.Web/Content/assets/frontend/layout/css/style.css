@@ -1293,7 +1293,7 @@ div.content-form-page {
 	color: #E02222;
 }
 .form-without-legend {
-	padding-top: 25px;
+	padding-top: 10px;
 }
 .content-form-page legend {
 	border: none;
@@ -3045,3 +3045,4 @@ Styler Panel
 }
 
 .form-message-nes{text-align:center;padding-top:8px;}
+.message-error{ color:red}
