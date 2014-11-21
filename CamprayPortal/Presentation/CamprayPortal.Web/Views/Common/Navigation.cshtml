@@ -32,10 +32,11 @@
 <div class="header-navigation pull-right font-transform-inherit">
     <ul>
         <li class="dropdown @TopMenu("AboutUs")">
-            <a class="dropdown-toggle disabled" data-toggle="dropdown" data-target="#" href="@Url.Action("HomePage", "AboutUs")">
+            <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="#">
                 @T("common.aboutus")
             </a>
             <ul class="dropdown-menu">
+                @MenuNavigation("HomePage", "AboutUs", T("common.homePage").ToString())
                 @MenuNavigation("MessageChairman", "AboutUs", T("common.messagefromchairman").ToString())
                 @MenuNavigation("ManagementTeam", "AboutUs", T("common.managementteam").ToString())
                 @MenuNavigation("BoardMembers", "AboutUs", T("common.boardmembers").ToString())
@@ -49,11 +50,12 @@
         </li>
 
         <li class="dropdown @TopMenu("Product")">
-            <a class="dropdown-toggle disabled" data-toggle="dropdown" data-target="#" href="@Url.Action("HomePage", "Product")">
+            <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="#">
                 @T("common.product")
             </a>
 
             <ul class="dropdown-menu">
+                @MenuNavigation("HomePage", "Product", T("common.homePage").ToString())
                 @MenuNavigation("JetVM", "Product", T("common.a4datajetvm").ToString())
                 @MenuNavigation("JetAppliance", "Product", T("common.a4datajetappliance").ToString())
                 @MenuNavigation("FeatureBriefs", "Product", T("common.featurebriefs").ToString())
@@ -64,11 +66,12 @@
 
 
         <li class="dropdown @TopMenu("Solutions")">
-            <a class="dropdown-toggle disabled" data-toggle="dropdown" data-target="#" href="@Url.Action("HomePage", "Solutions")">
+            <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="#">
                 @T("common.solutions")
             </a>
 
             <ul class="dropdown-menu">
+                @MenuNavigation("HomePage", "Solutions", T("common.homePage").ToString())
                 @MenuNavigation("BriefsOverview", "Solutions", T("common.solutionbriefoverview").ToString())
                 @MenuNavigation("Benefit", "Solutions", T("common.productbenefit").ToString())
                 @MenuNavigation("Benchmark", "Solutions", T("common.benchmark").ToString())
@@ -79,23 +82,33 @@
             </ul>
         </li>
         <li class="dropdown @TopMenu("Technology")">
-            <a class="dropdown-toggle disabled" data-toggle="dropdown" data-target="#" href="@Url.Action("HomePage", "Technology")">
+            <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="#">
                 @T("common.technology")
             </a>
+            <ul class="dropdown-menu">
+                @MenuNavigation("HomePage", "Technology", T("common.homePage").ToString())
+            </ul>
         </li>
         
         <li class="dropdown @TopMenu("Downloads")">
-            <a class="dropdown-toggle disabled" data-toggle="dropdown" data-target="#" href="@Url.Action("HomePage", "Downloads")">
+            <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="#">
                 @T("common.downloads")
             </a>
+            <ul class="dropdown-menu">
+                @MenuNavigation("HomePage", "Downloads", T("common.homePage").ToString())
+            </ul>
         </li>
+
         <li class="dropdown @TopMenu("Partner")">
-            <a class="dropdown-toggle disabled" data-toggle="dropdown" data-target="#" href="@Url.Action("HomePage", "Partner")">
+            <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="#">
                 @T("common.Partner")
             </a>
+            <ul class="dropdown-menu">
+                @MenuNavigation("HomePage", "Partner", T("common.homePage").ToString())
+            </ul>
         </li>
         @*<li class="dropdown @TopMenu("Support")">
-            <a class="dropdown-toggle disabled" data-toggle="dropdown" data-target="#" href="@Url.Action("HomePage", "Support")">
+            <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="@Url.Action("HomePage", "Support")">
                 @T("common.support")
             </a>
 
