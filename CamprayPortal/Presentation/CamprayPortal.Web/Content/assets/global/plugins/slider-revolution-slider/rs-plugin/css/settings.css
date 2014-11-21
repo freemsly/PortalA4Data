@@ -1327,7 +1327,7 @@ border-style:none;
 .tp-bullets.simplebullets.navbar-old					{ 	 background:url(../assets/navigdots_bgtile.png); height:35px; padding:0px 10px; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px ;}
 
 
-.tp-bullets.simplebullets.round .bullet					{	cursor:pointer; position:relative;	background:url(../assets/bullet.png) no-Repeat top left;	width:20px;	height:20px;  margin-right:0px; float:left; margin-top:0px; margin-left:3px;}
+.tp-bullets.simplebullets.round .bullet					{	cursor:pointer; position:relative;	background:url(../assets/bullet.png) no-Repeat top left;	width:12px;	height:12px;  margin-right:0px; float:left; margin-top:0px; margin-left:4px;border-radius:50% !important;background:#d8d8d8}
 .tp-bullets.simplebullets.round .bullet.last			{	margin-right:3px;}
 
 .tp-bullets.simplebullets.round-old .bullet				{	cursor:pointer; position:relative;	background:url(../assets/bullets.png) no-Repeat bottom left;	width:23px;	height:23px;  margin-right:0px; float:left; margin-top:0px;}

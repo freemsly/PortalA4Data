@@ -3027,6 +3027,7 @@ Styler Panel
   color: #cfcfcf;
   display: block;
     padding: 5px 10px;
+    padding-bottom:1px;
 }
 .color-mode label span {  
   text-transform: uppercase;
@@ -3046,3 +3047,5 @@ Styler Panel
 
 .form-message-nes{text-align:center;padding-top:8px;}
 .message-error{ color:red}
+.head-form{margin-top: 15px;}
+@media (min-width:1200px){.head-form{margin-top: 65px;}
