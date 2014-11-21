@@ -39,7 +39,7 @@
                                 <div class="row">
                                     <div class="col-md-7 col-sm-7">
 
-                                        @using (Html.BeginForm("CustomerPortal", "Support", new {returnurl =this.Context.Request.QueryString["returnUrl"]}, FormMethod.Post, new {@class = "form-horizontal form-without-legend", role = "form"}))
+                                        @using (Html.BeginForm("CustomerPortal", "Support", new { returnurl = ViewBag.returnUrl??this.Context.Request.QueryString["returnUrl"] }, FormMethod.Post, new { @class = "form-horizontal form-without-legend", role = "form" }))
                                         {
                                             <div class="message-error">
                                                 @Html.ValidationSummary(true, T("Account.Login.Unsuccessful").Text)
