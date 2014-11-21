@@ -15,9 +15,6 @@ namespace CamprayPortal.Web.Framework.Controllers
     /// <summary>
     /// Base controller
     /// </summary>
-    [StoreIpAddress]
-    [CustomerLastActivity]
-    [StoreLastVisitedPage]
     public abstract class BaseController : Controller
     {
         /// <summary>

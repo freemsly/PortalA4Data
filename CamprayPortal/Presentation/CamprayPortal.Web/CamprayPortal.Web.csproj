@@ -202,6 +202,7 @@
     <Compile Include="Controllers\SupportController.cs" />
     <Compile Include="Controllers\TechnologyController.cs" />
     <Compile Include="Controllers\TopicController.cs" />
+    <Compile Include="Controllers\WidgetController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -213,6 +214,7 @@
     <Compile Include="Infrastructure\DependencyRegistrar.cs" />
     <Compile Include="Infrastructure\RouteProvider.cs" />
     <Compile Include="Models\AboutUs\NewsItemModel.cs" />
+    <Compile Include="Models\Cms\RenderWidgetModel.cs" />
     <Compile Include="Models\Common\ContactUsModel.cs" />
     <Compile Include="Models\Common\LanguageModel.cs" />
     <Compile Include="Models\Common\LanguageSelectorModel.cs" />
@@ -4243,6 +4245,7 @@
     <Content Include="Views\Support\Register.cshtml" />
     <Content Include="Views\Common\SearchResult.cshtml" />
     <Content Include="Views\Support\RegisterResult.cshtml" />
+    <Content Include="Views\Widget\WidgetsByZone.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\assets\global\plugins\jquery-file-upload\server\node\public\files\thumbnail\" />
