@@ -3038,6 +3038,7 @@ Styler Panel
 .color-mode label > select {
   margin-top: 5px;
   text-transform: lowercase;
+  
 }
 
 
@@ -3045,7 +3046,28 @@ Styler Panel
   z-index: 99999;
 }
 
-.form-message-nes{text-align:center;padding-top:8px;}
+.form-message-nes{text-align:center;
+                  position:relative;top:5px;
+
+}
 .message-error{ color:red}
 .head-form{margin-top: 15px;}
-@media (min-width:1200px){.head-form{margin-top: 65px;}
+@media (min-width:1200px) {
+    .head-form {
+        margin-top: 65px;
+    }
+}
+@media (max-width:750px) {
+    .color-panel .color-mode-icons, .color-mode {
+        top: -35px;
+        
+    }
+    .color-panel .color-mode-icons{
+        right:17px;
+
+    }
+    .color-mode {
+        right:57px;
+    }
+}
+
