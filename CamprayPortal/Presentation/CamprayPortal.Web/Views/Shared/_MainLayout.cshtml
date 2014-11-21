@@ -37,7 +37,7 @@
     <div class="header" style="margin-top: 5px;">
         <div class="container">
             <div class="row">
-                <div class="col-lg-2">
+                <div class="col-md-2">
                     <div class="row">
                         <div class="col-lg-8" style="border:1px solid #808080">
                             <a class="site-logo" href="/"><img src="/Content/assets/frontend/layout/img/logos/4adata.png" alt="Index"></a>
@@ -46,7 +46,7 @@
                         </div>
                     </div>
                     <div class="col-lg-3">
-                        <form action="@Url.Action("SearchResult", "Common")" method="GET" style="margin-top: 65px;">
+                        <form action="@Url.Action("SearchResult", "Common")" method="GET"  class="head-form">
                             <div class="input-group">
                                 <input type="text" placeholder="@T("searchresults.key")" class="form-control" name="searchkey">
                                 <span class="input-group-btn">
@@ -89,7 +89,7 @@
                                 <li><a class="linkedin" data-original-title="Linkedin" href="#"></a></li>
                             </ul>
                         </div>
-                        <div class="row">
+                        <div class="row pull-right">
                             <!-- BEGIN NAVIGATION -->
                             @Html.Action("Navigation", "Common")
                             <!-- END NAVIGATION -->
