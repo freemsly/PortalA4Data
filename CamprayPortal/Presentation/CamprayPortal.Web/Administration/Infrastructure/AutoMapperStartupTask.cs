@@ -30,7 +30,7 @@ using CamprayPortal.Core.Domain.Logging;
 using CamprayPortal.Core.Domain.Media;
 using CamprayPortal.Core.Domain.Messages;
 using CamprayPortal.Core.Domain.News;
-
+using CamprayPortal.Core.Plugins;
 using CamprayPortal.Services.Seo;
 
 using CamprayPortal.Core.Domain.Stores;
@@ -205,7 +205,19 @@ namespace CamprayPortal.Admin.Infrastructure
                 .ForMember(dest => dest.ConfigurationControllerName, mo => mo.Ignore())
                 .ForMember(dest => dest.ConfigurationRouteValues, mo => mo.Ignore())
                 .ForMember(dest => dest.CustomProperties, mo => mo.Ignore());
-             
+
+
+            //widgets
+            Mapper.CreateMap<IWidgetPlugin, WidgetModel>()
+                .ForMember(dest => dest.FriendlyName, mo => mo.MapFrom(src => src.PluginDescriptor.FriendlyName))
+                .ForMember(dest => dest.SystemName, mo => mo.MapFrom(src => src.PluginDescriptor.SystemName))
+                .ForMember(dest => dest.DisplayOrder, mo => mo.MapFrom(src => src.PluginDescriptor.DisplayOrder))
+                .ForMember(dest => dest.IsActive, mo => mo.Ignore())
+                .ForMember(dest => dest.ConfigurationActionName, mo => mo.Ignore())
+                .ForMember(dest => dest.ConfigurationControllerName, mo => mo.Ignore())
+                .ForMember(dest => dest.ConfigurationRouteValues, mo => mo.Ignore())
+                .ForMember(dest => dest.CustomProperties, mo => mo.Ignore());
+
         
             //newsLetter subscriptions
             Mapper.CreateMap<NewsLetterSubscription, NewsLetterSubscriptionModel>()

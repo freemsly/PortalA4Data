@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30723.0
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{E4ACA93B-D3DE-4557-B069-F1DB42925A4B}"
 EndProject
@@ -18,6 +18,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CamprayPortal.Web.Framework", "Presentation\CamprayPortal.Web.Framework\CamprayPortal.Web.Framework.csproj", "{75FD4163-333C-4DD5-854D-2EF294E45D94}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CamprayPortal.Admin", "Presentation\CamprayPortal.Web\Administration\CamprayPortal.Admin.csproj", "{152C761A-DD2E-4C1F-AF89-DFB2547A3BCA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Plugins", "Plugins", "{29F8FE29-DE77-4058-AA60-560F9653C06C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CamprayPortal.Plugin.Widgets.NivoSlider", "Plugins\CamprayPortal.Plugin.Widgets.NivoSlider\CamprayPortal.Plugin.Widgets.NivoSlider.csproj", "{9978B382-0BCD-4621-B6B5-52E0E3B5F464}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -89,6 +93,16 @@ Global
 		{152C761A-DD2E-4C1F-AF89-DFB2547A3BCA}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{152C761A-DD2E-4C1F-AF89-DFB2547A3BCA}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{152C761A-DD2E-4C1F-AF89-DFB2547A3BCA}.Release|x86.ActiveCfg = Release|Any CPU
+		{9978B382-0BCD-4621-B6B5-52E0E3B5F464}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9978B382-0BCD-4621-B6B5-52E0E3B5F464}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9978B382-0BCD-4621-B6B5-52E0E3B5F464}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{9978B382-0BCD-4621-B6B5-52E0E3B5F464}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{9978B382-0BCD-4621-B6B5-52E0E3B5F464}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{9978B382-0BCD-4621-B6B5-52E0E3B5F464}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9978B382-0BCD-4621-B6B5-52E0E3B5F464}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9978B382-0BCD-4621-B6B5-52E0E3B5F464}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{9978B382-0BCD-4621-B6B5-52E0E3B5F464}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{9978B382-0BCD-4621-B6B5-52E0E3B5F464}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -100,6 +114,7 @@ Global
 		{210541AD-F659-47DA-8763-16F36C5CD2F4} = {E4ACA93B-D3DE-4557-B069-F1DB42925A4B}
 		{75FD4163-333C-4DD5-854D-2EF294E45D94} = {B09156FB-8291-46A2-AF37-67CE97CFB5A6}
 		{152C761A-DD2E-4C1F-AF89-DFB2547A3BCA} = {B09156FB-8291-46A2-AF37-67CE97CFB5A6}
+		{9978B382-0BCD-4621-B6B5-52E0E3B5F464} = {29F8FE29-DE77-4058-AA60-560F9653C06C}
 	EndGlobalSection
 	GlobalSection(NDepend) = preSolution
 		Project = ".\NopCommerce.ndproj"
