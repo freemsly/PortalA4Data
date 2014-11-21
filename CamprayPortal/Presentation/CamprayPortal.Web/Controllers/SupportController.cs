@@ -50,8 +50,9 @@ namespace CamprayPortal.Web.Controllers
             return TopicModelView();
         }
 
-        public ActionResult CustomerPortal()
+        public ActionResult CustomerPortal(string returnUrl = null)
         {
+            ViewBag.returnUrl = returnUrl;
             return View();
         }
 
