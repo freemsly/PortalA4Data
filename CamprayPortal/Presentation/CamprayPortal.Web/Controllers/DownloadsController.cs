@@ -17,7 +17,7 @@ namespace CamprayPortal.Web.Controllers
         public ActionResult Homepage()
         {
             if (!_workContext.CurrentCustomer.IsRegistered())
-                return RedirectToRoute("Login");
+                return RedirectToRoute("Login", new {returnUrl = Url.Action("Homepage")});
             return TopicModelView();
         }
     }
