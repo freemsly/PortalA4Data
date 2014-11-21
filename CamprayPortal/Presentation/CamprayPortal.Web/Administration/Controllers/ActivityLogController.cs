@@ -96,7 +96,17 @@ namespace CamprayPortal.Admin.Controllers
             var activityLog = _contactUsService.GetAllContactUs(0, command.Page - 1, command.PageSize);
             var gridModel = new DataSourceResult()
             {
-                Data = activityLog,
+                Data = activityLog.Select(al => new ContactUs
+                {
+                    Id = al.Id,
+                    FirstName = al.FirstName,
+                    LastName = al.LastName,
+                    Email = al.Email,
+                    Company = al.Company,
+                    PhoneNumber = al.PhoneNumber,
+                    CreatedOnUtc = al.CreatedOnUtc,
+                    Content = al.Content.Length > 150 ? al.Content.Substring(0,149) + "..." : al.Content,
+                }).ToList(),
                 Total = activityLog.TotalCount
             };
             return Json(gridModel);
