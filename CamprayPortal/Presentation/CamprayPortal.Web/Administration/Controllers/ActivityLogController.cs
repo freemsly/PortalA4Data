@@ -105,7 +105,7 @@ namespace CamprayPortal.Admin.Controllers
                     Company = al.Company,
                     PhoneNumber = al.PhoneNumber,
                     CreatedOnUtc = al.CreatedOnUtc,
-                    Content = al.Content.Length > 150 ? al.Content.Substring(0,149) + "..." : al.Content,
+                    Content = al.Content.Length > 50 ? al.Content.Substring(0,49) + "..." : al.Content,
                 }).ToList(),
                 Total = activityLog.TotalCount
             };
