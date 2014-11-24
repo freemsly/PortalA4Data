@@ -4,7 +4,8 @@
 	position: relative;
 	border-bottom: solid 1px #eee;
 	overflow: hidden;
-	margin-bottom: 10px;
+	 margin-top:20px;
+     margin-bottom:40px
 }
 
 .fullwidthbanner-container ul {
