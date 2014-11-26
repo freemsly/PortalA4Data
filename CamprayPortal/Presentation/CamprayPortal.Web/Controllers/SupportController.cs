@@ -139,11 +139,16 @@ namespace CamprayPortal.Web.Controllers
                 _workContext.CurrentCustomer = _customerService.InsertGuestCustomer();
             }
             var customer = _workContext.CurrentCustomer;
+            if (model.Email.IndexOf("@hotmail.com")!=-1 ||model.Email.IndexOf("gmail.com")!=-1 || model.Email.IndexOf("@126.com")!=-1)
+            {
+                ModelState.AddModelError("", _localizationService.GetResource("Account.Register.Result.PleaseUseCompanyEmail"));
+            }
+
 
             if (ModelState.IsValid)
             {
 
-                bool isApproved = _customerSettings.UserRegistrationType == UserRegistrationType.Standard;
+                bool isApproved = _customerSettings.UserRegistrationType == UserRegistrationType.AdminApproval;
                 var registrationRequest = new CustomerRegistrationRequest(customer, model.Email,
                     model.Email, model.Password, _customerSettings.DefaultPasswordFormat, isApproved);
                 var registrationResult = _customerRegistrationService.RegisterCustomer(registrationRequest);
@@ -171,7 +176,7 @@ namespace CamprayPortal.Web.Controllers
                     //    _authenticationService.SignIn(customer, true);
                    // return Redirect("/");
                     //return RedirectToRoute("RegisterResult");
-                    return RedirectToRoute("RegisterResult", new { resultId = (int)UserRegistrationType.Standard });
+                    return RedirectToRoute("RegisterResult", new { resultId = (int)UserRegistrationType.AdminApproval });
                 }
                 else
                 {
