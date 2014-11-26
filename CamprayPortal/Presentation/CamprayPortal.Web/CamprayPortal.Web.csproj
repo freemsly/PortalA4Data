@@ -3779,6 +3779,7 @@
     <Content Include="Scripts\fineuploader\processing.gif" />
     <Content Include="Scripts\fineuploader\templates\default.html" />
     <Content Include="Scripts\fineuploader\templates\simple-thumbnails.html" />
+    <Content Include="ClassDiagram1.cd" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

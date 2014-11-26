@@ -187,7 +187,7 @@ namespace CamprayPortal.Core
 
             if (includeQueryString)
             {
-                string storeHost = GetStoreHost(useSsl);
+                string storeHost = GetHost(useSsl);
                 if (storeHost.EndsWith("/"))
                     storeHost = storeHost.Substring(0, storeHost.Length - 1);
                 url = storeHost + _httpContext.Request.RawUrl;
@@ -254,7 +254,7 @@ namespace CamprayPortal.Core
         /// </summary>
         /// <param name="useSsl">Use SSL</param>
         /// <returns>Store host location</returns>
-        public virtual string GetStoreHost(bool useSsl)
+        public virtual string GetHost(bool useSsl)
         {
             var result = "";
             var httpHost = ServerVariables("HTTP_HOST");
@@ -265,65 +265,12 @@ namespace CamprayPortal.Core
                     result += "/";
             }
 
-            if (DataSettingsHelper.DatabaseIsInstalled())
+
+            if (useSsl)
             {
-                #region Database is installed
-
-                //let's resolve IWorkContext  here.
-                //Do not inject it via contructor because it'll cause circular references
-                var storeContext = EngineContext.Current.Resolve<IStoreContext>();
-                var currentStore = storeContext.CurrentStore;
-                if (currentStore == null)
-                    throw new Exception("Current store cannot be loaded");
-
-                if (String.IsNullOrWhiteSpace(httpHost))
-                {
-                    //HTTP_HOST variable is not available.
-                    //This scenario is possible only when HttpContext is not available (for example, running in a schedule task)
-                    //in this case use URL of a store entity configured in admin area
-                    result = currentStore.Url;
-                    if (!result.EndsWith("/"))
-                        result += "/";
-                }
-
-                if (useSsl)
-                {
-                    if (!String.IsNullOrWhiteSpace(currentStore.SecureUrl))
-                    {
-                        //Secure URL specified. 
-                        //So a store owner don't want it to be detected automatically.
-                        //In this case let's use the specified secure URL
-                        result = currentStore.SecureUrl;
-                    }
-                    else
-                    {
-                        //Secure URL is not specified.
-                        //So a store owner wants it to be detected automatically.
-                        result = result.Replace("http:/", "https:/");
-                    }
-                }
-                else
-                {
-                    if (currentStore.SslEnabled && !String.IsNullOrWhiteSpace(currentStore.SecureUrl))
-                    {
-                        //SSL is enabled in this store and secure URL is specified.
-                        //So a store owner don't want it to be detected automatically.
-                        //In this case let's use the specified non-secure URL
-                        result = currentStore.Url;
-                    }
-                }
-                #endregion
-            }
-            else
-            {
-                #region Database is not installed
-                if (useSsl)
-                {
-                    //Secure URL is not specified.
-                    //So a store owner wants it to be detected automatically.
-                    result = result.Replace("http:/", "https:/");
-                }
-                #endregion
+                //Secure URL is not specified.
+                //So a store owner wants it to be detected automatically.
+                result = result.Replace("http:/", "https:/");
             }
 
 
@@ -331,7 +278,7 @@ namespace CamprayPortal.Core
                 result += "/";
             return result.ToLowerInvariant();
         }
-        
+
         /// <summary>
         /// Gets store location
         /// </summary>
@@ -351,7 +298,7 @@ namespace CamprayPortal.Core
         {
             //return HostingEnvironment.ApplicationVirtualPath;
 
-            string result = GetStoreHost(useSsl);
+            string result = GetHost(useSsl);
             if (result.EndsWith("/"))
                 result = result.Substring(0, result.Length - 1);
             if (IsRequestAvailable(_httpContext))
