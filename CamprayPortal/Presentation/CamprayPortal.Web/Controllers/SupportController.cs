@@ -7,6 +7,7 @@ using CamprayPortal.Services.Authentication;
 using CamprayPortal.Services.Authentication.External;
 using CamprayPortal.Services.Customers;
 using CamprayPortal.Services.Localization;
+using CamprayPortal.Services.Messages;
 using CamprayPortal.Web.Models.Support;
 using CamprayPortal.Services.Common;
 
@@ -23,6 +24,7 @@ namespace CamprayPortal.Web.Controllers
         private readonly IWorkContext _workContext;
         private readonly CustomerSettings _customerSettings;
         private readonly IGenericAttributeService _genericAttributeService;
+        private readonly IWorkflowMessageService _workflowMessageService;
         #endregion
 
         #region Ctor
@@ -31,7 +33,7 @@ namespace CamprayPortal.Web.Controllers
             ILocalizationService localizationService,
             ICustomerService customerService,
             ICustomerRegistrationService customerRegistrationService, IWorkContext workContext, CustomerSettings customerSettings,
-             IGenericAttributeService genericAttributeService)
+             IGenericAttributeService genericAttributeService, IWorkflowMessageService workflowMessageService)
         {
             this._authenticationService = authenticationService;
             this._customerService = customerService;
@@ -40,6 +42,7 @@ namespace CamprayPortal.Web.Controllers
             _customerSettings = customerSettings;
             this._localizationService = localizationService;
             this._genericAttributeService = genericAttributeService;
+            _workflowMessageService = workflowMessageService;
         }
 
         #endregion
@@ -154,6 +157,8 @@ namespace CamprayPortal.Web.Controllers
                 var registrationResult = _customerRegistrationService.RegisterCustomer(registrationRequest);
                 if (registrationResult.Success)
                 {
+                    _workflowMessageService.SendCustomerWelcomeMessage(customer, _workContext.WorkingLanguage.Id);
+
                     if (!string.IsNullOrEmpty(model.FirstName))
                     {
                         _genericAttributeService.SaveAttribute(customer, SystemCustomerAttributeNames.FirstName, model.FirstName);
