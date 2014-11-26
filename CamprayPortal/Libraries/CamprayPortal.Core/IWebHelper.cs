@@ -52,7 +52,7 @@ namespace CamprayPortal.Core
         /// </summary>
         /// <param name="useSsl">Use SSL</param>
         /// <returns>Store host location</returns>
-        string GetStoreHost(bool useSsl);
+        string GetHost(bool useSsl);
 
         /// <summary>
         /// Gets store location
