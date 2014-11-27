@@ -89,10 +89,6 @@ namespace CamprayPortal.Services.Messages
 
         #endregion
         
-     
-
-       
-        
         #region Misc
          
 
@@ -121,5 +117,16 @@ namespace CamprayPortal.Services.Messages
         
 
         #endregion
+
+
+
+        /// <summary>
+        /// Sends "email a friend" message
+        /// </summary>
+        /// <param name="customer">Customer instance</param>
+        /// <param name="languageId">Message language identifier</param>
+        /// <param name="personalMessage">Personal message</param>
+        /// <returns>Queued email identifier</returns> 
+        int SendEmailAFriendMessage(Customer customer, int languageId, string personalMessage);
     }
 }
