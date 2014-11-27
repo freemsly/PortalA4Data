@@ -46,21 +46,11 @@ namespace CamprayPortal.Web.Controllers
                 return Json(2);
             try
             {
-                string link;
-                if (url.Contains("http"))
-                {
-                    link = url;
-                }
-                else
-                {
-                    var localhost = _webHelper.GetHost(false);
-                    url = url.IndexOf('/') == 0 ? url.Substring(1, url.Length - 1) : url;
-                    link = localhost + url;
-                }
-
+                var filename = url.Substring(url.LastIndexOf('/') + 1, url.Length - url.LastIndexOf('/') - 1);
+                var downurl = _webHelper.GetHost(false) + "Downloads/FileDownLoad?filename=" + filename;
                 if (String.IsNullOrWhiteSpace(_workContext.CurrentCustomer.Email))
                     return Json(2);
-                string body = String.Format("<a href='{0}'>{1}</a>", link, name);
+                string body = String.Format("<a href='{0}'>{1}</a>", downurl, name);
                 _workflowMessageService.SendEmailAFriendMessage(_workContext.CurrentCustomer,
                     _workContext.WorkingLanguage.Id, body);
                 return Json(1);
@@ -69,6 +59,18 @@ namespace CamprayPortal.Web.Controllers
             {
                 return Json(2);
             }
+        }
+
+
+        public FileResult FileDownLoad(string filename)
+        {
+            if (!_workContext.CurrentCustomer.IsRegistered())
+            {
+                Response.Redirect("/login?returnUrl=/Downloads/FileDownLoad?filename=" + filename);
+                return null;
+            }
+
+            return File(Server.MapPath("~/Content/Images/uploaded/" + filename), "application/octet-stream", filename);
         }
     }
 }

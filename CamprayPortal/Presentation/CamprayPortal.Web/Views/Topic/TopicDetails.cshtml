@@ -15,8 +15,34 @@
         jQuery(document).ready(function () {
             Layout.init();
             Layout.initOWL();
+            Init();
         });
+
+
+        function Init() {
+            $("#downloadcontent a").click(function (e) {
+                var url = $(this).attr("href");
+
+                if (url.indexOf('/Content/Images/uploaded/') == -1)
+                    return;
+
+                var name = $(this).text();
+                $.post("/Downloads/SendEmail", { url: url, name: name }, function (backdata) {
+                    if (backdata == 0)
+                        window.location.href = '/login';
+                    else if (backdata == 1)
+                        alert('A download instruction has been sent to your registration email box, please check.');
+                    else if (backdata == 2)
+                        alert('Email send failed');
+                });
+                e.preventDefault();
+            });
+        }
+
+
     </script>
+    
+    
     <!-- END PAGE LEVEL JAVASCRIPTS -->
 }
 

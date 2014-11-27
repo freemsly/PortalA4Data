@@ -22,6 +22,10 @@
         function Init() {
             $("#downloadcontent a").click(function(e) {
                 var url = $(this).attr("href");
+
+                if (url.indexOf('/Content/Images/uploaded/') == -1)
+                    return;
+
                 var name = $(this).text();
                 $.post("/Downloads/SendEmail", { url: url, name: name }, function(backdata) {
                     if (backdata == 0)
