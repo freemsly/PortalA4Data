@@ -306,8 +306,6 @@ namespace CamprayPortal.Services.Messages
 
         #endregion
 
-    
-
         #region Newsletter workflow
 
         /// <summary>
@@ -440,9 +438,6 @@ namespace CamprayPortal.Services.Messages
         }
 
         #endregion
-
-       
-
       
         #region Misc
         
@@ -528,6 +523,46 @@ namespace CamprayPortal.Services.Messages
         
 
         #endregion
+
+        /// <summary>
+        /// Sends "email a friend" message
+        /// </summary>
+        /// <param name="customer">Customer instance</param>
+        /// <param name="languageId">Message language identifier</param>
+        /// <param name="personalMessage">Personal message</param>
+        /// <returns>Queued email identifier</returns> 
+        public virtual int SendEmailAFriendMessage(Customer customer, int languageId, string personalMessage)
+        {
+            if (customer == null)
+                throw new ArgumentNullException("customer");
+
+            var store = _storeContext.CurrentStore;
+            languageId = EnsureLanguageIsActive(languageId, store.Id);
+
+            var messageTemplate = GetActiveMessageTemplate("Service.EmailAFriend", store.Id);
+            if (messageTemplate == null)
+                return 0;
+
+            //email account
+            var emailAccount = GetEmailAccountOfMessageTemplate(messageTemplate, languageId);
+
+            //tokens
+            var tokens = new List<Token>();
+            _messageTokenProvider.AddStoreTokens(tokens, store, emailAccount);
+            _messageTokenProvider.AddCustomerTokens(tokens, customer);
+
+            tokens.Add(new Token("EmailAFriend.PersonalMessage", personalMessage, true));
+
+            //event notification
+            _eventPublisher.MessageTokensAdded(messageTemplate, tokens);
+
+            var toEmail = customer.Email;
+            var toName = "";
+            return SendNotification(messageTemplate, emailAccount,
+                languageId, tokens,
+                toEmail, toName);
+        }
+
 
         #endregion
     }
