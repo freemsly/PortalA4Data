@@ -13,14 +13,17 @@ namespace CamprayPortal.Web.Controllers
         private readonly IEmailSender _emailSender;
         private readonly IEmailAccountService _emailAccountService;
         private readonly IWebHelper _webHelper;
+        private readonly IWorkflowMessageService _workflowMessageService;
 
         public DownloadsController(IWorkContext workContext, IEmailSender emailSender,
-            IEmailAccountService emailAccountService, IWebHelper webHelper)
+            IEmailAccountService emailAccountService, IWebHelper webHelper,
+            IWorkflowMessageService workflowMessageService)
         {
             _workContext = workContext;
             _emailSender = emailSender;
             _emailAccountService = emailAccountService;
             _webHelper = webHelper;
+            _workflowMessageService = workflowMessageService;
         }
 
         // GET: Downloads
@@ -57,10 +60,9 @@ namespace CamprayPortal.Web.Controllers
 
                 if (String.IsNullOrWhiteSpace(_workContext.CurrentCustomer.Email))
                     return Json(2);
-                const string subject = "A4 Data DownLoad Center";
-                string body = String.Format("Please click <a href='{0}'>{1}</a>  download file !", link, name);
-                _emailSender.SendEmail(emailAccount, subject, body, emailAccount.Email, emailAccount.DisplayName,
-                    _workContext.CurrentCustomer.Email, null);
+                string body = String.Format("<a href='{0}'>{1}</a>", link, name);
+                _workflowMessageService.SendEmailAFriendMessage(_workContext.CurrentCustomer,
+                    _workContext.WorkingLanguage.Id, body);
                 return Json(1);
             }
             catch (Exception exc)

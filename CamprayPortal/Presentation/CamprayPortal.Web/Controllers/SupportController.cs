@@ -131,7 +131,7 @@ namespace CamprayPortal.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Register(RegisterModel model, string returnUrl) 
+        public ActionResult Register(RegisterModel model, string returnUrl)
         {
             if (_workContext.CurrentCustomer.IsRegistered())
             {
@@ -142,46 +142,71 @@ namespace CamprayPortal.Web.Controllers
                 _workContext.CurrentCustomer = _customerService.InsertGuestCustomer();
             }
             var customer = _workContext.CurrentCustomer;
-            if (model.Email.IndexOf("@hotmail.com")!=-1 ||model.Email.IndexOf("gmail.com")!=-1 || model.Email.IndexOf("@126.com")!=-1)
+            if (model.Email.IndexOf("@hotmail.com") != -1 || model.Email.IndexOf("gmail.com") != -1 ||
+                model.Email.IndexOf("@126.com") != -1)
             {
-                ModelState.AddModelError("", _localizationService.GetResource("Account.Register.Result.PleaseUseCompanyEmail"));
+                ModelState.AddModelError("",
+                    _localizationService.GetResource("Account.Register.Result.PleaseUseCompanyEmail"));
             }
 
 
             if (ModelState.IsValid)
             {
-
-                bool isApproved = _customerSettings.UserRegistrationType == UserRegistrationType.AdminApproval;
+                var userregister =
+                    (UserRegistrationType)
+                        (int.Parse(System.Configuration.ConfigurationManager.AppSettings["UserRegistrationType"]));
+                var isApproved = userregister == UserRegistrationType.Standard;
                 var registrationRequest = new CustomerRegistrationRequest(customer, model.Email,
                     model.Email, model.Password, _customerSettings.DefaultPasswordFormat, isApproved);
                 var registrationResult = _customerRegistrationService.RegisterCustomer(registrationRequest);
                 if (registrationResult.Success)
                 {
-                    _workflowMessageService.SendCustomerWelcomeMessage(customer, _workContext.WorkingLanguage.Id);
 
                     if (!string.IsNullOrEmpty(model.FirstName))
                     {
-                        _genericAttributeService.SaveAttribute(customer, SystemCustomerAttributeNames.FirstName, model.FirstName);
+                        _genericAttributeService.SaveAttribute(customer, SystemCustomerAttributeNames.FirstName,
+                            model.FirstName);
                     }
                     if (!string.IsNullOrEmpty(model.FirstName))
                     {
-                        _genericAttributeService.SaveAttribute(customer, SystemCustomerAttributeNames.LastName, model.LastName);
+                        _genericAttributeService.SaveAttribute(customer, SystemCustomerAttributeNames.LastName,
+                            model.LastName);
                     }
                     if (!string.IsNullOrEmpty(model.FirstName))
                     {
-                        _genericAttributeService.SaveAttribute(customer, SystemCustomerAttributeNames.Company, model.Company);
+                        _genericAttributeService.SaveAttribute(customer, SystemCustomerAttributeNames.Company,
+                            model.Company);
                     }
                     if (!string.IsNullOrEmpty(model.FirstName))
                     {
-                        _genericAttributeService.SaveAttribute(customer, SystemCustomerAttributeNames.StreetAddress, model.StreetAddress);
+                        _genericAttributeService.SaveAttribute(customer, SystemCustomerAttributeNames.StreetAddress,
+                            model.StreetAddress);
                     }
 
                     //login customer now
                     //if (isApproved)
                     //    _authenticationService.SignIn(customer, true);
-                   // return Redirect("/");
+                    // return Redirect("/");
                     //return RedirectToRoute("RegisterResult");
-                    return RedirectToRoute("RegisterResult", new { resultId = (int)UserRegistrationType.AdminApproval });
+                    if (userregister == UserRegistrationType.EmailValidation)
+                    {
+                        _genericAttributeService.SaveAttribute(customer,
+                            SystemCustomerAttributeNames.AccountActivationToken, Guid.NewGuid().ToString());
+                        _workflowMessageService.SendCustomerEmailValidationMessage(customer,
+                            _workContext.WorkingLanguage.Id);
+                        return RedirectToRoute("RegisterResult",
+                            new {resultId = (int) UserRegistrationType.EmailValidation});
+                    }
+
+                    if (userregister == UserRegistrationType.AdminApproval)
+                    {
+                        _workflowMessageService.SendCustomerEmailValidationMessage(customer,
+                            _workContext.WorkingLanguage.Id);
+                        return RedirectToRoute("RegisterResult",
+                            new {resultId = (int) UserRegistrationType.AdminApproval});
+                    }
+
+                    return RedirectToRoute("RegisterResult", new {resultId = (int) UserRegistrationType.Standard});
                 }
                 else
                 {
@@ -190,6 +215,31 @@ namespace CamprayPortal.Web.Controllers
                 }
             }
             return View(model);
+        }
+
+
+
+        public ActionResult AccountActivation(string token, string email)
+        {
+            var customer = _customerService.GetCustomerByEmail(email);
+            if (customer == null)
+                return RedirectToRoute("HomePage");
+
+            var cToken = customer.GetAttribute<string>(SystemCustomerAttributeNames.AccountActivationToken);
+            if (String.IsNullOrEmpty(cToken))
+                return RedirectToRoute("HomePage");
+
+            if (!cToken.Equals(token, StringComparison.InvariantCultureIgnoreCase))
+                return RedirectToRoute("HomePage");
+
+            //activate user account
+            customer.Active = true;
+            _customerService.UpdateCustomer(customer);
+            _genericAttributeService.SaveAttribute(customer, SystemCustomerAttributeNames.AccountActivationToken, "");
+            //send welcome message
+            _workflowMessageService.SendCustomerWelcomeMessage(customer, _workContext.WorkingLanguage.Id);
+
+            return RedirectToAction("RegisterResult", new {resultId = 999});
         }
 
 
@@ -202,7 +252,7 @@ namespace CamprayPortal.Web.Controllers
         public ActionResult RegisterResult(int resultId)
         {
             var resultText = "";
-            switch ((UserRegistrationType)resultId)
+            switch ((UserRegistrationType) resultId)
             {
                 case UserRegistrationType.Disabled:
                     resultText = _localizationService.GetResource("Account.Register.Result.Disabled");
@@ -219,12 +269,19 @@ namespace CamprayPortal.Web.Controllers
                 default:
                     break;
             }
+            if (resultId == 999)
+                resultText = _localizationService.GetResource("Account.AccountActivation.Activated");
+
             var model = new RegisterResultModel()
             {
                 Result = resultText
             };
             return View(model);
         }
+
+
+
+
 
         public ActionResult Documentation()
         {

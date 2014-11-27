@@ -22,6 +22,12 @@ namespace CamprayPortal.Web.Infrastructure
                             "Support/",
                             new { controller = "Support", action = "RegisterResult" },
                             new[] { "CamprayPortal.Web.Controllers" });
+
+            routes.MapLocalizedRoute("AccountActivation",
+                     "customer/activation",
+                     new { controller = "Support", action = "AccountActivation" },
+                     new[] { "CamprayPortal.Web.Controllers" });
+
             //login
             routes.MapLocalizedRoute("Login",
                             "login/",
