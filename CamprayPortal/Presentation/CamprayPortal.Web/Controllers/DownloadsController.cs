@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Web;
 using System.Web.Mvc;
 using CamprayPortal.Core;
 using CamprayPortal.Core.Domain.Customers;
@@ -47,12 +48,12 @@ namespace CamprayPortal.Web.Controllers
             try
             {
                 var filename = url.Substring(url.LastIndexOf('/') + 1, url.Length - url.LastIndexOf('/') - 1);
-                var downurl = _webHelper.GetHost(false) + "Downloads/FileDownLoad?filename=" + filename;
+                var downurl = _webHelper.GetHost(false) + "Downloads/FileDownLoad?filename=" + HttpUtility.UrlEncode(filename);
                 if (String.IsNullOrWhiteSpace(_workContext.CurrentCustomer.Email))
                     return Json(2);
                 string body = String.Format("<a href='{0}'>{1}</a>", downurl, name);
                 _workflowMessageService.SendEmailAFriendMessage(_workContext.CurrentCustomer,
-                    _workContext.WorkingLanguage.Id, body);
+                    _workContext.WorkingLanguage.Id, body); 
                 return Json(1);
             }
             catch (Exception exc)
