@@ -33,6 +33,13 @@ namespace CamprayPortal.Web.Controllers
         }
 
 
+        public ActionResult ProductPayment() 
+        {
+            return View(); 
+        }
+
+
+        
         
     }
 }

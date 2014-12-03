@@ -13,45 +13,53 @@ namespace CamprayPortal.Web.Infrastructure
 
             //home page
             routes.MapLocalizedRoute("HomePage",
-                            "",
-                            new { controller = "Home", action = "Index" },
-                            new[] { "CamprayPortal.Web.Controllers" });
-             
-                      //RegisterResult  
+                "",
+                new {controller = "Home", action = "Index"},
+                new[] {"CamprayPortal.Web.Controllers"});
+
+            //RegisterResult  
             routes.MapLocalizedRoute("RegisterResult",
-                            "Support/",
-                            new { controller = "Support", action = "RegisterResult" },
-                            new[] { "CamprayPortal.Web.Controllers" });
+                "Support/",
+                new {controller = "Support", action = "RegisterResult"},
+                new[] {"CamprayPortal.Web.Controllers"});
 
             routes.MapLocalizedRoute("AccountActivation",
-                     "customer/activation",
-                     new { controller = "Support", action = "AccountActivation" },
-                     new[] { "CamprayPortal.Web.Controllers" });
+                "customer/activation",
+                new {controller = "Support", action = "AccountActivation"},
+                new[] {"CamprayPortal.Web.Controllers"});
 
             //login
             routes.MapLocalizedRoute("Login",
-                            "login/",
-                            new { controller = "Support", action = "CustomerPortal" },
-                            new[] { "CamprayPortal.Web.Controllers" });
+                "login/",
+                new {controller = "Support", action = "CustomerPortal"},
+                new[] {"CamprayPortal.Web.Controllers"});
+
+
+            //productpayment
+            routes.MapLocalizedRoute("productpayment",
+                "productpayment",
+                new { controller = "Product", action = "ProductPayment" },
+                new[] { "CamprayPortal.Web.Controllers" });
+
 
             //change language (AJAX link)
             routes.MapLocalizedRoute("ChangeLanguage",
-                            "changelanguage/{langid}",
-                            new { controller = "Common", action = "SetLanguage" },
-                            new { langid = @"\d+" },
-                            new[] { "CamprayPortal.Web.Controllers" });
+                "changelanguage/{langid}",
+                new {controller = "Common", action = "SetLanguage"},
+                new {langid = @"\d+"},
+                new[] {"CamprayPortal.Web.Controllers"});
 
             //install
             routes.MapRoute("Installation",
-                            "install",
-                            new { controller = "Install", action = "Index" },
-                            new[] { "CamprayPortal.Web.Controllers" });
-            
+                "install",
+                new {controller = "Install", action = "Index"},
+                new[] {"CamprayPortal.Web.Controllers"});
+
             //page not found
             routes.MapLocalizedRoute("PageNotFound",
-                            "page-not-found",
-                            new { controller = "Common", action = "PageNotFound" },
-                            new[] { "CamprayPortal.Web.Controllers" });
+                "page-not-found",
+                new {controller = "Common", action = "PageNotFound"},
+                new[] {"CamprayPortal.Web.Controllers"});
 
         }
 
