@@ -71,6 +71,12 @@ namespace CamprayPortal.Web.Controllers
             return TopicModelView();
         }
 
+        public ActionResult Advisers()
+        {
+            return TopicModelView();
+        }
+
+        
 
         public ActionResult BoardMembers()
         {

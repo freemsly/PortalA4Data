@@ -4247,6 +4247,7 @@
     <Content Include="Views\Common\SearchResult.cshtml" />
     <Content Include="Views\Support\RegisterResult.cshtml" />
     <Content Include="Views\Widget\WidgetsByZone.cshtml" />
+    <Content Include="Views\AboutUs\Advisers.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\assets\global\plugins\jquery-file-upload\server\node\public\files\thumbnail\" />
@@ -4652,7 +4653,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>15536</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:15537/</IISUrl>
+          <IISUrl>http://localhost:15539/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
