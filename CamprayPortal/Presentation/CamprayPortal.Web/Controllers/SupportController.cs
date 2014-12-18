@@ -142,16 +142,17 @@ namespace CamprayPortal.Web.Controllers
                 _workContext.CurrentCustomer = _customerService.InsertGuestCustomer();
             }
             var customer = _workContext.CurrentCustomer;
-            if (model.Email.IndexOf("@hotmail.com") != -1 || model.Email.IndexOf("gmail.com") != -1 ||
-                model.Email.IndexOf("@126.com") != -1)
-            {
-                ModelState.AddModelError("",
-                    _localizationService.GetResource("Account.Register.Result.PleaseUseCompanyEmail"));
-            }
-
 
             if (ModelState.IsValid)
             {
+                if (model.Email.IndexOf("@hotmail.com") != -1 || model.Email.IndexOf("gmail.com") != -1 ||
+                    model.Email.IndexOf("@126.com") != -1)
+                {
+                    ModelState.AddModelError("",
+                        _localizationService.GetResource("Account.Register.Result.PleaseUseCompanyEmail"));
+                    return View(model);
+                }
+
                 var userregister =
                     (UserRegistrationType)
                         (int.Parse(System.Configuration.ConfigurationManager.AppSettings["UserRegistrationType"]));

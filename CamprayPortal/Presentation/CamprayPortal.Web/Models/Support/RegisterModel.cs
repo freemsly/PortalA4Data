@@ -42,5 +42,7 @@ namespace CamprayPortal.Web.Models.Support
         [AllowHtml]
         public string StreetAddress { get; set; }
 
+        public bool AcceptPrivacyPolicy { get; set; }
+
     }
 }

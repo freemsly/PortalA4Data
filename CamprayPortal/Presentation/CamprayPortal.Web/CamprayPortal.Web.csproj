@@ -4249,6 +4249,8 @@
     <Content Include="Views\Widget\WidgetsByZone.cshtml" />
     <Content Include="Views\AboutUs\Advisers.cshtml" />
     <Content Include="Views\Product\ProductPayment.cshtml" />
+    <Content Include="Views\Common\PrivacyPolicy.cshtml" />
+    <Content Include="Views\Common\TermsofService.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\assets\global\plugins\jquery-file-upload\server\node\public\files\thumbnail\" />

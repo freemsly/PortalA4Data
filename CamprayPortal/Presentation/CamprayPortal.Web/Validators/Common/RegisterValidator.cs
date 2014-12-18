@@ -16,6 +16,8 @@ namespace CamprayPortal.Web.Validators.Common
             RuleFor(x => x.Password).NotEmpty().WithMessage(localizationService.GetResource("Account.Fields.Password.Required"));
             RuleFor(x => x.ConfirmPassword).NotEmpty().WithMessage(localizationService.GetResource("Account.Fields.ConfirmPassword.Required"));
             RuleFor(x => x.ConfirmPassword).Equal(x => x.Password).WithMessage(localizationService.GetResource("Account.Fields.Password.EnteredPasswordsDoNotMatch"));
+
+            RuleFor(x => x.AcceptPrivacyPolicy).Equal(true).WithMessage(localizationService.GetResource("Account.Fields.AcceptPrivacyPolicy.Required"));
         }
     }
 }

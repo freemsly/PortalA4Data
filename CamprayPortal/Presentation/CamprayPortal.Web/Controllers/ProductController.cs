@@ -1,9 +1,18 @@
 ﻿using System.Web.Mvc;
+using CamprayPortal.Core;
+using CamprayPortal.Core.Domain.Customers;
 
 namespace CamprayPortal.Web.Controllers
 {
     public class ProductController : BasePublicController
     {
+        private readonly IWorkContext _workContext;
+
+        public ProductController(IWorkContext workContext)
+        {
+            _workContext = workContext;
+        }
+
         // GET: Product
         public ActionResult FeatureBriefs()
         {
@@ -24,22 +33,22 @@ namespace CamprayPortal.Web.Controllers
 
         public ActionResult JetVM()
         {
-            return TopicModelView(); 
+            return TopicModelView();
         }
 
-        public ActionResult ApplicationNotes() 
+        public ActionResult ApplicationNotes()
         {
-            return TopicModelView(); 
+            return TopicModelView();
         }
 
 
-        public ActionResult ProductPayment() 
+        public ActionResult ProductPayment()
         {
-            return View(); 
+            if (!_workContext.CurrentCustomer.IsRegistered())
+                return RedirectToRoute("Login");
+            return View();
         }
 
 
-        
-        
     }
 }

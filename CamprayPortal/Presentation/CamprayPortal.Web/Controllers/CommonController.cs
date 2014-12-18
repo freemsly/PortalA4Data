@@ -311,6 +311,18 @@ namespace CamprayPortal.Web.Controllers
             return View(pagination);
         }
 
+
+        public ActionResult PrivacyPolicy()
+        {
+            return TopicModelView();
+        }
+
+
+        public ActionResult TermsofService()
+        {
+            return TopicModelView();
+        }
+  
         #endregion
 
     }

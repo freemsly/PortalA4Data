@@ -1,6 +1,7 @@
 ﻿@using CamprayPortal.Core.Domain.Customers
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var CurrentUrl = Request.Url.AbsoluteUri;
 }
 
 @if (IsSectionDefined("PageStyle"))
@@ -58,20 +59,13 @@
                     <div class="col-lg-7">
                         <div class="row">
                             <ul class="list-unstyled list-inline pull-right" style="padding: 15px 3px 0 15px;margin-right:12px">
-                                @if (IsSectionDefined("LeftLink"))
+                                @if (WorkContext.CurrentCustomer.IsRegistered())
                                 {
-                                    @RenderSection("LeftLink")
+                                    <li>@WorkContext.CurrentCustomer.Username<a href="@Url.Action("Logout", "Support", new {ReturnUrl = HttpContext.Current.Request.RawUrl})" style="margin-left: 10px">Log Out</a></li>
                                 }
                                 else
                                 {
-                                    if (WorkContext.CurrentCustomer.IsRegistered())
-                                    {
-                                        <li>@WorkContext.CurrentCustomer.Username<a href="@Url.Action("Logout", "Support", new { ReturnUrl = HttpContext.Current.Request.RawUrl })" style="margin-left: 10px">Log Out</a></li>
-                                    }
-                                    else
-                                    {
-                                        <li><a href="@Url.Action("CustomerPortal", "Support", new { ReturnUrl = HttpContext.Current.Request.RawUrl })">Log In</a></li>
-                                    }
+                                    <li><a href="@Url.Action("CustomerPortal", "Support", new {ReturnUrl = HttpContext.Current.Request.RawUrl})">Log In</a></li>
                                 }
                             </ul>
 
@@ -83,10 +77,10 @@
 
 
                             <ul class="social-icons social-icons-color pull-right" style="padding: 10px 0 0 0;">
-                                <li><a class="facebook" data-original-title="Facebook" href="#"></a></li>
-                                <li><a class="twitter" data-original-title="Twitter" href="#"></a></li>
-                                <li><a class="googleplus" data-original-title="Goole Plus" href="#"></a></li>
-                                <li><a class="linkedin" data-original-title="Linkedin" href="#"></a></li>
+                                <li><a class="facebook" data-original-title="Facebook" href="https://www.facebook.com/sharer/sharer.php?u=@CurrentUrl"></a></li> 
+                                <li><a class="twitter" data-original-title="Twitter" href="http://twitter.com/share?text=Im%20Sharing%20on%20Twitter&url=@CurrentUrl"></a></li> 
+                                <li><a class="googleplus" data-original-title="Goole Plus" href="https://plus.google.com/share?url=@CurrentUrl"></a></li>
+                                <li><a class="linkedin" data-original-title="Linkedin" href="http://www.linkedin.com/shareArticle?mini=true&url=@CurrentUrl"></a></li>
                             </ul>
                         </div>
                         <div class="row">
@@ -122,7 +116,7 @@
             <div class="row" style="text-align:center">
                 <!-- BEGIN COPYRIGHT -->
                 <div class="col-md-12 col-sm-12 padding-top-10">
-                    2014 © A4 Data. <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+                    2014 © A4 Data. <a href="@Url.Action("PrivacyPolicy", "Common")">Privacy Policy</a> | <a href="@Url.Action("TermsofService", "Common")">Terms of Service</a>
                 </div>
                 <!-- END COPYRIGHT -->
                 <!-- BEGIN PAYMENTS -->
@@ -137,7 +131,7 @@
                         <li><a href="#"><i class="fa fa-github"></i></a></li>
                         <li><a href="#"><i class="fa fa-youtube"></i></a></li>
                         <li><a href="#"><i class="fa fa-dropbox"></i></a></li>
-                    </ul>
+                    </ul> 
                 </div>
                 <!-- END PAYMENTS -->
             </div>
