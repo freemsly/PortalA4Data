@@ -16,7 +16,7 @@ namespace CamprayPortal.Web.Controllers
         {
             var model = new BenchmarkViewModel
             {
-                Overview = TopicModelContent("Solutions-BriefsOverview"),
+                Overview = TopicModelContent("Solutions-BenchmarkOverview"),
                 Mobile = TopicModelContent("Solutions-BenchmarkMobile"),
                 SpeedTime = TopicModelContent("Solutions-BenchmarkSpeedTime")
             };
