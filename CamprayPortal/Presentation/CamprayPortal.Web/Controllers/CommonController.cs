@@ -242,7 +242,8 @@ namespace CamprayPortal.Web.Controllers
 
 
 
-                        var topics = _topicService.GetAllTopics(_storeContext.CurrentStore.Id);
+                        var topics =
+                            _topicService.GetAllTopics(_storeContext.CurrentStore.Id).Where(t => t.IncludeInSitemap);
                         foreach (var top in topics)
                         {
                             var seritem = new SearchResultItem
