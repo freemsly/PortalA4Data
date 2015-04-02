@@ -4241,7 +4241,7 @@
     <Content Include="Views\Common\SitMap.cshtml" />
     <Content Include="Views\Common\LanguageSelector.cshtml" />
     <Content Include="Views\Common\PageNotFound.cshtml" />
-    <Content Include="Views\AboutUs\ContractUs.cshtml" />
+    <Content Include="Views\AboutUs\ContactUs.cshtml" />
     <Content Include="Views\Partner\Homepage.cshtml" />
     <Content Include="Views\Support\Register.cshtml" />
     <Content Include="Views\Common\SearchResult.cshtml" />
